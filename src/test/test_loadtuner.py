@@ -1,9 +1,6 @@
 import unittest
 import src
-from src.loadtuner import loadtuner
-from src.loadtuner.loadtuner import *
-
-import
+from src.main.loadtuner import *
 
 class CCMT1808_test(unittest.TestCase):
 
