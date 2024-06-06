@@ -6,48 +6,12 @@ Created on Sat Oct 27 19:57:28 2018
 """
 
 import src
-from src.main import baseinstr
+from src.main import BaseInstr
 import numpy as np
 
-
-class AbstractZVA(baseinstr.BaseInstr):
-
-    def __init__(self, address=None, source=None, **kwargs):
-        baseinstr.BaseInstr.__init__(self, address, **kwargs)
-        self._connected = False
-        self._verbose = False
-        return
-
-    def connect(self, address=None, reset=True):
-        """``connect()``
-
-        Open connection to Instrument.
-        """
-        baseinstr.BaseInstr.connect(self, address)
-
-        if (reset):
-            self.instr.write('*RST')
-            self.instr.query('*OPC?')
-        return
-
-    def close(self):
-        """
-        """
-        self.set_output(0)
-        baseinstr.BaseInstr.close(self)
-        return
-
-    def select_trace(self, trace):
-        self.instr.write('CALC1:PAR:SEL TRC' + str(trace))
-
-    def get_trace_value(self):
-        x = self.instr.query('CALC:MARK:Y?')
-        return x
-
-
-class ZVA40(baseinstr.BaseInstr):
+class ZVA40(BaseInstr.BaseInstr):
     def __init__(self, address=None):
-        baseinstr.BaseInstr.__init__(self, address)
+        BaseInstr.BaseInstr.__init__(self, address)
         self._connected = False
         self._verbose = False
         return
@@ -69,16 +33,15 @@ class ZVA40(baseinstr.BaseInstr):
         self.instr.write('SOUR:CMODe:PORT' + str(port)
                          + ':AMPlitude ' + str(rel_pow))
 
-#
     def load_cal(self, calname):
-        self.instr.write('MMEM:LOAD:CORR 1,'+calname)
+        self.instr.write('MMEM:LOAD:CORR 1,'+ calname)
 
     def connect(self, address=None, reset=True):
         """``connect()``
 
         Open connection to Instrument.
         """
-        baseinstr.BaseInstr.connect(self, address)
+        BaseInstr.BaseInstr.connect(self, address)
 
         if (reset):
             self.instr.write('*RST')
@@ -114,7 +77,7 @@ class ZVA40(baseinstr.BaseInstr):
         """
         """
         self.set_output(0)
-        baseinstr.BaseInstr.close(self)
+        BaseInstr.BaseInstr.close(self)
         return
 
     def send_command(self, text):
