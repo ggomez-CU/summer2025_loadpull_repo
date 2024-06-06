@@ -4,3 +4,7 @@
 /venv
 /src/main/__pycache__
 /test/__pycache__
+/focustuner.egg-info
+/focustuner/__pycache__
+.eggs
+.vscode

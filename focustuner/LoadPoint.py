@@ -1,6 +1,6 @@
 import numpy as np
 
-class loadPoint(object):
+class LoadPoint(object):
     """Data for a single load.
 
     Parameters
