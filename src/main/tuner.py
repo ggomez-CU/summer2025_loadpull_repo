@@ -126,7 +126,7 @@ class BreakHandler:
 
 
 class CCMT1808(object):
-    def __init__(self, address, xMax, yMax, port=23):
+    def __init__(self, address, xMax, yMax, timeout=30,port=23):
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -151,6 +151,7 @@ class CCMT1808(object):
         self.yPos = -1
         self.timeout = 30
         self.resultCode = 0
+        self.instr = None
 
         self.kbInt = BreakHandler()
         return
@@ -169,27 +170,35 @@ class CCMT1808(object):
             Port of IP address, default is TELNET 23 (def=23).  If not
             specified, will use the class constructor port number.
         """
+        print('Attempting iTuner connection... ', end='')
+
         if (address):
             self.address = address
         if (port != self.port):
             self.port = port
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            print('Attempting iTuner connection... ', end='')
-            self.instr = s
+        try:
+            self.instr = socket.socket()
             self.instr.settimeout(self.timeout)
+            self.instr.connect((self.address, int(self.port)))
+            self.connected = True
+            print('connected')
+            print('iTuner initializing... ', end='')
             try:
-                self.instr.connect((self.address, int(self.port)))
-                self.connected = True
-                print('connected')
-                print('iTuner initializing... ', end='')
-                print(self.instr.recv(2048).decode())
-                print('done')
-
+                self.instr.send('INIT\r\n'.encode())
+                trash = self.instr.recv(2048)
+                self.waitForReady()
             except:
-                print('connection unsucessful')
+                print('connection unsuccessful')
                 self.connected = False
-                return self.connected
+                exit()
+            print('done')
+            return self.connected
+
+        except:
+            print('connection unsuccessful')
+            self.connected = False
+            return self.connected
 
 
 
@@ -197,11 +206,17 @@ class CCMT1808(object):
         """
         Close tuner communication.
         """
-        self.instr.close()
-        self.instr = None
-        self.connected = False
+        if(self.instr):
+            self.instr.close()
+            self.instr = None
+            self.connected = False
+            print('Tuner Connection Closed')
+        else: 
+            self.instr = -1
+            self.connected = False
+            print('No Tuner Connected. Did not close properly. Consider Rebooting')
 
-        return
+        return self.instr
 
     def move(self, axis, position):
         """tuner_move(axis, position)
@@ -232,9 +247,14 @@ class CCMT1808(object):
             if (position > self.xMax or position < 0):
                 raise SystemError('Exceeds X position limit, tuner not moved!')
         elif (axis.lower() == 'y'):
-            axis = '2'
+            axis = '3' #for higher frequency operation
             if (position > self.yMax or position < 0):
                 raise SystemError('Exceeds Y position limit, tuner not moved!')
+        elif (axis.lower() == 'aux'):
+            axis = '2' #for higher frequency operation
+            if (position > self.yMax or position < 0):
+                raise SystemError('Exceeds Y position limit, tuner not moved!')
+        
         else:
             warnings.warn('Invalid axis, tuner not moved!')
             return self.pos()
@@ -247,14 +267,17 @@ class CCMT1808(object):
         elif (axis == '2' and self.pos()[1] == position):
             # already there, return
             return
+        elif (axis == '3' and self.pos()[2] == position):
+            # already there, return
+            return
 
         # Send the command to move slug
-        self.kbInt.enable()
+        # self.kbInt.enable()
         self.instr.send(('POS '+axis+' '+str(int(position))+'\r\n').encode())
         self.waitForReady()
-        if (self.kbInt.trapped):
-            raise KeyboardInterrupt
-        self.kbInt.disable()
+        # if (self.kbInt.trapped):
+        #     raise KeyboardInterrupt
+        # self.kbInt.disable()
 
         # Query the tuner position
         # x, y = self.pos()
@@ -373,9 +396,9 @@ class CCMT1808(object):
         -------
         statusCode : status string
         """
-        self.instr.send('STATUS? \r'.encode())
+        #self.instr.send('STATUS? \r'.encode())
         return_string = self.instr.recv(1024).decode()
-        print((return_string))
+        #print((return_string))
 
         # print('~~~~~RETURN STRING~~~~~')
         # print(return_string)
@@ -404,18 +427,32 @@ class CCMT1808(object):
             Position of slugs.
         """
 #        self.kbInt.enable()
-        self.instr.send('POS? \r\n'.encode())
+        #self.status()
+        self.instr.send('\r\nPOS? \r\n'.encode())
+        # try:
         r = self.instr.recv(1024)  # write response
-        m = re.search('A1=([-0-9]+) A2=([-0-9]+)'.encode(), r)
+        # except:
+        #     try:
+        #         self.instr.send('POS?\r\n'.encode())
+        #         r = self.instr.recv(1024)  # write response
+            # except:
+            #     exit()
+        m = re.search('A1=([-0-9]+) A2=([-0-9]+) A3=([-0-9]+)'.encode(), r)
         while (not m):
+            # try:
+            #     self.instr.send('POS?\r\n'.encode())
             r = self.instr.recv(1024)  # command response
-            m = re.search('A1=([-0-9]+) A2=([-0-9]+)'.encode(), r)
+            m = re.search('A1=([-0-9]+) A2=([-0-9]+) A3=([-0-9]+)'.encode(), r)
+            # except:
+            #     exit()
         if (self.kbInt.trapped):
             raise KeyboardInterrupt
 #        self.kbInt.disable()
         self.xPos = m.group(1)
-        self.yPos = m.group(2)
-        return [int(self.xPos), int(self.yPos)]
+        #self.yPos = m.group(2)
+        self.yPos = m.group(3) #for higher frequencies
+        #print("Tuner posistion is 1: " + str(m.group(1)) + " 2: " + str(m.group(2)) + " 3: " + str(m.group(3)))
+        return [int(self.xPos), int(m.group(2)), int(self.yPos)]
 
     def waitForReady(self):
         """waitForReady(timeout=tuner.timeout)
@@ -441,7 +478,7 @@ class CCMT1808(object):
             try:
                 std_trsh = self.instr.recv(1024).decode()
             except:
-                returnfinal
+                return
         while (time.time() - starttime < timeout and status_code):
             # print('~~~~~ENTERING WHILE LOOP~~~~~')
             while (time.time() - lastQuery < queryRepeat):
