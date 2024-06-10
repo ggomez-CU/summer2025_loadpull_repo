@@ -1,7 +1,6 @@
 import numpy as np
-from DevonsTunerCharacterization.DevonSubclasses import rffile
-from DevonsTunerCharacterization.DevonSubclasses import tuner
-from DevonsTunerCharacterization.DevonSubclasses import zva
+from focustuner import tuner
+from focustuner import zva
 
 # from DevonSubclasses import rffile
 # from DevonSubclasses import tuner
