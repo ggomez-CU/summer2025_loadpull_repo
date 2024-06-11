@@ -18,6 +18,10 @@ class test_connected_succesfully(unittest.TestCase):
         #Initial position of all axis' is 0
         self.assertEqual(self.loadtuner.pos(),[0,0,0])
 
+        #Move, status, pos
+        self.assertEqual(self.loadtuner.move('x',100),[100,0,0])
+        self.assertEqual(self.loadtuner.waitForReady(),0)
+
         # Close Connection -> return self.connected = False
         self.assertFalse(self.loadtuner.close())
 

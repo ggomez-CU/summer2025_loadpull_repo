@@ -244,7 +244,7 @@ class Tuner:
         
         SN = re.findall('SN#: \\d+', config_string)[0]
         IP = re.findall('IP: \\d+\\.\\d+\\.\\d+\\.\\d+', config_string)[0]
-        step_size = re.findall('Step Size: \\d+\\.\\d+', config_string)[0].split('Step Size: ')[1]
+        step_size = float(re.findall('Step Size: \\d+\\.\\d+', config_string)[0].split('Step Size: ')[1])
         cross_over_freq = float(re.findall('CrossOver:\\d+\\.\\d+', config_string)[0].split('CrossOver:')[1])
         axis1 = re.findall('#1\t1\t\\d+', config_string)[0].split('#1\t1\t')[1]
         axis2 = re.findall('#2\t2\t\\d+', config_string)[0].split('#2\t2\t')[1]
@@ -293,55 +293,40 @@ class Tuner:
         pos : (xPos, yPos) tuple representing the position according to the
             tuner
         """
-        if (not self.connected):
-            err = ('TunerClass:', sys._getframe(0).f_code.co_name, ':'
-                   ' Connection Error')
-            raise SystemError(err)
-
+        self.waitForReady()
         # check position against axis limits
         if (axis.lower() == 'x'):
             axis = '1'
-            if (position > self.xMax or position < 0):
+            if (position > self.configuration.axis_limits[0]  or position < 0):
                 raise SystemError('Exceeds X position limit, tuner not moved!')
-        elif (axis.lower() == 'y'):
-            axis = '3' #for higher frequency operation
-            if (position > self.yMax or position < 0):
-                raise SystemError('Exceeds Y position limit, tuner not moved!')
-        elif (axis.lower() == 'aux'):
+        elif (axis.lower() == 'y_low'):
             axis = '2' 
-            if (position > self.yMax or position < 0):
-                raise SystemError('Exceeds Y position limit, tuner not moved!')
-        
+            if (position > self.configuration.axis_limits[1]  or position < 0):
+                raise SystemError('Exceeds Y low position limit, tuner not moved!')
+        elif (axis.lower() == 'y_high'):
+            axis = '3' #for higher frequency operation
+            if (position > self.configuration.axis_limits[2] or position < 0):
+                raise SystemError('Exceeds Y high position limit, tuner not moved!')
         else:
             warnings.warn('Invalid axis, tuner not moved!')
             return self.pos()
 
         # Open a connection to the tuner
-#        self._open()
-        if (axis == '1' and self.pos()[0] == position):
+        if (axis == '1' and abs(self.pos()[0] - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '2' and self.pos()[1] == position):
+        elif (axis == '2' and abs(self.pos()[1] - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '3' and self.pos()[2] == position):
+        elif (axis == '3' and abs(self.pos()[2] - position) < self.configuration.step_size):
             # already there, return
             return
 
         # Send the command to move slug
-        # self.kbInt.enable()
-        # self.instr.send(('POS '+axis+' '+str(int(position))+'\r\n').encode())
-        self.instr.query('POS ' + axis + ' ' + str(int(position)))
-        # if (self.kbInt.trapped):
-        #     raise KeyboardInterrupt
-        # self.kbInt.disable()
+        print(self.instr.query('POS ' + axis + ' ' + str(int(position))))
 
-        # Query the tuner position
-        # x, y = self.pos()
-
-        # self.close()
-        # return x, y
-        return
+        # Return the tuner position
+        return self.pos
 
     def tuneto(self, magnitude, phase):
         """tuner_tune(magnitude, phase)
@@ -508,13 +493,18 @@ class Tuner:
                 self.instr.read()
             except: pass
             status_code = self.status()
-            print(status_code)
+            print("Status: " + str(status_code))
 
         if (status_code != 0):
             print('TunerClass: ERROR Ready Timeout')
             print('   ', sys._getframe(2).f_code.co_name, ':',
                 sys._getframe(1).f_code.co_name,
                 sys._getframe(0).f_code.co_name)
+            try:
+                self.close()
+            except: pass
+            else:
+                exit()
         return status_code
 
 #   {o.O}
