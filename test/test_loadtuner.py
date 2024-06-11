@@ -3,7 +3,7 @@ import unittest
 from src.focustuner import *
 from src.focustuner.Tuner import * 
 
-class test_connected_succesfully(unittest.TestCase):
+class test_connected_successfully(unittest.TestCase):
 
     def setUp(self):
         self.loadtuner = Tuner(14800,8655)
@@ -20,7 +20,10 @@ class test_connected_succesfully(unittest.TestCase):
 
         #Move, status, pos
         self.assertEqual(self.loadtuner.move('x',100),[100,0,0])
-        self.assertEqual(self.loadtuner.waitForReady(),0)
+        self.assertEqual(self.loadtuner.status(),1)
+        self.loadtuner.waitForReady()
+        self.assertEqual(self.loadtuner.status(),0)
+        self.assertEqual(self.loadtuner.pos(),[100,0,0])
 
         # Close Connection -> return self.connected = False
         self.assertFalse(self.loadtuner.close())

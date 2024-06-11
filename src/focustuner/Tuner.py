@@ -11,6 +11,12 @@ Nov 2018
 Updated for CCMT-1808 ituner (class renamed; `tuneto`, `loadfreq` functions
 added, communication with ituner changed) by Devon Donahue
 July-August 2021
+
+Updated to use pyvisa instead of socket. Removed the tuneto, loadfreq and 
+load cal function because the FDCS software was not giving reproducible 
+calibrations so it was not worth rewriting. Old functions are saved in _Tuner.txt.
+By Grace Gomez
+June 2024
 """
 import sys
 import time
@@ -31,10 +37,18 @@ def set_staticIP():
     time.sleep(3)
     return
 
-class TunerCongifuration:
+def set_DHCP():
+    print('Changing IP to DYNAMIC address')
+    subprocess.call(
+        'netsh interface ipv4 set address "Ethernet" dhcp',
+        shell=True,
+        )
+    return
+
+class TunerConfiguration:
     def __init__(self, SN, IP, step_size, cross_over_freq, axis_limits):
         """
-        Tuner configration class. Called from config in Tuner class and automatically defined.
+        Tuner configuration class. Called from config in Tuner class and automatically defined.
 
         Parameters
         ----------
@@ -56,101 +70,8 @@ class TunerCongifuration:
         self.axis_limits = axis_limits
         return
 
-def set_DHCP():
-    print('Changing IP to DYNAMIC address')
-    subprocess.call(
-        'netsh interface ipv4 set address "Ethernet" dhcp',
-        shell=True,
-        )
-    return
-
-
-class BreakHandler:
-    """
-    Trap CTRL-C, set a flag, and keep going.  This is very useful for
-    gracefully terminating Tuner communication.
-
-    To use this, make an instance and then enable it.  You can check
-    whether a break was trapped using the trapped property.
-    """
-
-    def __init__(self, emphatic=3):
-        """``BreakHandler(emphatic=3)``
-
-        Create a new break handler.
-
-        Parameters
-        ----------
-        emphatic : int
-            This is the number of times that the user must press break to
-            *disable* the handler.  If you press break this number of times,
-            the handler is  disabled, and one more break will trigger an old
-            style keyboard interrupt.
-        """
-        self._count = 0
-        self._enabled = False
-        self._emphatic = emphatic
-        self._oldhandler = None
-        return
-
-    def _reset(self):
-        """
-        Reset the trapped status and count.  You should not need to use this
-        directly; instead you can disable the handler and then re-enable it.
-        """
-        self._count = 0
-        return
-
-    def enable(self):
-        """
-        Enable trapping of the break.  This action also resets the
-        handler count and trapped properties.
-        """
-        if not self._enabled:
-            self._reset()
-            self._enabled = True
-            self._oldhandler = signal.signal(signal.SIG_IGN, self)
-        return
-
-    def disable(self):
-        """
-        Disable trapping the break.  You can check whether a break
-        was trapped using the count and trapped properties.
-        """
-        if self._enabled:
-            self._enabled = False
-            signal.signal(signal.SIG_IGN, self._oldhandler)
-            self._oldhandler = None
-        return
-
-    def __call__(self, signame, sf):
-        """
-        An break just occurred.  Save information about it and keep
-        going.
-        """
-        self._count += 1
-        # If we've exceeded the "emphatic" count disable this handler.
-#        if self._count >= self._emphatic:
-#            self.disable()
-        return
-
-    def __del__(self):
-        # self.disable()
-        return
-
-    @property
-    def count(self):
-        """The number of breaks trapped."""
-        return self._count
-
-    @property
-    def trapped(self):
-        """Whether a break was trapped."""
-        return self._count > 0
-
-
 class Tuner:
-    def __init__(self, xMax, yMax, address = '10.0.0.1', timeout=30 , port=23):
+    def __init__(self, xMax, yMax, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile):
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -170,14 +91,14 @@ class Tuner:
         self.connected = False
         self.port = str(port)
         self.xPos = -1
-        self.yPos = -1
-        self.timeout = 1000 #1 second
+        self.y_highPos = -1
+        self.y_lowPos = -1
+        self.timeout = timeout #In milliseconds
         self.instr = None
-
-        self.kbInt = BreakHandler()
+        self.log = log
         return
 
-    def connect(self, address = False, port=None):
+    def connect(self, address = False, port=None, configure = 'Auto', user_def_config:TunerConfiguration = None):
         """
         Initialize tuner.
 
@@ -197,6 +118,8 @@ class Tuner:
             self.address = address
         if (port):
             self.port = port
+
+        set_staticIP()
 
         rm = pyvisa.ResourceManager()
         dev = 'TCPIP0::' + self.address + '::' + self.port + '::SOCKET'
@@ -225,7 +148,12 @@ class Tuner:
                 self.connected = False
                 print("Something is wrong with %s:%d. Exception is %s" % (address, port, e))
             else:
-                self.configure()
+                if (configure = 'Auto')
+                    self.configure()
+                elif (user_def_config != None):
+                    self.configuration = user_def_config
+                else:
+                    print("Tuner could not be configured correctly. Consider closing the instrument and reconnecting with configuration parameters correctly defined")
                 print('initialization successful')
                 self.connected = True
         finally:
@@ -250,7 +178,7 @@ class Tuner:
         axis2 = re.findall('#2\t2\t\\d+', config_string)[0].split('#2\t2\t')[1]
         axis3 = re.findall('#3\t3\t\\d+', config_string)[0].split('#3\t3\t')[1]
         axis_limits = [int(axis1), int(axis2), int(axis3)]
-        self.configuration = TunerCongifuration(SN, IP, step_size, cross_over_freq, axis_limits)
+        self.configuration = TunerConfiguration(SN, IP, step_size, cross_over_freq, axis_limits)
         
         print(" done... ",end='')
         
@@ -273,6 +201,7 @@ class Tuner:
             self.instr = None
             self.connected = False
         finally:
+            set_DHCP()
             return self.connected
 
     def move(self, axis, position):
@@ -294,6 +223,8 @@ class Tuner:
             tuner
         """
         self.waitForReady()
+        self.pos()  #Update current position
+        self.waitForReady()
         # check position against axis limits
         if (axis.lower() == 'x'):
             axis = '1'
@@ -312,13 +243,13 @@ class Tuner:
             return self.pos()
 
         # Open a connection to the tuner
-        if (axis == '1' and abs(self.pos()[0] - position) < self.configuration.step_size):
+        if (axis == '1' and abs(self.xPos - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '2' and abs(self.pos()[1] - position) < self.configuration.step_size):
+        elif (axis == '2' and abs(self.y_lowPos - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '3' and abs(self.pos()[2] - position) < self.configuration.step_size):
+        elif (axis == '3' and abs(self.y_highPos - position) < self.configuration.step_size):
             # already there, return
             return
 
@@ -327,102 +258,6 @@ class Tuner:
 
         # Return the tuner position
         return self.pos
-
-    def tuneto(self, magnitude, phase):
-        """tuner_tune(magnitude, phase)
-
-        Tune to specific reflection coefficient.  Wait until tuned.
-
-        Parameters
-        ----------
-        mag : float
-            Desired reflection coefficient magnitude.
-        phase : float
-            Desired reflection coefficieny phase (in degrees).
-
-        Returns
-        -------
-        None
-        """
-        if (not self.instr):
-            err = ('TunerClass:', sys._getframe(0).f_code.co_name, ':'
-                   ' Connection Error')
-            raise SystemError(err)
-
-        # Send the command to tune.
-        print('iTuner tuning... ', end='')
-        # self.instr.send(
-        #     ('TUNETO ' + str(magnitude) + ' ' + str(phase) + '\r\n').encode()
-        #     )
-        self.instr.query('TUNETO ' + str(magnitude) + ' ' + str(phase))
-        self.waitForReady()
-        print('done')
-
-        return
-
-    def calpoint(self, index):
-        """tuner_calpoint(index)
-
-        Tune to calibration point.  Wait until tuned.
-
-        Parameters
-        ----------
-        mag : float
-            Desired reflection coefficient magnitude.
-        phase : float
-            Desired reflection coefficieny phase (in degrees).
-
-        Returns
-        -------
-        None
-        """
-        if (not self.instr):
-            err = ('TunerClass:', sys._getframe(0).f_code.co_name, ':'
-                   ' Connection Error')
-            raise SystemError(err)
-
-        # Send the command to tune.
-        print('iTuner tuning... ', end='')
-        # self.instr.send(
-        #     ('CALPOINT ' + str(int(index))  + '\r\n').encode()
-        #     )
-        self.instr.query('CALPOINT ' + str(int(index)))
-        self.waitForReady()
-        print('done')
-
-        return
-
-    def loadfreq(self, freq):
-        """tuner_loadfreq(freq)
-
-        Load tuner calibration at specified frequency (in GHz).
-
-        Parameters
-        ----------
-        freq : float
-            Frequency of saved calibration.
-
-        Returns
-        -------
-        None
-        """
-        if (not self.instr):
-            err = ('TunerClass:', sys._getframe(0).f_code.co_name, ':'
-                   ' Connection Error')
-            raise SystemError(err)
-
-        # Send the command to load calibration.
-        print('iTuner loading calibration... ', end='')
-        # self.instr.send((
-        #     'LOADFREQ '
-        #     + str(round(freq*1e-6))
-        #     + '\r\n'
-        #     ).encode())
-        self.instr.query('LOADFREQ ' + str(round(freq*1e-6)))
-        self.waitForReady()
-        print('done')
-
-        return
 
     def status(self):
         """status()
