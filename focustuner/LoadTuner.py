@@ -125,7 +125,7 @@ class BreakHandler:
         return self._count > 0
 
 
-class CCMT1808(object):
+class LoadTuner(object):
     def __init__(self, address, xMax, yMax, timeout=30,port=23):
         """
         Control object for ethernet-controlled Focus tuners.
@@ -200,8 +200,6 @@ class CCMT1808(object):
             self.connected = False
             return self.connected
 
-
-
     def close(self):
         """
         Close tuner communication.
@@ -219,7 +217,7 @@ class CCMT1808(object):
         return self.instr
 
     def move(self, axis, position):
-        """tuner_move(axis, position)
+        """move(axis, position)
 
         Move Tuner X or Y slug.  Wait until moved.
 
@@ -251,7 +249,7 @@ class CCMT1808(object):
             if (position > self.yMax or position < 0):
                 raise SystemError('Exceeds Y position limit, tuner not moved!')
         elif (axis.lower() == 'aux'):
-            axis = '2' #for higher frequency operation
+            axis = '2'
             if (position > self.yMax or position < 0):
                 raise SystemError('Exceeds Y position limit, tuner not moved!')
         

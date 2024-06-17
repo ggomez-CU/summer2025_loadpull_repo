@@ -1,5 +1,5 @@
 import unittest
-import src
+import focustuner
 from focustuner import *
 
 class test_CCMT1808(unittest.TestCase):

@@ -1,5 +1,3 @@
-/dist
-/build
 /loadtuner.egg-info
 /venv
 /src/main/__pycache__
