@@ -19,7 +19,7 @@ import socket
 import warnings
 import signal
 import subprocess
-
+import pyvisa
 
 def set_staticIP():
     print('Changing IP to STATIC address')
@@ -31,6 +31,30 @@ def set_staticIP():
     time.sleep(3)
     return
 
+class TunerCongifuration:
+    def __init__(self, SN, IP, step_size, cross_over_freq, axis_limits):
+        """
+        Tuner configration class. Called from config in Tuner class and automatically defined.
+
+        Parameters
+        ----------
+        SN: str
+            Serial Number
+        IP: str
+            IP address
+        step_size: str
+            Maximum step size of the load tuner um
+        cross_over_frequency: float in MHz
+            Frequency from low to high frequency x axis (see manual for vswr details)
+        axis_limits: int array
+            Limits of the three axis (x, y low frequency, y high frequency)
+        """
+        self.SN = SN 
+        self.IP = IP
+        self.step_size = step_size
+        self.cross_over = cross_over_freq
+        self.axis_limits = axis_limits
+        return
 
 def set_DHCP():
     print('Changing IP to DYNAMIC address')
@@ -125,8 +149,16 @@ class BreakHandler:
         return self._count > 0
 
 
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
 class LoadTuner(object):
     def __init__(self, address, xMax, yMax, timeout=30,port=23):
+========
+class Tuner:
+    def __init__(self, 
+        address, 
+        timeout = 30,
+        port = 23):
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -134,29 +166,22 @@ class LoadTuner(object):
         ----------
         address : string
             TCPIP address of tuner.
-        xMax : int
-            Maximum travel for X axis slug (def=1000)
-        yMax : int
-            Maximum travel for Y axis slug (def=1000)
         port : int
             port of IP address, default is TELNET 23 (def=23).  If not
             specified, will use the class constructor port number.
         """
-        self.address = address
+        self.address = str(address)
         self.connected = False
-        self.port = port
-        self.xMax = xMax
-        self.yMax = yMax
+        self.port = str(port)
         self.xPos = -1
         self.yPos = -1
-        self.timeout = 30
-        self.resultCode = 0
+        self.timeout = 1000 #1 second
         self.instr = None
 
         self.kbInt = BreakHandler()
         return
 
-    def connect(self, address=None, port=23):
+    def connect(self, address = False, port=None):
         """
         Initialize tuner.
 
@@ -166,55 +191,96 @@ class LoadTuner(object):
             TCPIP address of tuner.  Will change the default (stored) ip
             address in the class. If not specified, will use the class
             constructor address.
-        port : int, optional
+        port : str, optional
             Port of IP address, default is TELNET 23 (def=23).  If not
             specified, will use the class constructor port number.
         """
-        print('Attempting iTuner connection... ', end='')
+        print('Attempting connection... ', end='')
 
         if (address):
             self.address = address
-        if (port != self.port):
+        if (port):
             self.port = port
 
-        try:
-            self.instr = socket.socket()
-            self.instr.settimeout(self.timeout)
-            self.instr.connect((self.address, int(self.port)))
-            self.connected = True
-            print('connected')
-            print('iTuner initializing... ', end='')
-            try:
-                self.instr.send('INIT\r\n'.encode())
-                trash = self.instr.recv(2048)
-                self.waitForReady()
-            except:
-                print('connection unsuccessful')
-                self.connected = False
-                exit()
-            print('done')
-            return self.connected
+        rm = pyvisa.ResourceManager()
+        dev = 'TCPIP0::' + self.address + '::' + self.port + '::SOCKET'
 
-        except:
+        try:
+            self.instr = rm.open_resource(dev)
+        except Exception as e: 
             print('connection unsuccessful')
             self.connected = False
+            print("Something is wrong with %s::%d. Exception is %s" % (self.address, port, e))
+        except:
+            print("Failure Unknown")
+        else: 
+            self.instr.read_termination = 'CCMT->'
+            self.instr.write_termination = '\r\n'
+            self.instr.timeout = self.timeout
+            self.instr.query_delay = .2
+            print('connection successful')
+            print('Attempting to initialize tuner... ', end='')
+            try:
+                self.instr.read()
+                time.sleep(2)
+                self.instr.query('INIT')
+            except Exception as e:
+                print('initialization unsuccessful')
+                self.connected = False
+                print("Something is wrong with %s:%d. Exception is %s" % (address, port, e))
+            else:
+                self.configure()
+                print('initialization successful')
+                self.connected = True
+        finally:
             return self.connected
 
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
+========
+    def configure(self):
+        """
+        Configure parses the configuration returned 
+            from the load tuner and saves the data 
+            in the form of a TunerConfiguration class 
+        """
+
+        print("Configuring load tuner...",end="")
+        
+        config_string = self.instr.query('CONFIG?')
+        
+        SN = re.findall('SN#: \\d+', config_string)[0]
+        IP = re.findall('IP: \\d+\\.\\d+\\.\\d+\\.\\d+', config_string)[0]
+        step_size = float(re.findall('Step Size: \\d+\\.\\d+', config_string)[0].split('Step Size: ')[1])
+        cross_over_freq = float(re.findall('CrossOver:\\d+\\.\\d+', config_string)[0].split('CrossOver:')[1])
+        axis1 = re.findall('#1\t1\t\\d+', config_string)[0].split('#1\t1\t')[1]
+        axis2 = re.findall('#2\t2\t\\d+', config_string)[0].split('#2\t2\t')[1]
+        axis3 = re.findall('#3\t3\t\\d+', config_string)[0].split('#3\t3\t')[1]
+        axis_limits = [int(axis1), int(axis2), int(axis3)]
+        self.configuration = TunerCongifuration(SN, IP, step_size, cross_over_freq, axis_limits)
+        
+        print(" done... ",end='')
+        
+        return
+
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
     def close(self):
         """
         Close tuner communication.
         """
-        if(self.instr):
+
+        print('Closing tuner connection... ', end='')
+
+        try:
             self.instr.close()
+        except Exception as e:
+            print(e)
+            self.connected = None
+        else:
+            print("done")
             self.instr = None
             self.connected = False
-            print('Tuner Connection Closed')
-        else: 
-            self.instr = -1
-            self.connected = False
-            print('No Tuner Connected. Did not close properly. Consider Rebooting')
-
-        return self.instr
+        finally:
+            return self.connected
 
     def move(self, axis, position):
         """move(axis, position)
@@ -234,18 +300,19 @@ class LoadTuner(object):
         pos : (xPos, yPos) tuple representing the position according to the
             tuner
         """
-        if (not self.instr):
-            err = ('TunerClass:', sys._getframe(0).f_code.co_name, ':'
-                   ' Connection Error')
-            raise SystemError(err)
-
+        self.waitForReady()
         # check position against axis limits
         if (axis.lower() == 'x'):
             axis = '1'
-            if (position > self.xMax or position < 0):
+            if (position > self.configuration.axis_limits[0]  or position < 0):
                 raise SystemError('Exceeds X position limit, tuner not moved!')
-        elif (axis.lower() == 'y'):
+        elif (axis.lower() == 'y_low'):
+            axis = '2' 
+            if (position > self.configuration.axis_limits[1]  or position < 0):
+                raise SystemError('Exceeds Y low position limit, tuner not moved!')
+        elif (axis.lower() == 'y_high'):
             axis = '3' #for higher frequency operation
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
             if (position > self.yMax or position < 0):
                 raise SystemError('Exceeds Y position limit, tuner not moved!')
         elif (axis.lower() == 'aux'):
@@ -253,39 +320,33 @@ class LoadTuner(object):
             if (position > self.yMax or position < 0):
                 raise SystemError('Exceeds Y position limit, tuner not moved!')
         
+========
+            if (position > self.configuration.axis_limits[2] or position < 0):
+                raise SystemError('Exceeds Y high position limit, tuner not moved!')
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
         else:
             warnings.warn('Invalid axis, tuner not moved!')
             return self.pos()
 
         # Open a connection to the tuner
-#        self._open()
-        if (axis == '1' and self.pos()[0] == position):
+        if (axis == '1' and abs(self.pos()[0] - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '2' and self.pos()[1] == position):
+        elif (axis == '2' and abs(self.pos()[1] - position) < self.configuration.step_size):
             # already there, return
             return
-        elif (axis == '3' and self.pos()[2] == position):
+        elif (axis == '3' and abs(self.pos()[2] - position) < self.configuration.step_size):
             # already there, return
             return
 
         # Send the command to move slug
-        # self.kbInt.enable()
-        self.instr.send(('POS '+axis+' '+str(int(position))+'\r\n').encode())
-        self.waitForReady()
-        # if (self.kbInt.trapped):
-        #     raise KeyboardInterrupt
-        # self.kbInt.disable()
+        print(self.instr.query('POS ' + axis + ' ' + str(int(position))))
 
-        # Query the tuner position
-        # x, y = self.pos()
-
-        # self.close()
-        # return x, y
-        return
+        # Return the tuner position
+        return self.pos
 
     def tuneto(self, magnitude, phase):
-        """tuner_tune(magnitude, phase)
+        """tuneto(magnitude, phase)
 
         Tune to specific reflection coefficient.  Wait until tuned.
 
@@ -294,7 +355,7 @@ class LoadTuner(object):
         mag : float
             Desired reflection coefficient magnitude.
         phase : float
-            Desired reflection coefficieny phase (in degrees).
+            Desired reflection coefficient phase (in degrees).
 
         Returns
         -------
@@ -307,10 +368,10 @@ class LoadTuner(object):
 
         # Send the command to tune.
         print('iTuner tuning... ', end='')
-        self.instr.send(
-            ('TUNETO ' + str(magnitude) + ' ' + str(phase) + '\r\n').encode()
-            )
-
+        # self.instr.send(
+        #     ('TUNETO ' + str(magnitude) + ' ' + str(phase) + '\r\n').encode()
+        #     )
+        self.instr.query('TUNETO ' + str(magnitude) + ' ' + str(phase))
         self.waitForReady()
         print('done')
 
@@ -323,10 +384,8 @@ class LoadTuner(object):
 
         Parameters
         ----------
-        mag : float
-            Desired reflection coefficient magnitude.
-        phase : float
-            Desired reflection coefficieny phase (in degrees).
+        index: int
+            the index of the desired calibration point. Must be within the range of the number of points within the loaded cal
 
         Returns
         -------
@@ -339,15 +398,14 @@ class LoadTuner(object):
 
         # Send the command to tune.
         print('iTuner tuning... ', end='')
-        self.instr.send(
-            ('CALPOINT ' + str(int(index))  + '\r\n').encode()
-            )
-
+        # self.instr.send(
+        #     ('CALPOINT ' + str(int(index))  + '\r\n').encode()
+        #     )
+        self.instr.query('CALPOINT ' + str(int(index)))
         self.waitForReady()
         print('done')
 
         return
-
 
     def loadfreq(self, freq):
         """tuner_loadfreq(freq)
@@ -370,12 +428,12 @@ class LoadTuner(object):
 
         # Send the command to load calibration.
         print('iTuner loading calibration... ', end='')
-        self.instr.send((
-            'LOADFREQ '
-            + str(round(freq*1e-6))
-            + '\r\n'
-            ).encode())
-
+        # self.instr.send((
+        #     'LOADFREQ '
+        #     + str(round(freq*1e-6))
+        #     + '\r\n'
+        #     ).encode())
+        self.instr.query('LOADFREQ ' + str(round(freq*1e-6)))
         self.waitForReady()
         print('done')
 
@@ -394,24 +452,13 @@ class LoadTuner(object):
         -------
         statusCode : status string
         """
-        #self.instr.send('STATUS? \r'.encode())
-        return_string = self.instr.recv(1024).decode()
-        #print((return_string))
 
-        # print('~~~~~RETURN STRING~~~~~')
-        # print(return_string)
-        status_string = re.search(
-            'STATUS:.*\nResult=.*ID#', return_string
-            )
-        # print('~~~~~STATUS STRING~~~~~')
-        # print(status_string)
+        return_string = self.instr.query('STATUS?')
+        status_string = re.search('STATUS:.*\nResult=.*ID#', return_string)
         if status_string is not None:
-            status_code = int(
-            status_string.group().split('0x000')[1].split(' ')[0]
-                )
+            status_code = int(status_string.group().split('0x000')[1].split(' ')[0])
         else:
             status_code = 1
-
         return status_code
 
     def pos(self):
@@ -424,33 +471,13 @@ class LoadTuner(object):
         [x, y] : int
             Position of slugs.
         """
-#        self.kbInt.enable()
-        #self.status()
-        self.instr.send('\r\nPOS? \r\n'.encode())
-        # try:
-        r = self.instr.recv(1024)  # write response
-        # except:
-        #     try:
-        #         self.instr.send('POS?\r\n'.encode())
-        #         r = self.instr.recv(1024)  # write response
-            # except:
-            #     exit()
-        m = re.search('A1=([-0-9]+) A2=([-0-9]+) A3=([-0-9]+)'.encode(), r)
-        while (not m):
-            # try:
-            #     self.instr.send('POS?\r\n'.encode())
-            r = self.instr.recv(1024)  # command response
-            m = re.search('A1=([-0-9]+) A2=([-0-9]+) A3=([-0-9]+)'.encode(), r)
-            # except:
-            #     exit()
-        if (self.kbInt.trapped):
-            raise KeyboardInterrupt
-#        self.kbInt.disable()
-        self.xPos = m.group(1)
-        #self.yPos = m.group(2)
-        self.yPos = m.group(3) #for higher frequencies
-        #print("Tuner posistion is 1: " + str(m.group(1)) + " 2: " + str(m.group(2)) + " 3: " + str(m.group(3)))
-        return [int(self.xPos), int(m.group(2)), int(self.yPos)]
+        self.waitForReady()
+        return_string = self.instr.query('POS?')
+        parsed = re.findall('A\\d=\\d+', return_string)
+        self.xPos = int(parsed[0].split('=')[1])
+        self.y_lowPos = int(parsed[1].split('=')[1])
+        self.y_highPos = int(parsed[2].split('=')[1]) #for higher frequencies
+        return [self.xPos, self.y_lowPos, self.y_highPos]
 
     def waitForReady(self):
         """waitForReady(timeout=tuner.timeout)
@@ -467,31 +494,33 @@ class LoadTuner(object):
         none
         """
         timeout = self.timeout
-
         starttime = time.time()
-        status_code = 1
+        status_code = self.status()
         lastQuery = 0
         queryRepeat = 0.25
+
+        # if status_code > 3:
+        #     print("Unaccepted status: " + str(status_code) + " Tuner likely needs to be power cycled")
+        # else:
         while (time.time() - starttime < timeout and status_code):
+            time.sleep(queryRepeat)
             try:
-                std_trsh = self.instr.recv(1024).decode()
-            except:
-                return
-        while (time.time() - starttime < timeout and status_code):
-            # print('~~~~~ENTERING WHILE LOOP~~~~~')
-            while (time.time() - lastQuery < queryRepeat):
-                pass
+                self.instr.read()
+            except: pass
             status_code = self.status()
-            # print('~~~~~STATUS CODE~~~~~')
-            # print(status_code)
-            lastQuery = time.time()
+            print("Status: " + str(status_code))
 
         if (status_code != 0):
             print('TunerClass: ERROR Ready Timeout')
             print('   ', sys._getframe(2).f_code.co_name, ':',
-                  sys._getframe(1).f_code.co_name,
-                  sys._getframe(0).f_code.co_name)
-        return
+                sys._getframe(1).f_code.co_name,
+                sys._getframe(0).f_code.co_name)
+            try:
+                self.close()
+            except: pass
+            else:
+                exit()
+        return status_code
 
 #   {o.O}
 #   (  (|
