@@ -23,6 +23,7 @@ import time
 import re
 import socket
 import warnings
+from pylogfile.base import *
 import signal
 import subprocess
 import pyvisa
@@ -71,7 +72,7 @@ class TunerConfiguration:
         return
 
 class Tuner:
-    def __init__(self, xMax, yMax, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile):
+    def __init__(self, xMax, yMax, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile=None):
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -148,7 +149,7 @@ class Tuner:
                 self.connected = False
                 print("Something is wrong with %s:%d. Exception is %s" % (address, port, e))
             else:
-                if (configure = 'Auto')
+                if (configure == 'Auto'):
                     self.configure()
                 elif (user_def_config != None):
                     self.configuration = user_def_config
@@ -225,6 +226,7 @@ class Tuner:
         self.waitForReady()
         self.pos()  #Update current position
         self.waitForReady()
+        print("Moving...")
         # check position against axis limits
         if (axis.lower() == 'x'):
             axis = '1'
@@ -243,13 +245,13 @@ class Tuner:
             return self.pos()
 
         # Open a connection to the tuner
-        if (axis == '1' and abs(self.xPos - position) < self.configuration.step_size):
+        if (axis == '1' and (abs(self.xPos - position) < self.configuration.step_size)):
             # already there, return
             return
-        elif (axis == '2' and abs(self.y_lowPos - position) < self.configuration.step_size):
+        elif (axis == '2' and (abs(self.y_lowPos - position) < self.configuration.step_size)):
             # already there, return
             return
-        elif (axis == '3' and abs(self.y_highPos - position) < self.configuration.step_size):
+        elif (axis == '3' and (abs(self.y_highPos - position) < self.configuration.step_size)):
             # already there, return
             return
 
@@ -257,7 +259,7 @@ class Tuner:
         print(self.instr.query('POS ' + axis + ' ' + str(int(position))))
 
         # Return the tuner position
-        return self.pos
+        return self.pos()
 
     def status(self):
         """status()
@@ -297,6 +299,7 @@ class Tuner:
         self.xPos = int(parsed[0].split('=')[1])
         self.y_lowPos = int(parsed[1].split('=')[1])
         self.y_highPos = int(parsed[2].split('=')[1]) #for higher frequencies
+
         return [self.xPos, self.y_lowPos, self.y_highPos]
 
     def waitForReady(self):

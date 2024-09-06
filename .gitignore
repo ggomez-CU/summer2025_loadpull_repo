@@ -1,10 +1,4 @@
-/dist
-/build
-/loadtuner.egg-info
 /venv
-/src/main/__pycache__
 /test/__pycache__
-/focustuner.egg-info
-/focustuner/__pycache__
-.eggs
-.vscode
+/src/focustuner.egg-info
+/src/focustuner/__pycache__
