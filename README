@@ -18,25 +18,19 @@ Activate the virtual environment using:
 
 ```
 . venv/activate/bin
-. venv/Scripts/activate
+```
 
 You need to have the project packaged to be able to run it in a test mode. the commands are:
 
 python3 -m pip install build
 python3 -m build --wheel
-pip3 install dist/focustuner-0.1.0-py3-none-any.whl
-
-python -m pip install build
-python -m build --wheel
-pip install dist/focustuner-0.1.0-py3-none-any.whl
+pip3 install dist/loadtuner-0.1.0-py3-none-any.whl
 
 and using:
 
 ```
 python3 -m unittest discover
 ```
-
-python -m unittest discover
 
 to test the code
 

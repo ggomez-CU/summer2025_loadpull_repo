@@ -149,11 +149,16 @@ class BreakHandler:
         return self._count > 0
 
 
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
+class LoadTuner(object):
+    def __init__(self, address, xMax, yMax, timeout=30,port=23):
+========
 class Tuner:
     def __init__(self, 
         address, 
         timeout = 30,
         port = 23):
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -230,6 +235,8 @@ class Tuner:
         finally:
             return self.connected
 
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
+========
     def configure(self):
         """
         Configure parses the configuration returned 
@@ -255,6 +262,7 @@ class Tuner:
         
         return
 
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
     def close(self):
         """
         Close tuner communication.
@@ -304,8 +312,18 @@ class Tuner:
                 raise SystemError('Exceeds Y low position limit, tuner not moved!')
         elif (axis.lower() == 'y_high'):
             axis = '3' #for higher frequency operation
+<<<<<<<< HEAD:src/focustuner/LoadTuner.py
+            if (position > self.yMax or position < 0):
+                raise SystemError('Exceeds Y position limit, tuner not moved!')
+        elif (axis.lower() == 'aux'):
+            axis = '2'
+            if (position > self.yMax or position < 0):
+                raise SystemError('Exceeds Y position limit, tuner not moved!')
+        
+========
             if (position > self.configuration.axis_limits[2] or position < 0):
                 raise SystemError('Exceeds Y high position limit, tuner not moved!')
+>>>>>>>> 0fe0efbc286dbce9ee960b1942a053014d4e0b04:src/focustuner/_LoadTuner-py.txt
         else:
             warnings.warn('Invalid axis, tuner not moved!')
             return self.pos()
