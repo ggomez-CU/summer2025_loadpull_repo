@@ -2,3 +2,10 @@
 /test/__pycache__
 /src/focustuner.egg-info
 /src/focustuner/__pycache__
+/.vscode
+/build
+/dist
+/focustuner.egg-info
+/loadtuner.egg-info
+/.eggs
+/.pytest_cache
