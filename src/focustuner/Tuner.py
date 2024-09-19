@@ -70,7 +70,7 @@ class TunerConfiguration:
         self.step_size = step_size
         self.cross_over = cross_over_freq
         self.axis_limits = axis_limits
-        return self
+        return
 
 class Tuner:
     def __init__(self, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile=None):
@@ -130,7 +130,7 @@ class Tuner:
         except Exception as e: 
             print('connection unsuccessful')
             self.connected = False
-            print("Something is wrong with %s::%d. Exception is %s" % (self.address, port, e))
+            print("Exception is %s" % (e))
         except:
             print("Failure Unknown")
         else: 
@@ -147,13 +147,14 @@ class Tuner:
             except Exception as e:
                 print('initialization unsuccessful')
                 self.connected = False
-                print("Something is wrong with %s:%d. Exception is %s" % (address, port, e))
-            # else:
-            if (~configure):
-                print("not configure")
-                self.configuration = configure
+                print("Exception is %s" % (e))
+            if (configure == None):
+                try:
+                    self.configure()
+                except Exception as e:
+                    print("Exception is %s" % (e))
             else:
-                self.configure()
+                self.configuration = configure
             print('initialization successful')
             self.connected = True
         finally:
@@ -179,7 +180,7 @@ class Tuner:
         axis3 = re.findall('#3\t3\t\\d+', config_string)[0].split('#3\t3\t')[1]
         axis_limits = [int(axis1), int(axis2), int(axis3)]
         self.configuration = TunerConfiguration(SN, IP, step_size, cross_over_freq, axis_limits)
-        
+
         print(" done... ",end='')
         
         return

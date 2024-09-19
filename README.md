@@ -14,12 +14,6 @@ A special thanks to Devon Donahue and Scott Schafer for the initial version of t
 
 ## Additional Editing and Build instructions ##
 
-Activate the virtual environment using:
-
-```
-. venv/activate/bin
-. venv/Scripts/activate
-
 You need to have the project packaged to be able to run it in a test mode. the commands are:
 
 python3 -m pip install build
@@ -34,6 +28,7 @@ and using:
 
 ```
 python3 -m unittest discover
+python -m unittest discover
 ```
 
 python -m unittest discover

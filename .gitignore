@@ -9,3 +9,5 @@
 /loadtuner.egg-info
 /.eggs
 /.pytest_cache
+/focustuner/__pycache__
+src/focustuner/__pycache__/Tuner.cpython-311.pyc
