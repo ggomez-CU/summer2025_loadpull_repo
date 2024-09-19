@@ -1,12 +1,12 @@
 import unittest
 # import src.focustuner
-from src.focustuner import *
-from src.focustuner.Tuner import * 
+from focustuner import *
+from focustuner.Tuner import * 
 
 class test_connected_successfully(unittest.TestCase):
 
     def setUp(self):
-        self.loadtuner = Tuner(14800,8655)
+        self.loadtuner = Tuner()
 
     def test_1_successfulConnection(self):
         # Connect to load tuner -> return self.connected = True
@@ -34,7 +34,7 @@ class test_connected_successfully(unittest.TestCase):
 class test_connected_unsuccessfully(unittest.TestCase):
 
     def setUp(self):
-        self.loadtuner = Tuner(14800,8655,address='0.0.0.0')
+        self.loadtuner = Tuner(address='0.0.0.0')
 
     def test_unsuccessfulConnection(self):
         self.assertFalse(self.loadtuner.connect())

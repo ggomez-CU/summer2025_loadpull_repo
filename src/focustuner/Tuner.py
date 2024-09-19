@@ -49,7 +49,8 @@ def set_DHCP():
 class TunerConfiguration:
     def __init__(self, SN, IP, step_size, cross_over_freq, axis_limits):
         """
-        Tuner configuration class. Called from config in Tuner class and automatically defined.
+        Tuner configuration class. Called by  Tuner class in self.config() and automatically defines 
+        load tuner parameters by querying "CONFIG?" to the load tuner connected
 
         Parameters
         ----------
@@ -69,24 +70,24 @@ class TunerConfiguration:
         self.step_size = step_size
         self.cross_over = cross_over_freq
         self.axis_limits = axis_limits
-        return
+        return self
 
 class Tuner:
-    def __init__(self, xMax, yMax, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile=None):
+    def __init__(self, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile=None):
         """
         Control object for ethernet-controlled Focus tuners.
 
         Parameters
         ----------
         address : string
-            TCPIP address of tuner.
-        xMax : int
-            Maximum travel for X axis slug (def=1000)
-        yMax : int
-            Maximum travel for Y axis slug (def=1000)
+            IP address of tuner
+        timeout: int
+            time out in ms (def=1000)
         port : int
             port of IP address, default is TELNET 23 (def=23).  If not
             specified, will use the class constructor port number.
+        log : LogPile
+            log of the protocol and errors saved to text files. (def=None)
         """
         self.address = str(address)
         self.connected = False
@@ -99,16 +100,15 @@ class Tuner:
         self.log = log
         return
 
-    def connect(self, address = False, port=None, configure = 'Auto', user_def_config:TunerConfiguration = None):
+    def connect(self, address = False, port=None, configure:TunerConfiguration=None):
         """
         Initialize tuner.
 
         Parameters
         ----------
         address : string
-            TCPIP address of tuner.  Will change the default (stored) ip
-            address in the class. If not specified, will use the class
-            constructor address.
+            IP address of tuner.  Will change the default (TunerConfiguration) IP
+            address
         port : str, optional
             Port of IP address, default is TELNET 23 (def=23).  If not
             specified, will use the class constructor port number.
@@ -148,15 +148,14 @@ class Tuner:
                 print('initialization unsuccessful')
                 self.connected = False
                 print("Something is wrong with %s:%d. Exception is %s" % (address, port, e))
+            # else:
+            if (~configure):
+                print("not configure")
+                self.configuration = configure
             else:
-                if (configure == 'Auto'):
-                    self.configure()
-                elif (user_def_config != None):
-                    self.configuration = user_def_config
-                else:
-                    print("Tuner could not be configured correctly. Consider closing the instrument and reconnecting with configuration parameters correctly defined")
-                print('initialization successful')
-                self.connected = True
+                self.configure()
+            print('initialization successful')
+            self.connected = True
         finally:
             return self.connected
 
