@@ -23,7 +23,7 @@ import time
 import re
 import socket
 import warnings
-from pylogfile.base import *
+# from pylogfile.base import *
 import signal
 import subprocess
 import pyvisa
@@ -73,7 +73,8 @@ class TunerConfiguration:
         return
 
 class Tuner:
-    def __init__(self, address = '10.0.0.1', timeout=1000 , port=23, log:LogPile=None):
+    def __init__(self, address = '10.0.0.1', timeout=1000 , port=23):
+            # log:LogPile=None
         """
         Control object for ethernet-controlled Focus tuners.
 
@@ -97,7 +98,7 @@ class Tuner:
         self.y_lowPos = -1
         self.timeout = timeout #In milliseconds
         self.instr = None
-        self.log = log
+        # self.log = log
         return
 
     def connect(self, address = False, port=None, configure:TunerConfiguration=None):
