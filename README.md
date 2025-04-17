@@ -1,65 +1,30 @@
-# Load Tuner Library #
+Heimdallr is a package for simplifying instrument control. It is designed to build
+off of libraries like [pyvisa](https://github.com/pyvisa/pyvisa) and [pyvisa-py](https://github.com/pyvisa/pyvisa-py)
+and provide a complete ecosystem for instrument automation. As a brief example of
+what this can look like in its simplest form, here's an example script which 
+connects to an instrument, resets it, then adjusts and reads some basic settings:
 
-This is a locally installable verion of the python Focus Load Tuner Library
+subsixtest is a base repository for testing using the Sub-6 test bench. To perform tests using this system, it is recommended that the respository is forked. This repository is not editable directly for testing. There are two test code enviorments: python and matlab. All post-processing plotting is done in matlab. Two python libraries that were developed in our group were used are used:[focustuner](https://pypi.org/project/focustuner/).   and [Heimdallr](https://pypi.org/project/Heimdallr/).   
 
-### Version History ###
+# Hardware Set-up and Calibration procedure 
 
-0.1.1: Updated README and Authors
+This will be documented when I have time to organize my hectic note taking. eta Sept. 2025
 
-0.1.0 : Initial Build. 
+# Installation
 
-### Acknowledgements ###
+To for do this:
 
-A special thanks to Devon Donahue and Scott Schafer for the initial version of this code written in socket commands.
+Idk ask grant or Google
 
-## Additional Editing and Build instructions ##
+# TODO
 
-You need to have the project packaged to be able to run it in a test mode. the commands are:
+### Technical detail: Category system and Drivers
 
-python3 -m pip install build
-python3 -m build --wheel
-pip3 install dist/focustuner-0.1.0-py3-none-any.whl
-
-python -m pip install build
-python -m build --wheel
-pip install dist/focustuner-0.1.0-py3-none-any.whl
-
-and using:
-
-```
-python3 -m unittest discover
-python -m unittest discover
-```
-
-python -m unittest discover
-
-to test the code
-
-### Library Creation ###
-This library was created using instructions form https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5aea80cc3f
-Frankly it was started more than once so there is a high probability there are unnecessary components. It was a valiant effort though. 
-
-try number 2
-https://medium.com/@tushar_datascience/creating-a-python-library-a-step-by-step-guide-with-a-simple-example-c87b653b9a4e
-
-You need to set up pypi API token. This is done by creating a API token on pypi and then creating a file in Users/[username]/ called .pypirc with the following:
-
-[pypi]
-  username = __token__
-  password = [password from pypi]
-
-  If you have done it correctly you will get these instructions (again) from pypi. 
-
-Also you have to delete old dist files when uploading.
-
-```
-python -m build
-twine upload dist/* --repository pypi --verbose
-```
-
-Ensure you update the version number and delete previous tar.gz and whl files for the previous version. This seems to do it.
+- literally everything.
 
 ### Start virtual environment ###
+
+For repo testing, a virtual enviorment was set up. This means all  required libraries can be found in... I am pretty sure there is a file
 
 ```
 python -m venv venv
@@ -75,4 +40,14 @@ Activate for Mac:
 
 ```
 . venv/bin/activate
+```
+
+# Operating Procedure #
+Make sure system is cal'd both power and sparam (s first) and RF is off and driver is on. Double check connections. 
+
+
+# Required packages #
+
+```
+pip install -r requirements.txt -y
 ```

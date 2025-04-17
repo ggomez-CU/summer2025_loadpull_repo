@@ -1,0 +1,60 @@
+import numpy as np
+
+def init_zva_subsix_loadpull(zva, config, channel = '1', 
+                      input_awave_trace = 1, 
+                      input_bwave_trace = 2, 
+                      output_awave_trace = 3, 
+                      output_bwave_trace = 4):
+    
+    # write to zva example: CALCulate1:PARameter:DEFine 'Trc3', 'A1D1'
+    # manual has how to do external generator also. I am pretty sure these are returned as voltages but that needs to be confirmed
+    zva.write("CALCulate1:PARameter:SDEFine 'Trc" + str(input_awave_trace) 
+              + "', 'A" + str(config.ZVA_config.input_port) 
+              + "D" + str(config.ZVA_config.input_port) + "'")
+    zva.write("CALCulate1:PARameter:SDEFine 'Trc" + str(output_awave_trace) 
+              + "', 'A" + str(config.ZVA_config.output_port) 
+              + "D" + str(config.ZVA_config.input_port) + "'")
+    zva.write("CALCulate1:PARameter:SDEFine 'Trc" + str(input_bwave_trace) 
+              + "', 'B" + str(config.ZVA_config.input_port) 
+              + "D" + str(config.ZVA_config.input_port) + "'")
+    zva.write("CALCulate1:PARameter:SDEFine 'Trc" + str(output_bwave_trace) 
+              + "', 'B" + str(config.ZVA_config.output_port) 
+              + "D" + str(config.ZVA_config.input_port) + "'")
+
+
+def get_loadpull_data(zva, channel = '1', 
+                      input_awave_trace = 1, 
+                      input_bwave_trace = 2, 
+                      output_awave_trace = 3, 
+                      output_bwave_trace = 4):
+    '''
+    Determines Channel and Trace data as defined above. Can be overwritten. Channel must contain power and enriched wave call.
+    '''
+        
+    return {'input_awave': get_trace_data(zva, input_awave_trace, channel), 
+            'input_bwave': get_trace_data(zva, input_bwave_trace, channel), 
+            'output_awave': get_trace_data(zva, output_awave_trace, channel), 
+            'output_bwave': get_trace_data(zva, output_bwave_trace, channel)}
+
+def get_trace_data(zva, tracenumber:int, channel = '1'):
+    
+    zva.log.warning(f"Binary transfer not implemented. Defaulting to slower ASCII.")
+    
+    trace_name = 'Trc' + str(tracenumber)
+    zva.write("CALCulate1:PARameter:SELect " + trace_name)
+
+    zva.write(f"CALCULATE{channel}:FORMAT REAL")
+    real_data = zva.query(f"CALC{channel}:DATA? FDATA")
+    zva.write(f"CALCULATE{channel}:FORMAT IMAG")
+    imag_data = zva.query(f"CALC{channel}:DATA? FDATA")
+    real_tokens = real_data.split(",")
+    imag_tokens = imag_data.split(",")
+    trace = [complex(float(re), float(im)) for re, im in zip(real_tokens, imag_tokens)]
+
+        # Get frequency range
+    f0 = zva.get_freq_start()
+    fe = zva.get_freq_end()
+    fnum = zva.get_num_points()
+    freqs_Hz = list(np.linspace(f0, fe, fnum))
+
+    return {'trace_name': trace_name ,'x': freqs_Hz, 'y': trace, 'x_units': 'Hz', 'y_units': 'EWC wave data (voltage)'}    
