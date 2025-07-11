@@ -14,8 +14,6 @@ import sys
 output_power_plot = np.array([])
 input_power_plot = np.array([])
 set_power_plot = np.array([])
-sampler1_plot = np.array([])
-sampler2_plot = np.array([])
 gammaload_plot = np.array([]).astype(complex)
 load_plot = np.array([]).astype(complex)
 meas_power_plot = np.array([])
@@ -23,17 +21,6 @@ meas_power_plot = np.array([])
 def ab2gamma(T,R,directivity,tracking,port_match):
     # eq from hackborn. extrapolated equation 
     return directivity + (tracking*T/R)/(1-port_match*T/R)
-
-                        datatemp = {'PNA Power: '+ str(power) + str(i): 
-                                    {'Input power': power,
-                                    'wave data': pna.get_loadpull_data(),
-                                    'Gamma Load': {'real': gammaload.real,
-                                        'imag': gammaload.imag},
-                                    'Power Meter': pm.fetch_power(),
-                                    'Samplers':{
-                                        '1': dmm1.fetch_voltage()
-                                        '2': dmm2.fetch_voltage()},                                    }
-                                    }
 
 def updateplot(axs, line, data,coupling,idx):
     keys_list = list(data.keys())
@@ -45,9 +32,6 @@ def updateplot(axs, line, data,coupling,idx):
     output_power_plot = np.append(output_power_plot,outputdBm)
     input_power_plot = np.append(input_power_plot,inputdBm)
 
-    sampler1_plot = np.append(sampler1_plot,set_power_plot,data[keys_list[0]]['Samplers']['1'])
-    sampler2_plot = np.append(sampler2_plot,set_power_plot,data[keys_list[0]]['Samplers']['2'])
-
     gammaload = ab2gamma(complex(data[keys_list[0]]['output_awave']['real'][0], data[keys_list[0]]['output_awave']['imag'][0]),
             complex(data[keys_list[0]]['output_bwave']['real'][0], data[keys_list[0]]['output_bwave']['imag'][0]),
                                 error_terms['match'], error_terms['tracking'], error_terms['directivity'])[0]
@@ -58,8 +42,6 @@ def updateplot(axs, line, data,coupling,idx):
     line[1].set_data(set_power_plot,output_power_plot)
     line[2].set_data(set_power_plot,output_power_plot)
     line[3].set_data(set_power_plot,output_power_plot-input_power_plot)
-    line[2*idx+2].set_data(set_power_plot,sampler1_plot)
-    line[2*idx+3].set_data(set_power_plot,sampler2_plot)
     axs['MeasTable'].cla()
     axs['MeasTable'].axis('off')
     axs['MeasTable'].table(cellText=[[inputdBm],
@@ -67,7 +49,6 @@ def updateplot(axs, line, data,coupling,idx):
             [outputdBm-inputdBm],
             [data[keys_list[0]]['Power Meter'] - outputdBm],
             [data[keys_list[0]]['Power Meter'] - inputputdBm],
-            [data[keys_list[0]]['Samplers']['Bias']]
             [data[keys_list[0]]['Input Power']]],
             rowLabels=rows,
             colLabels=columns,
@@ -146,8 +127,6 @@ if __name__ == "__main__":
     pna.write("SENS:SWE:POIN 1")
     pna.init_loadpull()
     pna.set_power(-27)
-    dmm = Keysight34400()
-    dmm.set_measurement("voltage-dc")
 #end region
 
     columns = ('Power (dB/dBm)')
@@ -166,7 +145,7 @@ if __name__ == "__main__":
         if options.plot:
             plt.close(fig) 
             fig = plt.figure(constrained_layout=True)
-            axs = fig.subplot_mosaic([['Power','OutputIL','Coupling'],[ 'Gamma','MeasTable', 'MeasTable']],
+            axs = fig.subplot_mosaic([['Power','OutputIL','Gain'],[ 'Gamma','MeasTable', 'MeasTable']],
                                 per_subplot_kw={"Gamma": {"projection": "polar"}})
             axs['Power'].set_title('Power')
             axs['Gamma'].set_title('Gamma')
@@ -178,9 +157,9 @@ if __name__ == "__main__":
             line[1], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Input')
             line[2], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Output')
             axs['Power'].legend()
-            axs['Coupling'].plot(config.freqs_IL,config.output_coupling, linewidth=3)
+            line[3], = axs['Gain'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[2, -2], marker='o', ms=4, linewidth=0,label='Output')
             axs['OutputIL'].plot(config.freqs_IL,config.output_IL, linewidth=3)
-            fig.suptitle(f'Sampler Characterization for {freq} GHz', fontsize=16)
+            fig.suptitle(f'Power Characterization for {freq} GHz', fontsize=16)
             output_power_plot = np.array([])
             input_power_plot = np.array([])
             set_power_plot = np.array([])
@@ -221,25 +200,15 @@ if __name__ == "__main__":
                                 {'wave data': pna.get_loadpull_data(),
                                 'Gamma Load': {'real': gammaload.real,
                                     'imag': gammaload.imag},
-                                'Power Meter': pm.get_power(),
-                                'Samplers':{
-                                    '1': dmm1.get_voltage()
-                                    '2': dmm2.get_voltage()
-                                    'Bias': dc_supply.get_voltage()},                                    }
+                                'Power Meter': pm.get_power(),                                   }
                                 }
                     pm.write("INIT:CONT")
-                    dmm1.write("INIT:CONT")
-                    dmm2.write("INIT:CONT")
                 else:
                     datatemp = {'PNA Power: '+ str(power) + str(i): 
                                 {'wave data': pna.get_loadpull_data(),
                                 'Gamma Load': {'real': gammaload.real,
                                     'imag': gammaload.imag},
-                                'Power Meter': pm.fetch_power(),
-                                'Samplers':{
-                                    '1': dmm1.fetch_voltage()
-                                    '2': dmm2.fetch_voltage()
-                                    'Bias': dc_supply.get_voltage()},                                    }
+                                'Power Meter': pm.fetch_power(),                                  }
                                 }
                 data.update(datatemp)
 
