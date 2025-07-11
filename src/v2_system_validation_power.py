@@ -13,6 +13,8 @@ import sys
 # I know it is bad practice but these are global
 output_power_plot = np.array([])
 input_power_plot = np.array([])
+output_error_plot = np.array([])
+input_error_plot = np.array([])
 set_power_plot = np.array([])
 gammaload_plot = np.array([]).astype(complex)
 load_plot = np.array([]).astype(complex)
@@ -27,10 +29,12 @@ def updateplot(axs, line, data,coupling,idx):
 
     set_power_plot = np.append(set_power_plot,data[keys_list[0]]['Input Power'])
 
-    outputdBm =  round(data[keys_list[0]]['output_awave']['dBm_mag'][0]+coupling['output coupling'],3)
+    outputdBm =  round(data[keys_list[0]]['output_bwave']['dBm_mag'][0]+coupling['output coupling'],3)
     inputdBm = round(data[keys_list[0]]['input_awave']['dBm_mag'][0]+coupling['input coupling'],3)
     output_power_plot = np.append(output_power_plot,outputdBm)
     input_power_plot = np.append(input_power_plot,inputdBm)
+    output_error_plot = np.append(output_error_plot,data[keys_list[0]]['Power Meter'] - outputdBm)
+    input_error_plot = np.append(input_error_plot,data[keys_list[0]]['Power Meter'] - inputputdBm)
 
     gammaload = ab2gamma(complex(data[keys_list[0]]['output_awave']['real'][0], data[keys_list[0]]['output_awave']['imag'][0]),
             complex(data[keys_list[0]]['output_bwave']['real'][0], data[keys_list[0]]['output_bwave']['imag'][0]),
@@ -40,13 +44,15 @@ def updateplot(axs, line, data,coupling,idx):
 
     line[0].set_data([np.angle(gammaload_plot)], [np.abs(gammaload_plot)])
     line[1].set_data(set_power_plot,output_power_plot)
-    line[2].set_data(set_power_plot,output_power_plot)
+    line[2].set_data(set_power_plot,input_power_plot)
     line[3].set_data(set_power_plot,output_power_plot-input_power_plot)
+    line[4].set_data(set_power_plot,output_error_plot)
+    line[5].set_data(set_power_plot,input_error_plot)
     axs['MeasTable'].cla()
     axs['MeasTable'].axis('off')
     axs['MeasTable'].table(cellText=[[inputdBm],
             [outputdBm],
-            [outputdBm-inputdBm],
+            [data[keys_list[0]]['output_bwave']['dBm_mag'][0]-data[keys_list[0]]['input_awave']['dBm_mag'][0]],
             [data[keys_list[0]]['Power Meter'] - outputdBm],
             [data[keys_list[0]]['Power Meter'] - inputputdBm],
             [data[keys_list[0]]['Input Power']]],
@@ -145,7 +151,7 @@ if __name__ == "__main__":
         if options.plot:
             plt.close(fig) 
             fig = plt.figure(constrained_layout=True)
-            axs = fig.subplot_mosaic([['Power','OutputIL','Gain'],[ 'Gamma','MeasTable', 'MeasTable']],
+            axs = fig.subplot_mosaic([['Power','Error','Gain'],[ 'Gamma','MeasTable', 'MeasTable']],
                                 per_subplot_kw={"Gamma": {"projection": "polar"}})
             axs['Power'].set_title('Power')
             axs['Gamma'].set_title('Gamma')
@@ -157,7 +163,9 @@ if __name__ == "__main__":
             line[1], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Input')
             line[2], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Output')
             axs['Power'].legend()
-            line[3], = axs['Gain'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[2, -2], marker='o', ms=4, linewidth=0,label='Output')
+            line[3], = axs['Gain'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[2, -2], marker='o', ms=4, linewidth=0,label='Gain Thru')
+            line[4], = axs['Error'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[.5, -.5], marker='o', ms=4, linewidth=0,label='Output')
+            line[5], = axs['Error'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[.5, -.5], marker='o', ms=4, linewidth=0,label='Input')
             axs['OutputIL'].plot(config.freqs_IL,config.output_IL, linewidth=3)
             fig.suptitle(f'Power Characterization for {freq} GHz', fontsize=16)
             output_power_plot = np.array([])

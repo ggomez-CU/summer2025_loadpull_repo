@@ -64,28 +64,6 @@ for k = 1 : size(folder,1)
 end
 
 % %%
-% figure
-% subplot(1,2,2)
-% scatter(frequenies,mean(obw-pm)'-obw'+pm')
-% subplot(1,2,1)
-% plot(pm','k')
-% hold on
-% plot(-mean(obw-pm)'+obw')
-% 
-% %%
-% figure
-% subplot(1,2,2)
-% scatter(frequenies,mean(iaw-pm)'-iaw'+pm')
-% subplot(1,2,1)
-% plot(mean(iaw-pm)-iaw+pm)
-% 
-% figure
-% subplot(1,2,2)
-% scatter(frequenies,mean(ibw-pm)'-ibw'+pm')
-% subplot(1,2,1)
-% plot(mean(ibw-pm)-ibw+pm)
-
-% %%
 % thrusparam = sparameters('../../data/deembedsparam/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
 % outputsparam = sparameters('../../data/deembedsparam/Outputdeem2.s2p');
 % output_thruloss = 10*log10(abs(permute(outputsparam.Parameters(1,2,:),[3 2 1])));
