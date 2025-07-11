@@ -1,10 +1,4 @@
-Heimdallr is a package for simplifying instrument control. It is designed to build
-off of libraries like [pyvisa](https://github.com/pyvisa/pyvisa) and [pyvisa-py](https://github.com/pyvisa/pyvisa-py)
-and provide a complete ecosystem for instrument automation. As a brief example of
-what this can look like in its simplest form, here's an example script which 
-connects to an instrument, resets it, then adjusts and reads some basic settings:
-
-subsixtest is a base repository for testing using the Sub-6 test bench. To perform tests using this system, it is recommended that the respository is forked. This repository is not editable directly for testing. There are two test code enviorments: python and matlab. All post-processing plotting is done in matlab. Two python libraries that were developed in our group were used are used:[focustuner](https://pypi.org/project/focustuner/).   and [Heimdallr](https://pypi.org/project/Heimdallr/).   
+  This is a repository for the MMIC test results and code for the testing done by Grace Gomez of her own MMICs over the summer of 2025
 
 # Hardware Set-up and Calibration procedure 
 
