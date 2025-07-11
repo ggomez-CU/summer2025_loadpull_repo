@@ -10,14 +10,20 @@ def get_percent_error_DUTout(loadZ:complex, power_meter_dBm, output_comped_dBm):
 def get_Pin_comp(rf:dict, coupling:dict, input_desired):
     return (input_desired-(rf['input_awave']+coupling['input coupling']))
 
-def set_Pin(pna,current_power, rf:dict, coupling:dict, input_desired, tolerance=0.1, limit=-15)
+def set_Pin(pna, coupling:dict, input_desired, tolerance=0.1, max_limit_pna=-15, min_limit_DUT=3)
     error = get_Pin_comp(rf, coupling, input_desired)
+    rf = pna.get_loadpull_data()
+    current_power = pna.get_power()
     while(error > tolerance)
-        if (current_power + error) > limit:
+        if (current_power + error) > max_limit_pna:
+            print(f"Attempted power exceeds specified limit of {limit}: dBm")
+            return 1
+        if (current_power + error) > max_limit_pna:
             print(f"Attempted power exceeds specified limit of {limit}: dBm")
             return 1
         pna.set_power(current_power + error)
         time.sleep(0.5)
+        current_power = pna.get_power()
         rf = pna.get_loadpull_data()
         error = get_Pin_comp(rf, coupling, input_desired)
     return 0

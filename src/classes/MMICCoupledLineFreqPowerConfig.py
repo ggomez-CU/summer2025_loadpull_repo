@@ -67,7 +67,7 @@ class MMICCoupledLineFreqPowerConfig(TestConfig):
 										   2
                                            self.config_file_json["Sampler 2"]["Filter Number"])
 		self.check_expected_config()
-
+		self.specifyDUTinput = self.config_file_json["Specifiy DUT input power"]
 		self.sweep_type_config()
 
 	def check_expected_config(self):
