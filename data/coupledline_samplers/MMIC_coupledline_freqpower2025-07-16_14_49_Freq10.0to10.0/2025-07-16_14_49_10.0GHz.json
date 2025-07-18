@@ -1,0 +1,2332 @@
+{
+    "Comments": "2025-07-16_14_49",
+    "Configuration": {
+        "Frequency": [
+            10
+        ],
+        "Sweep Type": "Gamma",
+        "Input Power (dBm)": [
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26
+        ],
+        "Specifiy DUT input power": true,
+        "Gamma Magnitude List": [
+            0
+        ],
+        "Gamma Phase List": [
+            0
+        ],
+        "Rectangular Offset [x,y]": [
+            0,
+            0
+        ],
+        "Real Impedance List": [],
+        "Imaginary Impedance List": [],
+        "PNA": {
+            "Address": "Defined in script GPIB",
+            "Input port": "1",
+            "Output port": "2"
+        },
+        "Load Tuner": {
+            "Tuner SN": "3002",
+            "Timeout": 1000,
+            "Port": 5025,
+            "Print Statements": 0,
+            "Tuner Calibration File": "C:\\Users\\grgo8200\\Documents\\AFRL_Testbench\\data\\tunercal\\MT982AU06_3002.tunx"
+        },
+        "Files": {
+            "IL Freqs": [
+                8,
+                8.1,
+                8.2,
+                8.3,
+                8.4,
+                8.5,
+                8.6,
+                8.7,
+                8.8,
+                8.9,
+                9,
+                9.1,
+                9.2,
+                9.3,
+                9.4,
+                9.5,
+                9.6,
+                9.7,
+                9.8,
+                9.9,
+                10,
+                10.1,
+                10.2,
+                10.3,
+                10.4,
+                10.5,
+                10.6,
+                10.7,
+                10.8,
+                10.9,
+                11,
+                11.1,
+                11.2,
+                11.3,
+                11.4,
+                11.5,
+                11.6,
+                11.7,
+                11.8,
+                11.9,
+                12
+            ],
+            "Output Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUT2pm_output",
+            "Input Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUT2pm_input",
+            "Thru Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUTThru",
+            "Output Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-15_21_30_Freq12.0to8.0/pna2dut_output",
+            "Input Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-15_21_30_Freq12.0to8.0/pna2dut_input",
+            "Error Term 22 EDir": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_EDir.csv",
+            "Error Term 22 ERft": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_ERft.csv",
+            "Error Term 22 ESrm": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_ESrm.csv"
+        },
+        "Samplers": {
+            "Bias": [
+                1,
+                1.1,
+                1.2,
+                1.3,
+                1.4,
+                1.5,
+                1.6,
+                1.7,
+                1.8,
+                1.9,
+                2
+            ],
+            "1": {
+                "DMM Address": "GPIB1::22::INSTR",
+                "Filter Number": ""
+            },
+            "2": {
+                "DMM Address": "GPIB1::23::INSTR",
+                "Filter Number": ""
+            }
+        },
+        "DC Supply": {
+            "Address": "USB1::0x05E6::0x2230::9032546::0::INSTR",
+            "Gate Channel": 3,
+            "Drain Channel": 2,
+            "Sampler Bias Channel": 1
+        }
+    },
+    "PNA Power: 10.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.05298863
+                ],
+                "y_imag": [
+                    0.01938664
+                ],
+                "dBm_mag": [
+                    -24.97076
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001795771
+                ],
+                "y_imag": [
+                    0.0002894233
+                ],
+                "dBm_mag": [
+                    -54.80361
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.00103034
+                ],
+                "y_imag": [
+                    -0.00678074
+                ],
+                "dBm_mag": [
+                    -43.27532
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00146004
+                ],
+                "y_imag": [
+                    -0.00205026
+                ],
+                "dBm_mag": [
+                    -51.98234
+                ]
+            }
+        },
+        "Power Meter": -10.7539326,
+        "Input Power": -16.9341234166,
+        "Samplers": {
+            "1": 1.18338331e-06,
+            "2": 0.99167404,
+            "Bias": 0.999734
+        }
+    },
+    "PNA Power: 10.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.05470423
+                ],
+                "y_imag": [
+                    -0.01379369
+                ],
+                "dBm_mag": [
+                    -24.97188
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001815963
+                ],
+                "y_imag": [
+                    -0.0001012784
+                ],
+                "dBm_mag": [
+                    -54.80437
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0003209409
+                ],
+                "y_imag": [
+                    0.006853695
+                ],
+                "dBm_mag": [
+                    -43.27199
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001666639
+                ],
+                "y_imag": [
+                    0.001887126
+                ],
+                "dBm_mag": [
+                    -51.97984
+                ]
+            }
+        },
+        "Power Meter": -7.80157129,
+        "Input Power": -16.9341234166,
+        "Samplers": {
+            "1": 1.24387105e-06,
+            "2": 0.99162315,
+            "Bias": 0.999663
+        }
+    },
+    "PNA Power: 10.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.05580135
+                ],
+                "y_imag": [
+                    0.008366519
+                ],
+                "dBm_mag": [
+                    -24.97056
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001819861
+                ],
+                "y_imag": [
+                    -7.581047e-05
+                ],
+                "dBm_mag": [
+                    -54.79171
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0003520693
+                ],
+                "y_imag": [
+                    -0.006850175
+                ],
+                "dBm_mag": [
+                    -43.27451
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00184132
+                ],
+                "y_imag": [
+                    -0.001715785
+                ],
+                "dBm_mag": [
+                    -51.98296
+                ]
+            }
+        },
+        "Power Meter": -7.80048465,
+        "Input Power": -16.9341234166,
+        "Samplers": {
+            "1": 1.27374017e-06,
+            "2": 0.99163866,
+            "Bias": 0.999676
+        }
+    },
+    "PNA Power: 10.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.02432313
+                ],
+                "y_imag": [
+                    -0.05090583
+                ],
+                "dBm_mag": [
+                    -24.97161
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0004552444
+                ],
+                "y_imag": [
+                    -0.001762858
+                ],
+                "dBm_mag": [
+                    -54.79528
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.006654484
+                ],
+                "y_imag": [
+                    -0.00166964
+                ],
+                "dBm_mag": [
+                    -43.27257
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002179009
+                ],
+                "y_imag": [
+                    0.001262146
+                ],
+                "dBm_mag": [
+                    -51.97836
+                ]
+            }
+        },
+        "Power Meter": -7.8020935,
+        "Input Power": -16.9341234166,
+        "Samplers": {
+            "1": 1.18066289e-06,
+            "2": 0.9916179,
+            "Bias": 0.999557
+        }
+    },
+    "PNA Power: 10.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0207841
+                ],
+                "y_imag": [
+                    0.05244787
+                ],
+                "dBm_mag": [
+                    -24.97196
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0003362395
+                ],
+                "y_imag": [
+                    0.001788964
+                ],
+                "dBm_mag": [
+                    -54.7972
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.006751424
+                ],
+                "y_imag": [
+                    0.001207733
+                ],
+                "dBm_mag": [
+                    -43.2753
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002086296
+                ],
+                "y_imag": [
+                    -0.00140392
+                ],
+                "dBm_mag": [
+                    -51.99034
+                ]
+            }
+        },
+        "Power Meter": -7.80136853,
+        "Input Power": -16.9341234166,
+        "Samplers": {
+            "1": 1.16550626e-06,
+            "2": 0.99161615,
+            "Bias": 0.999678
+        }
+    },
+    "PNA Power: 12.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.06009211
+                ],
+                "y_imag": [
+                    0.03775452
+                ],
+                "dBm_mag": [
+                    -22.97874
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001665335
+                ],
+                "y_imag": [
+                    0.001566074
+                ],
+                "dBm_mag": [
+                    -52.81836
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.005945982
+                ],
+                "y_imag": [
+                    0.006258885
+                ],
+                "dBm_mag": [
+                    -41.27679
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003162654
+                ],
+                "y_imag": [
+                    0.0001264038
+                ],
+                "dBm_mag": [
+                    -49.99203
+                ]
+            }
+        },
+        "Power Meter": -5.92681788,
+        "Input Power": -14.9346251249,
+        "Samplers": {
+            "1": 1.35074475e-06,
+            "2": 0.99166279,
+            "Bias": 0.999634
+        }
+    },
+    "PNA Power: 12.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003858473
+                ],
+                "y_imag": [
+                    -0.0708604
+                ],
+                "dBm_mag": [
+                    -22.97907
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0005605707
+                ],
+                "y_imag": [
+                    -0.002219984
+                ],
+                "dBm_mag": [
+                    -52.80456
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00835657
+                ],
+                "y_imag": [
+                    0.002164637
+                ],
+                "dBm_mag": [
+                    -41.27739
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001645063
+                ],
+                "y_imag": [
+                    0.002704005
+                ],
+                "dBm_mag": [
+                    -49.99224
+                ]
+            }
+        },
+        "Power Meter": -5.80478638,
+        "Input Power": -14.9346251249,
+        "Samplers": {
+            "1": 1.16242496e-06,
+            "2": 0.99156288,
+            "Bias": 0.999655
+        }
+    },
+    "PNA Power: 12.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.07046472
+                ],
+                "y_imag": [
+                    0.008436043
+                ],
+                "dBm_mag": [
+                    -22.97876
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002283536
+                ],
+                "y_imag": [
+                    -0.0001762337
+                ],
+                "dBm_mag": [
+                    -52.80205
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0006932162
+                ],
+                "y_imag": [
+                    -0.008607428
+                ],
+                "dBm_mag": [
+                    -41.27446
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002377395
+                ],
+                "y_imag": [
+                    -0.002088159
+                ],
+                "dBm_mag": [
+                    -49.99461
+                ]
+            }
+        },
+        "Power Meter": -5.8049473,
+        "Input Power": -14.9346251249,
+        "Samplers": {
+            "1": 1.25275406e-06,
+            "2": 0.991533,
+            "Bias": 0.999681
+        }
+    },
+    "PNA Power: 12.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0047161
+                ],
+                "y_imag": [
+                    -0.07081056
+                ],
+                "dBm_mag": [
+                    -22.97882
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.000294122
+                ],
+                "y_imag": [
+                    -0.00226631
+                ],
+                "dBm_mag": [
+                    -52.82108
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.008560494
+                ],
+                "y_imag": [
+                    0.001144735
+                ],
+                "dBm_mag": [
+                    -41.27305
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001959663
+                ],
+                "y_imag": [
+                    0.0024854
+                ],
+                "dBm_mag": [
+                    -49.99241
+                ]
+            }
+        },
+        "Power Meter": -5.80559312,
+        "Input Power": -14.9346251249,
+        "Samplers": {
+            "1": 1.20209315e-06,
+            "2": 0.99155938,
+            "Bias": 0.999718
+        }
+    },
+    "PNA Power: 12.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.06893734
+                ],
+                "y_imag": [
+                    -0.01686621
+                ],
+                "dBm_mag": [
+                    -22.97843
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002075572
+                ],
+                "y_imag": [
+                    -0.000963035
+                ],
+                "dBm_mag": [
+                    -52.81047
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00366915
+                ],
+                "y_imag": [
+                    -0.007813556
+                ],
+                "dBm_mag": [
+                    -41.2776
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002960548
+                ],
+                "y_imag": [
+                    -0.001116332
+                ],
+                "dBm_mag": [
+                    -49.99521
+                ]
+            }
+        },
+        "Power Meter": -5.80486789,
+        "Input Power": -14.9346251249,
+        "Samplers": {
+            "1": 1.03498155e-06,
+            "2": 0.99157776,
+            "Bias": 0.99968
+        }
+    },
+    "PNA Power: 14.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.07184755
+                ],
+                "y_imag": [
+                    0.05257225
+                ],
+                "dBm_mag": [
+                    -21.00951
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002597586
+                ],
+                "y_imag": [
+                    0.00122377
+                ],
+                "dBm_mag": [
+                    -50.83806
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.004571029
+                ],
+                "y_imag": [
+                    -0.009829256
+                ],
+                "dBm_mag": [
+                    -39.2993
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001315777
+                ],
+                "y_imag": [
+                    -0.003746814
+                ],
+                "dBm_mag": [
+                    -48.02172
+                ]
+            }
+        },
+        "Power Meter": -3.83342343,
+        "Input Power": -12.9287768332,
+        "Samplers": {
+            "1": 1.18363315e-06,
+            "2": 0.99147386,
+            "Bias": 0.999602
+        }
+    },
+    "PNA Power: 14.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.08717532
+                ],
+                "y_imag": [
+                    -0.0180223
+                ],
+                "dBm_mag": [
+                    -21.01037
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002863499
+                ],
+                "y_imag": [
+                    -3.263618e-05
+                ],
+                "dBm_mag": [
+                    -50.8615
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    7.78993e-05
+                ],
+                "y_imag": [
+                    0.01083736
+                ],
+                "dBm_mag": [
+                    -39.3013
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.00275122
+                ],
+                "y_imag": [
+                    0.002865756
+                ],
+                "dBm_mag": [
+                    -48.01844
+                ]
+            }
+        },
+        "Power Meter": -3.83310896,
+        "Input Power": -12.9287768332,
+        "Samplers": {
+            "1": 1.27818167e-06,
+            "2": 0.99151937,
+            "Bias": 0.99956
+        }
+    },
+    "PNA Power: 14.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.07315191
+                ],
+                "y_imag": [
+                    -0.05074798
+                ],
+                "dBm_mag": [
+                    -21.00915
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002000542
+                ],
+                "y_imag": [
+                    -0.002060891
+                ],
+                "dBm_mag": [
+                    -50.83575
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.007801581
+                ],
+                "y_imag": [
+                    -0.007520174
+                ],
+                "dBm_mag": [
+                    -39.30267
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003972127
+                ],
+                "y_imag": [
+                    2.061278e-05
+                ],
+                "dBm_mag": [
+                    -48.01942
+                ]
+            }
+        },
+        "Power Meter": -3.83197176,
+        "Input Power": -12.9287768332,
+        "Samplers": {
+            "1": 1.44598726e-06,
+            "2": 0.99151937,
+            "Bias": 0.999516
+        }
+    },
+    "PNA Power: 14.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.08341318
+                ],
+                "y_imag": [
+                    -0.0311456
+                ],
+                "dBm_mag": [
+                    -21.00847
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002831819
+                ],
+                "y_imag": [
+                    -0.000471478
+                ],
+                "dBm_mag": [
+                    -50.83994
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00173269
+                ],
+                "y_imag": [
+                    0.01069776
+                ],
+                "dBm_mag": [
+                    -39.30168
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002280651
+                ],
+                "y_imag": [
+                    0.003250737
+                ],
+                "dBm_mag": [
+                    -48.02205
+                ]
+            }
+        },
+        "Power Meter": -3.8325935,
+        "Input Power": -12.9287768332,
+        "Samplers": {
+            "1": 1.41539639e-06,
+            "2": 0.99153888,
+            "Bias": 0.999722
+        }
+    },
+    "PNA Power: 14.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.02631219
+                ],
+                "y_imag": [
+                    -0.0850458
+                ],
+                "dBm_mag": [
+                    -21.00994
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0003122802
+                ],
+                "y_imag": [
+                    -0.002853808
+                ],
+                "dBm_mag": [
+                    -50.83981
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.01077869
+                ],
+                "y_imag": [
+                    -0.001114517
+                ],
+                "dBm_mag": [
+                    -39.30249
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00311478
+                ],
+                "y_imag": [
+                    0.002460863
+                ],
+                "dBm_mag": [
+                    -48.02507
+                ]
+            }
+        },
+        "Power Meter": -3.83226137,
+        "Input Power": -12.9287768332,
+        "Samplers": {
+            "1": 1.28817505e-06,
+            "2": 0.99149249,
+            "Bias": 0.999636
+        }
+    },
+    "PNA Power: 16.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0948012
+                ],
+                "y_imag": [
+                    0.05891109
+                ],
+                "dBm_mag": [
+                    -19.04559
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002632998
+                ],
+                "y_imag": [
+                    0.002447801
+                ],
+                "dBm_mag": [
+                    -48.88589
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.009277129
+                ],
+                "y_imag": [
+                    0.00994639
+                ],
+                "dBm_mag": [
+                    -37.32838
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.004972166
+                ],
+                "y_imag": [
+                    0.0002291566
+                ],
+                "dBm_mag": [
+                    -46.05987
+                ]
+            }
+        },
+        "Power Meter": -1.86901317,
+        "Input Power": -10.8925385415,
+        "Samplers": {
+            "1": 1.47907646e-06,
+            "2": 0.99144698,
+            "Bias": 0.999586
+        }
+    },
+    "PNA Power: 16.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.05821899
+                ],
+                "y_imag": [
+                    0.09522084
+                ],
+                "dBm_mag": [
+                    -19.04605
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001251141
+                ],
+                "y_imag": [
+                    0.003369161
+                ],
+                "dBm_mag": [
+                    -48.88852
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01275602
+                ],
+                "y_imag": [
+                    0.004714503
+                ],
+                "dBm_mag": [
+                    -37.32963
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.004544521
+                ],
+                "y_imag": [
+                    -0.00203036
+                ],
+                "dBm_mag": [
+                    -46.05986
+                ]
+            }
+        },
+        "Power Meter": -1.87041608,
+        "Input Power": -10.8925385415,
+        "Samplers": {
+            "1": 1.2236622e-06,
+            "2": 0.99146723,
+            "Bias": 0.999623
+        }
+    },
+    "PNA Power: 16.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.108274
+                ],
+                "y_imag": [
+                    -0.02705919
+                ],
+                "dBm_mag": [
+                    -19.04641
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003588236
+                ],
+                "y_imag": [
+                    -0.0001842863
+                ],
+                "dBm_mag": [
+                    -48.89094
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0006838384
+                ],
+                "y_imag": [
+                    0.01358506
+                ],
+                "dBm_mag": [
+                    -37.32778
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003293464
+                ],
+                "y_imag": [
+                    0.003729764
+                ],
+                "dBm_mag": [
+                    -46.06284
+                ]
+            }
+        },
+        "Power Meter": -1.87016426,
+        "Input Power": -10.8925385415,
+        "Samplers": {
+            "1": 1.28378907e-06,
+            "2": 0.99139484,
+            "Bias": 0.999571
+        }
+    },
+    "PNA Power: 16.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.1099424
+                ],
+                "y_imag": [
+                    -0.019318
+                ],
+                "dBm_mag": [
+                    -19.04464
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003357587
+                ],
+                "y_imag": [
+                    -0.001290149
+                ],
+                "dBm_mag": [
+                    -48.88137
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004909662
+                ],
+                "y_imag": [
+                    -0.0126813
+                ],
+                "dBm_mag": [
+                    -37.33015
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004528748
+                ],
+                "y_imag": [
+                    -0.002061932
+                ],
+                "dBm_mag": [
+                    -46.0623
+                ]
+            }
+        },
+        "Power Meter": -1.87062248,
+        "Input Power": -10.8925385415,
+        "Samplers": {
+            "1": 1.16578385e-06,
+            "2": 0.99145685,
+            "Bias": 0.999751
+        }
+    },
+    "PNA Power: 16.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.1114778
+                ],
+                "y_imag": [
+                    -0.005292612
+                ],
+                "dBm_mag": [
+                    -19.04645
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003492832
+                ],
+                "y_imag": [
+                    -0.0008567889
+                ],
+                "dBm_mag": [
+                    -48.88268
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003257656
+                ],
+                "y_imag": [
+                    -0.01320609
+                ],
+                "dBm_mag": [
+                    -37.32797
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004230895
+                ],
+                "y_imag": [
+                    -0.002620736
+                ],
+                "dBm_mag": [
+                    -46.06096
+                ]
+            }
+        },
+        "Power Meter": -1.86958939,
+        "Input Power": -10.8925385415,
+        "Samplers": {
+            "1": 1.20908852e-06,
+            "2": 0.99141697,
+            "Bias": 0.999676
+        }
+    },
+    "PNA Power: 18.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.1197994
+                ],
+                "y_imag": [
+                    0.07543833
+                ],
+                "dBm_mag": [
+                    -16.98041
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.00425324
+                ],
+                "y_imag": [
+                    0.001639272
+                ],
+                "dBm_mag": [
+                    -46.82412
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.006247251
+                ],
+                "y_imag": [
+                    -0.01610611
+                ],
+                "dBm_mag": [
+                    -35.2515
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002493519
+                ],
+                "y_imag": [
+                    -0.005795635
+                ],
+                "dBm_mag": [
+                    -44.0004
+                ]
+            }
+        },
+        "Power Meter": 0.201448726,
+        "Input Power": -8.69931195812,
+        "Samplers": {
+            "1": 9.56866591e-07,
+            "2": 0.99131056,
+            "Bias": 0.999715
+        }
+    },
+    "PNA Power: 18.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.05317501
+                ],
+                "y_imag": [
+                    0.1312396
+                ],
+                "dBm_mag": [
+                    -16.97855
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0008669613
+                ],
+                "y_imag": [
+                    0.004479118
+                ],
+                "dBm_mag": [
+                    -46.81642
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01695859
+                ],
+                "y_imag": [
+                    0.003315793
+                ],
+                "dBm_mag": [
+                    -35.24928
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.005268426
+                ],
+                "y_imag": [
+                    -0.003472959
+                ],
+                "dBm_mag": [
+                    -43.99923
+                ]
+            }
+        },
+        "Power Meter": 0.200530986,
+        "Input Power": -8.69931195812,
+        "Samplers": {
+            "1": 1.32603888e-06,
+            "2": 0.99129068,
+            "Bias": 0.999705
+        }
+    },
+    "PNA Power: 18.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.1195214
+                ],
+                "y_imag": [
+                    -0.07588105
+                ],
+                "dBm_mag": [
+                    -16.98031
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004250852
+                ],
+                "y_imag": [
+                    -0.001652551
+                ],
+                "dBm_mag": [
+                    -46.81923
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.006304188
+                ],
+                "y_imag": [
+                    0.01608104
+                ],
+                "dBm_mag": [
+                    -35.25285
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.002472381
+                ],
+                "y_imag": [
+                    0.005804537
+                ],
+                "dBm_mag": [
+                    -44.00059
+                ]
+            }
+        },
+        "Power Meter": 0.20142662,
+        "Input Power": -8.69931195812,
+        "Samplers": {
+            "1": 1.07476077e-06,
+            "2": 0.99131419,
+            "Bias": 0.999646
+        }
+    },
+    "PNA Power: 18.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.007255071
+                ],
+                "y_imag": [
+                    0.1413959
+                ],
+                "dBm_mag": [
+                    -16.97984
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0006559021
+                ],
+                "y_imag": [
+                    0.004513838
+                ],
+                "dBm_mag": [
+                    -46.81834
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01710532
+                ],
+                "y_imag": [
+                    -0.002424443
+                ],
+                "dBm_mag": [
+                    -35.25099
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003840472
+                ],
+                "y_imag": [
+                    -0.005008671
+                ],
+                "dBm_mag": [
+                    -43.99724
+                ]
+            }
+        },
+        "Power Meter": 0.200674556,
+        "Input Power": -8.69931195812,
+        "Samplers": {
+            "1": 9.00931396e-07,
+            "2": 0.9912768,
+            "Bias": 0.9996
+        }
+    },
+    "PNA Power: 18.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.11023
+                ],
+                "y_imag": [
+                    0.08884981
+                ],
+                "dBm_mag": [
+                    -16.97995
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.002931896
+                ],
+                "y_imag": [
+                    0.003488261
+                ],
+                "dBm_mag": [
+                    -46.82689
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01320588
+                ],
+                "y_imag": [
+                    0.01113582
+                ],
+                "dBm_mag": [
+                    -35.25198
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.006294352
+                ],
+                "y_imag": [
+                    -0.0004794676
+                ],
+                "dBm_mag": [
+                    -43.99585
+                ]
+            }
+        },
+        "Power Meter": 0.200370903,
+        "Input Power": -8.69931195812,
+        "Samplers": {
+            "1": 1.03203905e-06,
+            "2": 0.99129781,
+            "Bias": 0.999565
+        }
+    },
+    "PNA Power: 20.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.02854904
+                ],
+                "y_imag": [
+                    -0.175767
+                ],
+                "dBm_mag": [
+                    -14.98816
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001984509
+                ],
+                "y_imag": [
+                    -0.005370366
+                ],
+                "dBm_mag": [
+                    -44.84403
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0204539
+                ],
+                "y_imag": [
+                    0.007440529
+                ],
+                "dBm_mag": [
+                    -33.24475
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00339408
+                ],
+                "y_imag": [
+                    0.007168906
+                ],
+                "dBm_mag": [
+                    -42.0126
+                ]
+            }
+        },
+        "Power Meter": 2.18885437,
+        "Input Power": -6.51980537474,
+        "Samplers": {
+            "1": 1.29494835e-06,
+            "2": 0.99101173,
+            "Bias": 0.999648
+        }
+    },
+    "PNA Power: 20.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.1312152
+                ],
+                "y_imag": [
+                    0.1203578
+                ],
+                "dBm_mag": [
+                    -14.98894
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003400025
+                ],
+                "y_imag": [
+                    0.004606658
+                ],
+                "dBm_mag": [
+                    -44.84372
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01744884
+                ],
+                "y_imag": [
+                    0.01300328
+                ],
+                "dBm_mag": [
+                    -33.24637
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.007855942
+                ],
+                "y_imag": [
+                    -0.001100393
+                ],
+                "dBm_mag": [
+                    -42.01165
+                ]
+            }
+        },
+        "Power Meter": 2.18876818,
+        "Input Power": -6.51980537474,
+        "Samplers": {
+            "1": 1.2906734e-06,
+            "2": 0.9910126,
+            "Bias": 0.999581
+        }
+    },
+    "PNA Power: 20.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.09098814
+                ],
+                "y_imag": [
+                    -0.1530692
+                ],
+                "dBm_mag": [
+                    -14.98817
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001928133
+                ],
+                "y_imag": [
+                    -0.005390458
+                ],
+                "dBm_mag": [
+                    -44.84461
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.02045412
+                ],
+                "y_imag": [
+                    -0.007419622
+                ],
+                "dBm_mag": [
+                    -33.24752
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.007204606
+                ],
+                "y_imag": [
+                    0.003317659
+                ],
+                "dBm_mag": [
+                    -42.01258
+                ]
+            }
+        },
+        "Power Meter": 2.18880504,
+        "Input Power": -6.51980537474,
+        "Samplers": {
+            "1": 1.25689021e-06,
+            "2": 0.99095634,
+            "Bias": 0.99955
+        }
+    },
+    "PNA Power: 20.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0812562
+                ],
+                "y_imag": [
+                    -0.1584041
+                ],
+                "dBm_mag": [
+                    -14.99017
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.003536793
+                ],
+                "y_imag": [
+                    -0.004500359
+                ],
+                "dBm_mag": [
+                    -44.84628
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.01715837
+                ],
+                "y_imag": [
+                    0.01337425
+                ],
+                "dBm_mag": [
+                    -33.24882
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.001021824
+                ],
+                "y_imag": [
+                    0.007864387
+                ],
+                "dBm_mag": [
+                    -42.014
+                ]
+            }
+        },
+        "Power Meter": 2.18893594,
+        "Input Power": -6.51980537474,
+        "Samplers": {
+            "1": 1.22052539e-06,
+            "2": 0.99095834,
+            "Bias": 0.999571
+        }
+    },
+    "PNA Power: 20.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.1532604
+                ],
+                "y_imag": [
+                    -0.09066075
+                ],
+                "dBm_mag": [
+                    -14.9883
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.004282081
+                ],
+                "y_imag": [
+                    -0.003799554
+                ],
+                "dBm_mag": [
+                    -44.84486
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.01438062
+                ],
+                "y_imag": [
+                    -0.01632579
+                ],
+                "dBm_mag": [
+                    -33.24833
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.007916018
+                ],
+                "y_imag": [
+                    -0.0005444356
+                ],
+                "dBm_mag": [
+                    -42.00937
+                ]
+            }
+        },
+        "Power Meter": 2.18950546,
+        "Input Power": -6.51980537474,
+        "Samplers": {
+            "1": 1.3129642e-06,
+            "2": 0.99103761,
+            "Bias": 0.999567
+        }
+    },
+    "PNA Power: 22.00": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0006251832
+                ],
+                "y_imag": [
+                    0.223702
+                ],
+                "dBm_mag": [
+                    -13.00657
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001335006
+                ],
+                "y_imag": [
+                    0.007057533
+                ],
+                "dBm_mag": [
+                    -42.87426
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.02696717
+                ],
+                "y_imag": [
+                    -0.004896901
+                ],
+                "dBm_mag": [
+                    -31.2424
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.00567804
+                ],
+                "y_imag": [
+                    -0.008184188
+                ],
+                "dBm_mag": [
+                    -40.03396
+                ]
+            }
+        },
+        "Power Meter": 4.12287641,
+        "Input Power": -4.26642879136,
+        "Samplers": {
+            "1": 1.26244209e-06,
+            "2": 0.99049633,
+            "Bias": 0.999619
+        }
+    },
+    "PNA Power: 22.01": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.2212373
+                ],
+                "y_imag": [
+                    -0.03318638
+                ],
+                "dBm_mag": [
+                    -13.0062
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.007175224
+                ],
+                "y_imag": [
+                    0.0002950768
+                ],
+                "dBm_mag": [
+                    -42.87595
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0009450981
+                ],
+                "y_imag": [
+                    0.02738446
+                ],
+                "dBm_mag": [
+                    -31.24475
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.00726991
+                ],
+                "y_imag": [
+                    0.006809746
+                ],
+                "dBm_mag": [
+                    -40.03382
+                ]
+            }
+        },
+        "Power Meter": 4.17151904,
+        "Input Power": -4.26642879136,
+        "Samplers": {
+            "1": 1.36381943e-06,
+            "2": 0.99052034,
+            "Bias": 0.99955
+        }
+    },
+    "PNA Power: 22.02": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.1552412
+                ],
+                "y_imag": [
+                    0.1610532
+                ],
+                "dBm_mag": [
+                    -13.007
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.00391813
+                ],
+                "y_imag": [
+                    0.006020413
+                ],
+                "dBm_mag": [
+                    -42.87374
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.02285474
+                ],
+                "y_imag": [
+                    0.01510975
+                ],
+                "dBm_mag": [
+                    -31.24566
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.009759915
+                ],
+                "y_imag": [
+                    -0.001980764
+                ],
+                "dBm_mag": [
+                    -40.03579
+                ]
+            }
+        },
+        "Power Meter": -2.77589624,
+        "Input Power": -4.26642879136,
+        "Samplers": {
+            "1": 1.1466021e-06,
+            "2": 0.99048295,
+            "Bias": 0.999688
+        }
+    },
+    "PNA Power: 22.03": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.150591
+                ],
+                "y_imag": [
+                    -0.1654518
+                ],
+                "dBm_mag": [
+                    -13.00579
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.005746764
+                ],
+                "y_imag": [
+                    -0.004302898
+                ],
+                "dBm_mag": [
+                    -42.87854
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.01656719
+                ],
+                "y_imag": [
+                    0.02182559
+                ],
+                "dBm_mag": [
+                    -31.24459
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.001338289
+                ],
+                "y_imag": [
+                    0.009872972
+                ],
+                "dBm_mag": [
+                    -40.03197
+                ]
+            }
+        },
+        "Power Meter": 4.17232726,
+        "Input Power": -4.26642879136,
+        "Samplers": {
+            "1": 1.22152473e-06,
+            "2": 0.99054097,
+            "Bias": 0.999722
+        }
+    },
+    "PNA Power: 22.04": {
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.1152466
+                ],
+                "y_imag": [
+                    -0.1916836
+                ],
+                "dBm_mag": [
+                    -13.00818
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004794602
+                ],
+                "y_imag": [
+                    -0.005343676
+                ],
+                "dBm_mag": [
+                    -42.8783
+                ]
+            },
+            "output_awave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.02051242
+                ],
+                "y_imag": [
+                    0.01815415
+                ],
+                "dBm_mag": [
+                    -31.24746
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0006187502
+                ],
+                "y_imag": [
+                    0.00993818
+                ],
+                "dBm_mag": [
+                    -40.03706
+                ]
+            }
+        },
+        "Power Meter": 4.17184399,
+        "Input Power": -4.26642879136,
+        "Samplers": {
+            "1": 1.25772299e-06,
+            "2": 0.99044632,
+            "Bias": 0.999571
+        }
+    }
+}

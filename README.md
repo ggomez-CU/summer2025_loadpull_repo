@@ -45,3 +45,12 @@ Make sure system is cal'd both power and sparam (s first) and RF is off and driv
 ```
 pip install -r requirements.txt -y
 ```
+
+# Set up PNA
+Stimulus: power off (while initializing)
+Freq: 10 GHz
+Freq offset: on
+Sweep:Number of points: 1
+channel: hardware: test set up: external ref
+set receiver atten to 20dB
+power: -27 on

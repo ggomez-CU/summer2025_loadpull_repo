@@ -78,7 +78,7 @@ class MY982AU():
 
     def wait_for_ready(self):
         while self.get_moving_bin():
-            print("moving")
+            pass
         while self.query("*OPC?") != '1':
             print(f"occupied {self.query("*OPC?")}")
 

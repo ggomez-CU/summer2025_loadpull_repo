@@ -9,63 +9,43 @@ import matplotlib.pyplot  as plt
 import os
 from scipy.io import loadmat
 import sys
-
-# I know it is bad practice but these are global
-output_power_plot = np.array([])
-input_power_plot = np.array([])
-set_power_plot = np.array([])
-sampler1_plot = np.array([])
-sampler2_plot = np.array([])
-gammaload_plot = np.array([]).astype(complex)
-load_plot = np.array([]).astype(complex)
-meas_power_plot = np.array([])
+from optparse import OptionParser
+import io
 
 def ab2gamma(T,R,directivity,tracking,port_match):
     # eq from hackborn. extrapolated equation 
     return directivity + (tracking*T/R)/(1-port_match*T/R)
 
-                        datatemp = {'PNA Power: '+ str(power) + str(i): 
-                                    {'Input power': power,
-                                    'wave data': pna.get_loadpull_data(),
-                                    'Gamma Load': {'real': gammaload.real,
-                                        'imag': gammaload.imag},
-                                    'Power Meter': pm.fetch_power(),
-                                    'Samplers':{
-                                        '1': dmm1.fetch_voltage()
-                                        '2': dmm2.fetch_voltage()},                                    }
-                                    }
-
-def updateplot(axs, line, data,coupling,idx):
+def updateplot(axs, line, data, coupling, idx):
     keys_list = list(data.keys())
 
-    set_power_plot = np.append(set_power_plot,data[keys_list[0]]['Input Power'])
+    plots['set_power'] = np.append(plots['set_power'],data[keys_list[0]]['Input Power'])
 
-    outputdBm =  round(data[keys_list[0]]['output_awave']['dBm_mag'][0]+coupling['output coupling'],3)
-    inputdBm = round(data[keys_list[0]]['input_awave']['dBm_mag'][0]+coupling['input coupling'],3)
-    output_power_plot = np.append(output_power_plot,outputdBm)
-    input_power_plot = np.append(input_power_plot,inputdBm)
+    outputdBm =  round(data[keys_list[0]]['wave data']['output_bwave']['dBm_mag'][0]+coupling['output coupling'],3)
+    inputdBm = round(data[keys_list[0]]['wave data']['input_awave']['dBm_mag'][0]+coupling['input coupling'],3)
+    plots['output_power'] = np.append(plots['output_power'],outputdBm)
+    plots['input_power'] = np.append(plots['input_power'],inputdBm)
 
-    sampler1_plot = np.append(sampler1_plot,set_power_plot,data[keys_list[0]]['Samplers']['1'])
-    sampler2_plot = np.append(sampler2_plot,set_power_plot,data[keys_list[0]]['Samplers']['2'])
+    plots['sampler1'] = np.append(plots['sampler1'],data[keys_list[0]]['Samplers']['1'])
+    plots['sampler2'] = np.append(plots['sampler2'],data[keys_list[0]]['Samplers']['Bias']-data[keys_list[0]]['Samplers']['2'])
 
-    gammaload = ab2gamma(complex(data[keys_list[0]]['output_awave']['real'][0], data[keys_list[0]]['output_awave']['imag'][0]),
-            complex(data[keys_list[0]]['output_bwave']['real'][0], data[keys_list[0]]['output_bwave']['imag'][0]),
-                                error_terms['match'], error_terms['tracking'], error_terms['directivity'])[0]
+    gammaload = ab2gamma(complex(data[keys_list[0]]['wave data']['output_awave']['y_real'][0], data[keys_list[0]]['wave data']['output_awave']['y_imag'][0]),
+            complex(data[keys_list[0]]['wave data']['output_bwave']['y_real'][0], data[keys_list[0]]['wave data']['output_bwave']['y_imag'][0]),
+                                error_terms['match'], error_terms['tracking'], error_terms['directivity'])
 
-    gammaload_plot = np.append(gammaload_plot,gammaload)
+    plots['gammaload'] = np.append(plots['gammaload'],gammaload)
 
-    line[0].set_data([np.angle(gammaload_plot)], [np.abs(gammaload_plot)])
-    line[1].set_data(set_power_plot,output_power_plot)
-    line[2].set_data(set_power_plot,output_power_plot)
-    line[3].set_data(set_power_plot,output_power_plot-input_power_plot)
-    line[2*idx+2].set_data(set_power_plot,sampler1_plot)
-    line[2*idx+3].set_data(set_power_plot,sampler2_plot)
+    line[0][0].set_data([np.angle(plots['gammaload'])], [np.abs(plots['gammaload'])])
+    line[1][0].set_data(plots['set_power'],plots['output_power'])
+    line[2][0].set_data(plots['set_power'],plots['input_power'])
+    line[2*idx+1][0].set_data(plots['set_power'],plots['sampler1'])
+    line[2*idx+2][0].set_data(plots['set_power'],plots['sampler2'])
     axs['MeasTable'].cla()
     axs['MeasTable'].axis('off')
     axs['MeasTable'].table(cellText=[[inputdBm],
             [outputdBm],
             [outputdBm-inputdBm],
-            [data[keys_list[0]]['Samplers']['Bias']]
+            [data[keys_list[0]]['Samplers']['Bias']],
             [data[keys_list[0]]['Input Power']]],
             rowLabels=rows,
             colLabels=columns,
@@ -73,33 +53,35 @@ def updateplot(axs, line, data,coupling,idx):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(
-        description="Specifies User outputs and test validation on or off"
-    )
+#region Options
+    parser = OptionParser(
+            description="Specifies User outputs and test validation on or off"
+        )
     parser.add_option("-p", "--plot",
-                  action="store_false", dest="plot", default=True,
+                  action="store_true", dest="plot", default=False,
                   help="plot output data while running tests")
     parser.add_option("-f", "--force",
-                  action="store_false", dest="force", default=False,
+                  action="store_true", dest="force", default=False,
                   help="Run without checking valid config")
-    parser.add_option("-q", "--quiet",
-                  action="store_false", dest="verbose", default=False,
+    parser.add_option("-v", action="store_true", dest="verbose", default=True)
+    parser.add_option("-q", action="store_false", dest="verbose",
                   help="don't print status messages to stdout")
     parser.add_option("-i", "--informal",
-                  action="store_false", dest="informal", default=False,
+                  action="store_true", dest="informal", default=False,
                   help="no comment from user when initiated. Makes understanding the data harder later")
     (options, args) = parser.parse_args()
 
     print(f"This test will run as quiet {options.verbose} forced {options.force} and plotted {options.plot}")
+#end region
 
-    config = SystemValidationPowerConfig(r"C:\Users\grgo8200\Documents\AFRL_Testbench\data\coupledline_samplers\coupledline_samplers_config.json")
+    config = MMICCoupledLineFreqPowerConfig(r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\coupledline_samplers\MMIC_coupledline_freqpower_config.json")
     now = datetime.now().strftime("%Y-%m-%d_%H_%M")
-    output_dir = os.getcwd() + "\\data\\coupledline_samplers\\" \
+    output_dir = os.getcwd() + "\\data\\coupledline_samplers\\MMIC_coupledline_freqpower" \
             + now + "_Freq" \
             + str(config.frequency[0]) + "to" + str(config.frequency[-1])
     os.mkdir(output_dir)
 
-    if not option.informal:
+    if not options.informal:
         paragraph_lines = []
         print("Enter your Comments. Press Enter on an empty line to finish:")
         while True:
@@ -144,8 +126,11 @@ if __name__ == "__main__":
     pna.write("SENS:SWE:POIN 1")
     pna.init_loadpull()
     pna.set_power(-27)
-    dmm = Keysight34400()
-    dmm.set_measurement("voltage-dc")
+    dmm1 = Keysight_34400(config.sampler1_config.address)
+    dmm1.set_measurement("voltage-dc")
+    dmm2 = Keysight_34400(config.sampler2_config.address)
+    dmm2.set_measurement("voltage-dc")
+    dc_supply = Keithly_2230(config.dc_supply_config.address)
 #end region
 
     columns = ('Power (dB/dBm)')
@@ -153,9 +138,9 @@ if __name__ == "__main__":
     if not (options.force): 
         input("Press Enter to continue...")
 
-    if options.verbose:
+    if not options.verbose:
         text_trap = io.StringIO()
-    sys.stdout = text_trap
+        sys.stdout = text_trap
 
     fig = plt.figure(constrained_layout=True)
 
@@ -164,27 +149,20 @@ if __name__ == "__main__":
         if options.plot:
             plt.close(fig) 
             fig = plt.figure(constrained_layout=True)
-            axs = fig.subplot_mosaic([['Power','OutputIL','Coupling'],[ 'Gamma','MeasTable', 'MeasTable']],
+            axs = fig.subplot_mosaic([['Power','Samplers','Gamma'],[ 'MeasTable','MeasTable', 'MeasTable']],
                                 per_subplot_kw={"Gamma": {"projection": "polar"}})
             axs['Power'].set_title('Power')
             axs['Gamma'].set_title('Gamma')
-            axs['OutputIL'].set_title('Output Insertion Loss')
-            axs['Coupling'].set_title('Output Coupling')
+            axs['Samplers'].set_title('Sampler Output')
             axs['MeasTable'].set_title('Power Values')
             axs['Gamma'].grid(True)
-            line[0], = axs['Gamma'].plot([], [], marker='o', ms=1, linewidth=0)
-            line[1], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Input')
-            line[2], = axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[20, -30], marker='o', ms=4, linewidth=0,label='Output')
+            line = []
+            line.append(axs['Gamma'].plot([], [], marker='o', ms=1, linewidth=0))
+            line.append(axs['Power'].plot([-27, 3],[min(config.input_power_dBm)-2,max(config.input_power_dBm)+2], marker='o', ms=4, linewidth=0,label='Input'))
+            line.append(axs['Power'].plot([-27, 3],[min(config.input_power_dBm)-2,max(config.input_power_dBm)+2], marker='o', ms=4, linewidth=0,label='Output'))
             axs['Power'].legend()
-            axs['Coupling'].plot(config.freqs_IL,config.output_coupling, linewidth=3)
-            axs['OutputIL'].plot(config.freqs_IL,config.output_IL, linewidth=3)
-            fig.suptitle(f'Sampler Characterization for {freq} GHz', fontsize=16)
-            output_power_plot = np.array([])
-            input_power_plot = np.array([])
-            set_power_plot = np.array([])
-            gammaload_plot = np.array([]).astype(complex)
-            meas_power_plot = np.array([])
-            line[0].set_data([np.angle(gammaload_plot)], [np.abs(gammaload_plot)])
+            fig.suptitle(f'Power Characterization for {freq} GHz', fontsize=16)
+            plots = {}
 
 #region Set Instrumentation and Data to Frequency
         pna.set_freq_start((float(freq)*1e9))
@@ -195,7 +173,7 @@ if __name__ == "__main__":
 
         #file generation
         output_file = output_dir + f"\\{now}_{freq}GHz.json"
-                with open(output_file, 'w') as f:
+        with open(output_file, 'w') as f:
             json.dump(config_data, f, indent = 4)
         data = config_data
 
@@ -205,52 +183,58 @@ if __name__ == "__main__":
         
 #endregion
 
-        for idx, bias in enumerate(config.sampler1.bias):
-            dc_supply.setvoltage(bias)
+        for idx, bias in enumerate(config.dc_supply_config.sampler_bias):
+            dc_supply.set_channel(1,bias,1)
 
             if options.plot:
-                sampler1_plot = np.array([])
-                sampler2_plot = np.array([])
-                line[2*idx+2], = axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[-1, -1], marker='o', ms=4, linewidth=0,label='Sampler 1')
-                line[2*idx+3], = axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[-1, -1], marker='o', ms=4, linewidth=0,label='Sampler 2')
+                line.append(axs['Samplers'].plot([-30, 3],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Sampler 1'))
+                line.append(axs['Samplers'].plot([-30, 3],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Sampler 2'))
+                axs['Samplers'].legend()
+                plots.update({'sampler2': np.array([])})
+                plots.update({'sampler1': np.array([])})
+                plots.update({'output_power': np.array([])})
+                plots.update({'input_power': np.array([])})
+                plots.update({'set_power': np.array([])})
+                plots.update({'gammaload': np.array([])})
 
-            for power in tqdm(config.input_power_dBm):
-    #region Set input power
+            string = str(round(freq,3)) + " GHz"
+            time.sleep(2)
+            for power in tqdm(config.input_power_dBm, ascii=True, desc=string):
+
                 if config.specifyDUTinput:
-                    set_Pin_DUT(pna, coupling, power)
+                    set_Pin(pna, coupling, power)
                 else:
                     pna.set_power(power)
-    #endregion
                 for i in range(5):
                     if not loadtuner.connected:
                         print("There is an error")
                         exit()
 
-                    if i == 1:
+                    if i == 0:
                         time.sleep(1)
-                        datatemp = {'PNA Power: '+ str(power) + str(i): 
+                        datatemp = {'PNA Power: '+ str(power) + str(bias) + str(i): 
                                     {'wave data': pna.get_loadpull_data(),
-                                    'Gamma Load': {'real': gammaload.real,
-                                        'imag': gammaload.imag},
                                     'Power Meter': pm.get_power(),
+                                    'Input Power': pna.get_power(),
                                     'Samplers':{
-                                        '1': dmm1.get_voltage()
-                                        '2': dmm2.get_voltage()
-                                        'Bias': dc_supply.get_voltage()},                                    }
+                                        '1': dmm1.fetch_voltage(),
+                                        '2': dmm2.fetch_voltage(),
+                                        'Bias': dc_supply.get_voltage(config.dc_supply_config.sampler_channel)
+                                        }
+                                        }
                                     }
                         pm.write("INIT:CONT")
-                        dmm1.write("INIT:CONT")
-                        dmm2.write("INIT:CONT")
                     else:
-                        datatemp = {'PNA Power: '+ str(power) + str(i): 
+                        datatemp = {'PNA Power: '+ str(power) + str(bias) + str(i): 
                                     {'wave data': pna.get_loadpull_data(),
-                                    'Gamma Load': {'real': gammaload.real,
-                                        'imag': gammaload.imag},
                                     'Power Meter': pm.fetch_power(),
+                                    'Input Power': pna.get_power(),  
                                     'Samplers':{
-                                        '1': dmm1.fetch_voltage()
-                                        '2': dmm2.fetch_voltage()
-                                        'Bias': dc_supply.get_voltage()},                                    }
+                                        '1': dmm1.fetch_voltage(),
+                                        '2': dmm2.fetch_voltage(),
+                                        'Bias': dc_supply.get_voltage(config.dc_supply_config.sampler_channel)
+                                        }
+                                        }
                                     }
                     data.update(datatemp)
 
@@ -261,7 +245,7 @@ if __name__ == "__main__":
                     shutil.copyfile('temp.json', output_file)
 
                     if options.plot:
-                        updateplot(axs,line,meas_power, datatemp,coupling,idx)
+                        updateplot(axs, line, datatemp, coupling, (idx)+1)
                         plt.pause(0.25)
                         fig.canvas.draw()
                         fig.canvas.flush_events()

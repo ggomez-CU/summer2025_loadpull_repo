@@ -128,10 +128,10 @@ class Agilent_PNA_E8300(VectorNetworkAnalyzerCtg1):
 		self.write("CALC" + str(channel) + ":PARameter:DEFine 'input_awave_trace', r1, 1")
 		self.write(f"DISP:WIND:TRAC1:FEED 'input_awave_trace'")
 		time.sleep(.1)
-		self.write("CALC" + str(channel) + ":PARameter:DEFine 'output_awave_trace', a, 1")
+		self.write("CALC" + str(channel) + ":PARameter:DEFine 'output_awave_trace', r2, 1")
 		self.write(f"DISP:WIND:TRAC2:FEED 'output_awave_trace'")
 		time.sleep(.1)
-		self.write("CALC" + str(channel) + ":PARameter:DEFine 'input_bwave_trace', r2, 1")
+		self.write("CALC" + str(channel) + ":PARameter:DEFine 'input_bwave_trace', a, 1")
 		self.write(f"DISP:WIND:TRAC3:FEED 'input_bwave_trace'")
 		time.sleep(.1)
 		self.write("CALC" + str(channel) + ":PARameter:DEFine 'output_bwave_trace', b, 1")
@@ -149,8 +149,8 @@ class Agilent_PNA_E8300(VectorNetworkAnalyzerCtg1):
 		'''
 		self.write("INIT:CONT OFF")	
 		temp = {'input_awave': self.get_trace_data('input_awave_trace', channel), 
-				'input_bwave': self.get_trace_data('output_awave_trace', channel), 
-				'output_awave': self.get_trace_data('input_bwave_trace', channel), 
+				'output_awave': self.get_trace_data('output_awave_trace', channel), 
+				'input_bwave': self.get_trace_data('input_bwave_trace', channel), 
 				'output_bwave': self.get_trace_data('output_bwave_trace', channel)}
 		self.write("INIT:CONT ON")
 		return temp

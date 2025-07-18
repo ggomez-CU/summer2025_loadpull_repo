@@ -35,7 +35,6 @@ classdef PowerCalClass
                     obj.output_awave(:,lp_idx-2) = temp.(fn{lp_idx}).waveData.output_awave.y_real+(j*temp.(fn{lp_idx}).waveData.output_awave.y_imag);
                     obj.output_bwave(:,lp_idx-2) = temp.(fn{lp_idx}).waveData.output_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.output_bwave.y_imag);
     
-                    obj.gammaload(:,lp_idx-2) = temp.(fn{lp_idx}).GammaLoad.real+(j*temp.(fn{lp_idx}).GammaLoad.imag);
                     obj.powermeter(:,lp_idx-2) =  temp.(fn{lp_idx}).PowerMeter;
     
                     obj.input_awave_dBm(:,lp_idx-2) =  temp.(fn{lp_idx}).waveData.input_awave.dBm_mag;
