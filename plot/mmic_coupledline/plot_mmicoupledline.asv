@@ -1,0 +1,12 @@
+clear all
+close all
+clc
+
+filename = ['C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\coupledline_samplers\' ...
+    'MMIC_coupledline_freqpower2025-07-29_09_57_Freq10.0to10.0\2025-07-28_13_59_10.0GHz.json'];
+temp = CoupledLinePowerBiasClass(filename)
+temp = temp.resortshape(4)
+% % plot(temp.input_awave_dBm,temp.sampler2-temp.sampler2(1,:))
+semilogy(temp.input_awave_dBm,temp.sampler2(1,:)-temp.sampler2)
+hold on 
+semilogy(temp.input_awave_dBm,temp.sampler1(1,:)-temp.sampler1)

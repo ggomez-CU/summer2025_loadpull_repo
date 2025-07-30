@@ -22,7 +22,7 @@ def set_Pin(pna, coupling, input_desired, tolerance=0.1, max_limit_pna=2, min_li
         if (current_power + error) < min_limit_pna:
             print(f"Attempted power less than minimum specified limit of {min_limit_pna}: dBm")
             return 1
-        pna.set_power(current_power + error)
+        pna.set_power(float(current_power + error))
         time.sleep(0.5)
         current_power = pna.get_power()
         print(f"{current_power},", end="")

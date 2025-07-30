@@ -1,6 +1,6 @@
 
 {
-    "Frequency": [10],
+    "Frequency": [12,11.9,11.8,11.7,11.6,11.5,11.4,11.3,11.2,11.1,11,10.9,10.8,10.7,10.6,10.5,10.4,10.3,10.2,10.1,10,9.90,9.80,9.70,9.60,9.50,9.40,9.30,9.20,9.10,9,8.90,8.80,8.70,8.60,8.50,8.40,8.30,8.20,8.10,8],
     "Sweep Type": "Gamma",
     "Input Power (dBm)":  [10,12,14,16,18,20,22,24,26],
     "Specifiy DUT input power": true,
@@ -26,14 +26,14 @@
         "Output Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUT2pm_output",
         "Input Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUT2pm_input",
         "Thru Sparam IL (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedsparam/DUTThru",
-        "Output Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-15_21_30_Freq12.0to8.0/pna2dut_output",
-        "Input Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-15_21_30_Freq12.0to8.0/pna2dut_input",
+        "Output Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-28_23_39_Freq12.0to8.0/pna2dut_output",
+        "Input Coupling (dB)": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/deembedatten/2025-07-28_23_39_Freq12.0to8.0/pna2dut_input",
         "Error Term 22 EDir": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_EDir.csv",
         "Error Term 22 ERft": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_ERft.csv",
         "Error Term 22 ESrm": "C:/Users/grgo8200/Documents/GitHub/summer2025_loadpull_repo/data/errordata/20250716/ErrorTerm_22_ESrm.csv"
     },
     "Samplers":{
-        "Bias": [0, 0.5, 1, 1.5, 2, 2.5, 3],
+        "Bias": [1.25],
         "1":{
             "DMM Address": "GPIB1::22::INSTR",
             "Filter Number": ""

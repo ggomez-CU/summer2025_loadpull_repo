@@ -38,3 +38,17 @@ plot(pna2dut_input-mean(pna2dut_input')')
 subplot(2,2,4)
 hold on
 plot(pna2dut_output-mean(pna2dut_output')')
+
+figure
+subplot(2,2,1)
+hold on
+plot(pna2pm_input)
+subplot(2,2,2)
+hold on
+plot(pna2pm_output)
+subplot(2,2,3)
+hold on
+plot(pna2dut_input)
+subplot(2,2,4)
+hold on
+plot(pna2dut_output)

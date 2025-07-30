@@ -2,10 +2,11 @@ clear all
 close all
 clc
 
-folder = ['2025-07-17_16_59_Freq12.0to8.0';
-'2025-07-17_19_07_Freq12.0to8.0';
-'2025-07-17_21_15_Freq12.0to8.0';
-'2025-07-17_23_23_Freq12.0to8.0']
+folder = ['2025-07-28_23_39_Freq12.0to8.0';
+'2025-07-28_21_32_Freq12.0to8.0';
+'2025-07-28_19_24_Freq12.0to8.0';
+'2025-07-28_17_17_Freq12.0to8.0';
+'2025-07-28_15_10_Freq12.0to8.0']
 
 thrusparam = sparameters('../../data/deembedsparam/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
 outputsparam = sparameters('../../data/deembedsparam/Outputdeem2.s2p');

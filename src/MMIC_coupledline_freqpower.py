@@ -26,7 +26,7 @@ def updateplot(axs, line, data, coupling, idx):
     plots['output_power'] = np.append(plots['output_power'],outputdBm)
     plots['input_power'] = np.append(plots['input_power'],inputdBm)
 
-    plots['sampler1'] = np.append(plots['sampler1'],data[keys_list[0]]['Samplers']['1'])
+    plots['sampler1'] = np.append(plots['sampler1'],data[keys_list[0]]['Samplers']['Bias']-data[keys_list[0]]['Samplers']['1'])
     plots['sampler2'] = np.append(plots['sampler2'],data[keys_list[0]]['Samplers']['Bias']-data[keys_list[0]]['Samplers']['2'])
 
     gammaload = ab2gamma(complex(data[keys_list[0]]['wave data']['output_awave']['y_real'][0], data[keys_list[0]]['wave data']['output_awave']['y_imag'][0]),
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 #region Optional Configuration User Validation
     #Estimate Time and ensure test should be run.
     config_file = output_dir + "\\config_file.json"
-    config_data = output_file_test_config_data(config_file, config, paragraph, now)
+    config_data = output_file_test_config_data(config_file, config, now, paragraph)
     
     if not (options.force): 
         print(" ==========\tTEST CONFIGURATION\t========== ")
@@ -205,10 +205,11 @@ if __name__ == "__main__":
                     set_Pin(pna, coupling, power)
                 else:
                     pna.set_power(power)
-                for i in range(5):
+                for i in range(1):
                     if not loadtuner.connected:
                         print("There is an error")
                         exit()
+                    
 
                     if i == 0:
                         time.sleep(1)

@@ -47,7 +47,7 @@ def find_config_file():
 def output_file_test_config_data(output_file, config_file, now, comments='None'):
 
     data = ({"Date and Time": now})
-    data = ({"Comments": comments})
+    data.update({"Comments": comments})
     data.update({"Configuration": config_file.config_file_json})
 
     with open(output_file, 'w') as f:
