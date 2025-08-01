@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     config = MMICCoupledLineFreqPowerConfig(r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\coupledline_samplers\MMIC_coupledline_freqpower_config.json")
     now = datetime.now().strftime("%Y-%m-%d_%H_%M")
-    output_dir = os.getcwd() + "\\data\\coupledline_samplers\\MMIC_coupledline_freqpower" \
+    output_dir = os.getcwd() + "\\data\\coupledline_samplers\\TEST_MMIC_coupledline_freqpower" \
             + now + "_Freq" \
             + str(config.frequency[0]) + "to" + str(config.frequency[-1])
     os.mkdir(output_dir)
@@ -202,7 +202,7 @@ if __name__ == "__main__":
             for power in tqdm(config.input_power_dBm, ascii=True, desc=string):
 
                 if config.specifyDUTinput:
-                    set_Pin(pna, coupling, power)
+                    set_Pout(pna, coupling, power)
                 else:
                     pna.set_power(power)
                 for i in range(1):

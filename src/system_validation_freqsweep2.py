@@ -10,7 +10,7 @@ import os
 
 if __name__ == "__main__":
 
-    config = SystemValidationFreqConfig(r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\\data\systemvalidation\systemvalidation_freq_config.json")
+    config = SystemValidationFreqConfig(r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\\data\systemvalidation\systemvalidation_freq_config2.json")
     now = datetime.now().strftime("%Y-%m-%d_%H_%M")
     output_dir = os.getcwd() + "\\data\\systemvalidation\\loadgain" \
             + now + "_Freq" \

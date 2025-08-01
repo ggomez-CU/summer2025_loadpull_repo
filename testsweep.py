@@ -1,8 +1,8 @@
 import subprocess
 
 # Define the paths to your Python scripts
-script1_path = ".\src\\MMIC_coupledline_phase.py"
-script2_path = ".\src\\MMIC_coupledline_phase copy.py"
+script1_path = ".\src\\system_validation_freqsweep.py"
+script2_path = ".\src\\system_validation_freqsweep2.py"
 
 # for i in range(5):
     # Run script1.py and wait for it to complete
