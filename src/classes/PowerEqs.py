@@ -55,10 +55,10 @@ def set_Pout(pna, coupling, output_desired, tolerance=0.1, max_limit_pna=2, min_
     return 0
 
 def get_PA_dc(dc_supply, gate_channel, drain_channel):
-    return{'gate current': get_current(gate_channel),
-    'gate voltage': get_current(gate_channel),
-    'drain current': get_current(gate_channel),
-    'drain voltage': get_current(gate_channel)}
+    return {'gate current': dc_supply.get_current(gate_channel),
+    'gate voltage': dc_supply.get_voltage(gate_channel),
+    'drain current': dc_supply.get_current(drain_channel),
+    'drain voltage': dc_supply.get_voltage(drain_channel)}
 
 def get_PA_gain(rf:dict, coupling:dict):
     rf_input = rf['input_awave']['dBm_mag'][0]+coupling['input coupling']
@@ -69,5 +69,8 @@ def get_PA_metrics(dc:dict, rf:dict, coupling:dict):
     rf_input = rf['input_awave']['dBm_mag'][0]+coupling['input coupling']
     rf_output = rf['output_bwave']['dBm_mag'][0]+coupling['output coupling']
     Pdc = dc['gate current']*dc['gate voltage']+ dc['drain current']*dc['drain voltage']
+    print(10**(rf_output/10))
+    print(10**(rf_input/10))
     return {'Gain': rf_output-rf_input,
-            'PAE': (rf_output-rf_input)/Pdc}
+            'PAE': .001*(10**(rf_output/10)-10**(rf_input/10))/Pdc*100,
+            'DC Power': Pdc}
