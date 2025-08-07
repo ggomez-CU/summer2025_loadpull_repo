@@ -1,64 +1,42 @@
 {
-    "Date and Time": "2025-08-06_13_01",
-    "Comments": "Sampler was not connected correctly. Fixed. 10mA current",
+    "Date and Time": "2025-08-07_12_33",
+    "Comments": "None",
     "Configuration": {
         "Frequency": [
-            10.9,
-            9.9,
-            11.9,
-            8.9
+            8,
+            8.5,
+            9,
+            9.5,
+            10,
+            10.5,
+            11,
+            11.5,
+            12
         ],
         "Sweep Type": "Gamma",
-        "Output Power (dBm)": [
-            20
+        "Input Power (dBm)": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
         ],
-        "Specifiy DUT output power": true,
+        "Specifiy DUT input power": true,
         "Gamma Magnitude List": [
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7
+            0
         ],
         "Gamma Phase List": [
-            -175,
-            -165,
-            -155,
-            -145,
-            -135,
-            -125,
-            -115,
-            -105,
-            -95,
-            -85,
-            -75,
-            -65,
-            -55,
-            -45,
-            -35,
-            -25,
-            -15,
-            -5,
-            5,
-            15,
-            25,
-            35,
-            45,
-            55,
-            65,
-            75,
-            85,
-            95,
-            105,
-            115,
-            125,
-            135,
-            145,
-            155,
-            165,
-            175
+            0
         ],
         "Rectangular Offset [x,y]": [
             0,
@@ -66,6 +44,13 @@
         ],
         "Real Impedance List": [],
         "Imaginary Impedance List": [],
+        "Gate Bias Voltages": [
+            1.9,
+            1.85,
+            1.8,
+            1.75,
+            1.7
+        ],
         "PNA": {
             "Address": "Defined in script GPIB",
             "Input port": "1",
@@ -146,6 +131,85 @@
             "Gate Channel": 3,
             "Drain Channel": 2,
             "Sampler Bias Channel": 1
+        }
+    },
+    "Load Point: 0j_0": {
+        "load_gamma": {
+            "real": 0.0,
+            "imag": 0.0
+        },
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.0542454
+                ],
+                "y_imag": [
+                    -0.02940233
+                ],
+                "dBm_mag": [
+                    -24.1941
+                ]
+            },
+            "output_awave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.003732229
+                ],
+                "y_imag": [
+                    0.0007417336
+                ],
+                "dBm_mag": [
+                    -48.3924
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.0751658
+                ],
+                "y_imag": [
+                    0.01451679
+                ],
+                "dBm_mag": [
+                    -22.32055
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.3604471
+                ],
+                "y_imag": [
+                    0.7508255
+                ],
+                "dBm_mag": [
+                    -1.588527
+                ]
+            }
+        },
+        "Power Meter": -6.41064202,
+        "Input Power": -17.0130098618,
+        "Samplers": {
+            "1": 0.0466394544,
+            "2": 0.0585549223,
+            "Bias": 1.25053,
+            "Bias Current": 8.39233e-05
+        },
+        "PA Performance": {
+            "Gain": 9.660087553350287,
+            "PAE": 10.466210198932092,
+            "DC Power": 0.78840425762
+        },
+        "DC Parameters": {
+            "gate current": 0.0,
+            "gate voltage": 1.7,
+            "drain current": 0.0281582,
+            "drain voltage": 27.9991
         }
     }
 }
