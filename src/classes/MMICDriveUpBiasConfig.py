@@ -51,7 +51,7 @@ class MMICDriveUpBiasConfig(TestConfig):
 
 		self.Z0 = Z0
 		self.frequency = [float(num) for num in self.config_file_json["Frequency"]]
-		self.input_power_dBm = [float(num) for num in self.config_file_json["Input Power (dBm)"]]
+		self.set_power_dBm = [float(num) for num in self.config_file_json["Set Power (dBm)"]]
 		self.sweep_type = self.config_file_json["Sweep Type"].lower()
 
 		self.output_IL = self.get_IL_mat(self.config_file_json["Files"]["Output Sparam IL (dB)"])
@@ -85,7 +85,12 @@ class MMICDriveUpBiasConfig(TestConfig):
 											self.config_file_json["Samplers"]["Bias"])
 
 		self.check_expected_config()
-		self.specifyDUTinput = self.config_file_json["Specifiy DUT input power"]
+		self.specifyDUTinput = False
+		self.specifyDUToutput = False
+		if self.config_file_json["Set Power Plane"] == "DUT input":
+			self.specifyDUTinput = True
+		if self.config_file_json["Set Power Plane"] == "DUT output":
+			self.specifyDUToutput = True
 		self.sweep_type_config()
 
 	def check_expected_config(self):

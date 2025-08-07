@@ -1,6 +1,6 @@
 {
-    "Date and Time": "2025-08-07_11_38",
-    "Comments": "",
+    "Date and Time": "2025-08-07_12_33",
+    "Comments": "None",
     "Configuration": {
         "Frequency": [
             8,
@@ -15,12 +15,21 @@
         ],
         "Sweep Type": "Gamma",
         "Input Power (dBm)": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
             17,
             18,
             19,
             20,
             21,
-            22
+            22,
+            23,
+            24
         ],
         "Specifiy DUT input power": true,
         "Gamma Magnitude List": [

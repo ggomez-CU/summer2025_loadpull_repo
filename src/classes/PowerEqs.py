@@ -14,7 +14,7 @@ def set_Pin(pna, coupling, input_desired, tolerance=0.1, max_limit_pna=2, min_li
     rf = pna.get_loadpull_data()
     error = get_Pin_comp(rf, coupling, input_desired)
     current_power = pna.get_power()
-    print(f"Setting power to {input_desired},", end="")
+    # print(f"\nSetting power to {input_desired},", end="")
     while(abs(error) > tolerance):
         if (current_power + error) > max_limit_pna:
             print(f"Attempted power exceeds specified limit of {max_limit_pna}: dBm")
@@ -25,7 +25,7 @@ def set_Pin(pna, coupling, input_desired, tolerance=0.1, max_limit_pna=2, min_li
         pna.set_power(float(current_power + error))
         time.sleep(0.5)
         current_power = pna.get_power()
-        print(f"{current_power},", end="")
+        # print(f"{current_power},", end="")
         rf = pna.get_loadpull_data()
         error = get_Pin_comp(rf, coupling, input_desired)
     return 0

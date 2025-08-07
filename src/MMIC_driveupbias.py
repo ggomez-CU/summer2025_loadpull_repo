@@ -12,8 +12,14 @@ import sys
 from optparse import OptionParser
 import io
 import math
-def updateplot(axs, line, data, coupling, idx):
+import traceback
+
+
+def updateplot(axs, line, data, coupling, idx, plots):
     keys_list = list(data.keys())
+
+    columns = ('Power (dB/dBm)')
+    rows = ['DUT Input (dBm)','DUT Output (dBm)','Gain','PAE','Pin','Pdc','Sampler 1','Sampler 2']
 
     outputdBm =  round(data[keys_list[0]]['wave data']['output_bwave']['dBm_mag'][0]+coupling['output coupling'],3)
     inputdBm = round(data[keys_list[0]]['wave data']['input_awave']['dBm_mag'][0]+coupling['input coupling'],3)
@@ -45,6 +51,7 @@ def updateplot(axs, line, data, coupling, idx):
             rowLabels=rows,
             colLabels=columns,
             loc='center')
+    return plots
 
 def main(config, options, visa_instrs):
 
@@ -70,7 +77,7 @@ def main(config, options, visa_instrs):
     config_file = upper_output_dir + "\\config_file.json"
     config_data = output_file_test_config_data(config_file, config, now, paragraph)
     
-    if not (options.force): 
+    if not (options.override): 
         print(" ==========\tTEST CONFIGURATION\t========== ")
         print(json.dumps(config_data, indent=4))
         print('\n\n')
@@ -80,10 +87,7 @@ def main(config, options, visa_instrs):
             print(f"Estimated Pout of the PreAmp: {[float(x)+30 for x in config.input_power_dBm]}")  
         expected_test_time(config)
 
-    columns = ('Power (dB/dBm)')
-    rows = ['DUT Input (dBm)','DUT Output (dBm)','Gain','PAE','Pin','Pdc','Sampler 1','Sampler 2']
-
-    if not options.verbose:
+    if options.quiet:
         text_trap = io.StringIO()
         sys.stdout = text_trap
 
@@ -118,8 +122,6 @@ def main(config, options, visa_instrs):
             plots = {}
 
         for idx, freq in enumerate(config.frequency):
-            
-    #region Set Instrumentation and Data to Frequency
             visa_instrs.pna.set_freq_start((float(freq)*1e9))
             visa_instrs.pna.set_freq_end((float(freq)*1e9))	
             visa_instrs.pm.set_freq((float(freq)*1e9))	
@@ -136,16 +138,14 @@ def main(config, options, visa_instrs):
             #Get calibration coefficients (power and sparameters)
             error_terms = config.get_error_terms_freq(freq)
             coupling = config.get_comp_freq(freq)
-            
-    #endregion
 
             if options.plot:
-                line.append(axs['Power'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
-                line.append(axs['Power'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
+                line.append(axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
+                line.append(axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
                 line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
                 line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
-                line.append(axs['Samplers'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, .150], marker='o', ms=4, linewidth=0,label='Sampler 1'))
-                line.append(axs['Samplers'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, .15], marker='o', ms=4, linewidth=0,label='Sampler 2'))
+                line.append(axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, .50], marker='o', ms=4, linewidth=0,label='Sampler 1'))
+                line.append(axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, .5], marker='o', ms=4, linewidth=0,label='Sampler 2'))
                 
                 axs['Frequency'].legend()
                 axs['Power'].legend()
@@ -159,12 +159,24 @@ def main(config, options, visa_instrs):
             string = str(round(freq,3)) + " GHz"
             time.sleep(2)
 
-            for power in tqdm(config.input_power_dBm, ascii=True, desc=string):
+            continue_power = True
+            current_PAE = 0 
+            for power in tqdm(config.set_power_dBm, ascii=True, desc=string):
 
-                if config.specifyDUTinput:
-                    set_Pin(visa_instrs.pna, coupling, power)
+                if continue_power:
+                    if config.specifyDUTinput:
+                        set_Pin(visa_instrs.pna, coupling, power)
+                    elif config.specifyDUToutput:
+                        set_Pout(visa_instrs.pna, coupling, power)
+                    else:
+                        visa_instrs.pna.set_power(power)
                 else:
-                    visa_instrs.pna.set_power(power)
+                    if config.specifyDUTinput:
+                        set_Pin(visa_instrs.pna, coupling, min(config.set_power_dBm))
+                    elif config.specifyDUToutput:
+                        set_Pout(visa_instrs.pna, coupling, min(config.set_power_dBm))
+                    else:
+                        visa_instrs.pna.set_power(min(power))
 
                 for loadpoint in config.loadpoints:
 
@@ -173,7 +185,6 @@ def main(config, options, visa_instrs):
                         if not visa_instrs.loadtuner.connected:
                             print("There is an error")
                             exit()
-                        print("Taking data")
                         time.sleep(1)
                         try:
                             rf_data = visa_instrs.pna.get_loadpull_data()
@@ -198,7 +209,6 @@ def main(config, options, visa_instrs):
                                         }}
                             visa_instrs.pm.write("INIT:CONT")
                             data.update(datatemp)
-
                             with open('temp.json', 'w') as f:
                                 json.dump(data,f,indent=4)
 
@@ -206,15 +216,19 @@ def main(config, options, visa_instrs):
                             shutil.copyfile('temp.json', output_file)
 
                             if options.plot:
-                                updateplot(axs, line, datatemp, coupling, (idx))
+                                plots = updateplot(axs, line, datatemp, coupling, (idx), plots)
                                 plt.pause(0.25)
                                 fig.canvas.draw()
                                 fig.canvas.flush_events()
 
                         except Exception as e:
                             print(f"Failed to collect data: {e}")
-                # line[6*idx+3][0].set_data(np.full(len(plots['power_gain']),float(freq)),plots['power_gain'])
-                # line[6*idx+4][0].set_data(np.full(len(plots['power_PAE']),float(freq)) ,plots['power_PAE'])
+                previous_PAE = current_PAE
+                current_PAE = plots['power_PAE'][-1]
+                if previous_PAE > current_PAE:
+                    continue_power = False
+                line[6*idx+3][0].set_data(np.full(len(plots['power_gain']),float(freq)),plots['power_gain'])
+                line[6*idx+4][0].set_data(np.full(len(plots['power_PAE']),float(freq)) ,plots['power_PAE'])
                 
 
 if __name__ == "__main__":
@@ -225,19 +239,32 @@ if __name__ == "__main__":
     parser.add_option("-p", "--plot",
                   action="store_true", dest="plot", default=False,
                   help="plot output data while running tests")
-    parser.add_option("-f", "--force",
-                  action="store_true", dest="force", default=False,
+    parser.add_option("-v", "--vulnerable",
+                  action="store_true", dest="vulnerable", default=False,
+                  help="will not run clean shutdown if system fails to execute correctly")
+    parser.add_option("-o", "--override",
+                  action="store_true", dest="override", default=False,
                   help="Run without checking valid config")
-    parser.add_option("-v", action="store_true", dest="verbose", default=True)
-    parser.add_option("-q", action="store_false", dest="verbose",
-                  help="don't print status messages to stdout")
+    parser.add_option("-q", "--quiet",
+                  action="store_true", dest="quiet", default=False,
+                  help="Run without checking valid config")
     parser.add_option("-i", "--informal",
                   action="store_true", dest="informal", default=False,
-                  help="no comment from user when initiated. Makes understanding the data harder later")
+                  help="No comment from user when initiated. Makes understanding the data harder later")
+    parser.add_option("-f", "--file", dest="filename",
+                  help="configuration file", metavar="FILE")
     (options, args) = parser.parse_args()
 
-    print(f"This test will run as quiet {options.verbose} forced {options.force} and plotted {options.plot}")
-    config = MMICDriveUpBiasConfig(r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\MMIC_driveupbias_config.json")
+
+    if options.filename:
+        print(f"The specified configuration filename is: {options.filename}")
+    else:
+        print("No configuration filename was provided.")
+        exit()
+
+    print(f"This test will run as quiet {options.quiet} overriden {options.override} and plotted {options.plot}")
+    config = MMICDriveUpBiasConfig(filename)
+    #r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\MMIC_driveupbias_config.json"
     visa_instrs = VisaInstrsClass(config)
 
     try:
@@ -246,8 +273,12 @@ if __name__ == "__main__":
         print("\nKeyboardInterrupt caught. Shutting down gracefully...")
     except Exception as e:
         print(f"Failed to execute: {e}")
+        traceback.print_exc() 
     finally:
-        print("Performing cleanup operations...")
-        visa_instrs.clean_shutdown()
-        print("Cleanup complete. Exiting program.")
+        if options.vulnerable:
+            print("Clean shutdown omitted")
+        else:
+            print("Performing cleanup operations...")
+            visa_instrs.clean_shutdown()  
+            print("Cleanup complete. Exiting program.")
         sys.exit(0) # Exit with status code 0 (success)

@@ -1,6 +1,6 @@
 {
-    "Date and Time": "2025-08-07_11_37",
-    "Comments": "",
+    "Date and Time": "2025-08-07_12_33",
+    "Comments": "None",
     "Configuration": {
         "Frequency": [
             8,
@@ -15,12 +15,21 @@
         ],
         "Sweep Type": "Gamma",
         "Input Power (dBm)": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
             17,
             18,
             19,
             20,
             21,
-            22
+            22,
+            23,
+            24
         ],
         "Specifiy DUT input power": true,
         "Gamma Magnitude List": [
@@ -122,6 +131,85 @@
             "Gate Channel": 3,
             "Drain Channel": 2,
             "Sampler Bias Channel": 1
+        }
+    },
+    "Load Point: 0j_0": {
+        "load_gamma": {
+            "real": 0.0,
+            "imag": 0.0
+        },
+        "wave data": {
+            "input_awave": {
+                "trace_name": "input_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.02421087
+                ],
+                "y_imag": [
+                    0.05023447
+                ],
+                "dBm_mag": [
+                    -25.07286
+                ]
+            },
+            "output_awave": {
+                "trace_name": "output_awave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    0.004234035
+                ],
+                "y_imag": [
+                    0.001651037
+                ],
+                "dBm_mag": [
+                    -46.85017
+                ]
+            },
+            "input_bwave": {
+                "trace_name": "input_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.01911915
+                ],
+                "y_imag": [
+                    -0.03852797
+                ],
+                "dBm_mag": [
+                    -27.32841
+                ]
+            },
+            "output_bwave": {
+                "trace_name": "output_bwave_trace",
+                "x": 67000000000.0,
+                "y_real": [
+                    -0.2914221
+                ],
+                "y_imag": [
+                    -0.8151758
+                ],
+                "dBm_mag": [
+                    -1.25264
+                ]
+            }
+        },
+        "Power Meter": -5.67107735,
+        "Input Power": -17.2260489581,
+        "Samplers": {
+            "1": 0.0577657037,
+            "2": 0.0551078449,
+            "Bias": 1.25074,
+            "Bias Current": 8.58307e-05
+        },
+        "PA Performance": {
+            "Gain": 10.256028581463607,
+            "PAE": 15.594792239292785,
+            "DC Power": 0.6160395978
+        },
+        "DC Parameters": {
+            "gate current": 0.0,
+            "gate voltage": 1.89993,
+            "drain current": 0.0220022,
+            "drain voltage": 27.999
         }
     }
 }

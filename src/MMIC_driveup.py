@@ -39,6 +39,7 @@ def updateplot(axs, line, data, coupling, idx):
             rowLabels=rows,
             colLabels=columns,
             loc='center')
+    return plots
 
 if __name__ == "__main__":
 
@@ -229,7 +230,7 @@ if __name__ == "__main__":
                 shutil.copyfile('temp.json', output_file)
 
                 if options.plot:
-                    updateplot(axs, line, datatemp, coupling, (idx))
+                    plots = updateplot(axs, line, datatemp, coupling, (idx))
                     plt.pause(0.25)
                     fig.canvas.draw()
                     fig.canvas.flush_events()

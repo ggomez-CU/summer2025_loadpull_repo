@@ -81,8 +81,12 @@ class VisaInstrsClass():
                 print(e)
 
         try:
+            print("Pinching off device")
+            time.sleep(5)
             self.dc_supply.set_channel(self.config.dc_supply_config.gate_channel,5,0.01) #channel voltage current
-            self.dc_supply.set_channel(self.config.dc_supply_config.drain_channel,0,0.01)
+            time.sleep(5)
+            print("Turning off device")
+            self.dc_supply.set_channel(self.config.dc_supply_config.drain_channel,0,0.1)
         except Exception as e:
             print("Could not turn off device. Possible fatal error.")
             print(e)
