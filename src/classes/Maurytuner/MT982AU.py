@@ -92,7 +92,7 @@ class MY982AU():
                 
     def get_position(self):
         return self.query("PORT:LOAD:TUNE:POS?")
-
+        
     def close(self):
         self.instr.close()
         self.connected = False

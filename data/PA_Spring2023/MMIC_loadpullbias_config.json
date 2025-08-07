@@ -1,6 +1,6 @@
 
 {
-    "Frequency":  [10.9],    
+    "Frequency":  [9.9,10.4,10.9,11.4,11.9],    
     "Sweep Type": "Gamma",
     "Output Power (dBm)":  [20],
     "Specifiy DUT output power": true,
@@ -9,6 +9,7 @@
     "Rectangular Offset [x,y]": [0,0],
     "Real Impedance List": [],
     "Imaginary Impedance List": [],
+    "Drain Bias Voltages": [1.9, 1.85, 1.8, 1.75, 1.7],
     "PNA":{
         "Address": "Defined in script GPIB",
         "Input port":"1",

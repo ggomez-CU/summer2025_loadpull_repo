@@ -20,14 +20,18 @@ def updateplot(axs, line, data, coupling, idx):
     plots['set_power'] = np.append(plots['set_power'],inputdBm)
     plots['power_PAE'] = np.append(plots['power_PAE'],data[keys_list[0]]['PA Performance']['PAE'])
     plots['power_gain'] = np.append(plots['power_gain'],data[keys_list[0]]['PA Performance']['Gain'])
+    plots['sampler1'] = np.append(plots['sampler1'],data[keys_list[0]]['Samplers']['1'])
+    plots['sampler2'] = np.append(plots['sampler2'],data[keys_list[0]]['Samplers']['2'])
 
     load = complex(data[keys_list[0]]['load_gamma']['real'],data[keys_list[0]]['load_gamma']['imag'])
 
     plots['gammaload'] = np.append(plots['gammaload'],load)
 
     line[0][0].set_data([np.angle(plots['gammaload'])], [np.abs(plots['gammaload'])])
-    line[4*idx+1][0].set_data(plots['set_power'],plots['power_gain'])
-    line[4*idx+2][0].set_data(plots['set_power'],plots['power_PAE'])
+    line[6*idx+1][0].set_data(plots['set_power'],plots['power_gain'])
+    line[6*idx+2][0].set_data(plots['set_power'],plots['power_PAE'])
+    line[6*idx+5][0].set_data(plots['set_power'],plots['sampler1'])
+    line[6*idx+6][0].set_data(plots['set_power'],plots['sampler2'])
     axs['MeasTable'].cla()
     axs['MeasTable'].axis('off')
     axs['MeasTable'].table(cellText=[[inputdBm],
@@ -35,7 +39,9 @@ def updateplot(axs, line, data, coupling, idx):
             [outputdBm-inputdBm],
             [round(data[keys_list[0]]['PA Performance']['PAE'],3)],
             [round(data[keys_list[0]]['Input Power'],3)],
-            [round(10*np.log10(data[keys_list[0]]['PA Performance']['DC Power'])+30,3)]],
+            [round(10*np.log10(data[keys_list[0]]['PA Performance']['DC Power'])+30,3)],
+            [round(data[keys_list[0]]['Samplers']['1'],3)],
+            [round(data[keys_list[0]]['Samplers']['2'],3)]],
             rowLabels=rows,
             colLabels=columns,
             loc='center')
@@ -126,7 +132,7 @@ if __name__ == "__main__":
 #end region
 
     columns = ('Power (dB/dBm)')
-    rows = ['DUT Input (dBm)','DUT Output (dBm)','Gain','PAE','Pin','Pdc']
+    rows = ['DUT Input (dBm)','DUT Output (dBm)','Gain','PAE','Pin','Pdc','Sampler 1','Sampler 2']
     if not (options.force): 
         input("Press Enter to continue...")
 
@@ -139,10 +145,11 @@ if __name__ == "__main__":
     if options.plot:
         plt.close(fig) 
         fig = plt.figure(constrained_layout=True)
-        axs = fig.subplot_mosaic([['Power','Frequency','Gamma'],[ 'MeasTable','MeasTable', 'MeasTable']],
+        axs = fig.subplot_mosaic([['Power','Frequency','Gamma'],[ 'Samplers','MeasTable', 'MeasTable']],
                             per_subplot_kw={"Gamma": {"projection": "polar"}})
         axs['Power'].set_title('Over Power')
         axs['Gamma'].set_title('Gamma')
+        axs['Samplers'].set_title('Samplers')
         axs['Frequency'].set_title('Over Frequency')
         axs['MeasTable'].set_title('Power Values')
         axs['Gamma'].grid(True)
@@ -177,17 +184,24 @@ if __name__ == "__main__":
             line.append(axs['Power'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
             line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
             line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
+            line.append(axs['Samplers'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, .150], marker='o', ms=4, linewidth=0,label='Sampler 1'))
+            line.append(axs['Samplers'].plot([min(config.output_power_dBm), max(config.output_power_dBm)],[0, .15], marker='o', ms=4, linewidth=0,label='Sampler 2'))
+            
             axs['Frequency'].legend()
             axs['Power'].legend()
             plots.update({'power_gain': np.array([])})
             plots.update({'power_PAE': np.array([])})
             plots.update({'set_power': np.array([])})
             plots.update({'gammaload': np.array([])})
+            plots.update({'sampler1': np.array([])})
+            plots.update({'sampler2': np.array([])})
 
         string = str(round(freq,3)) + " GHz"
         time.sleep(2)
 
         if config.specifyDUToutput:
+            loadtuner.set_gamma_complex(complex(0,0))
+            time.sleep(2)
             set_Pout(pna, coupling, config.output_power_dBm[0])
         else:
             pna.set_power(config.output_power_dBm[0])
@@ -217,10 +231,9 @@ if __name__ == "__main__":
                                 'Bias': dc_supply.get_voltage(config.dc_supply_config.sampler_channel),
                                 'Bias Current': dc_supply.get_current(config.dc_supply_config.sampler_channel)
                                 },
-                            'PA Performance':get_PA_metrics(dc_data,rf_data,coupling)
-                                },
+                            'PA Performance':get_PA_metrics(dc_data,rf_data,coupling),
                             'DC Parameters':dc_data
-                            }
+                            }}
                 pm.write("INIT:CONT")
                 data.update(datatemp)
 
@@ -235,8 +248,8 @@ if __name__ == "__main__":
                     plt.pause(0.25)
                     fig.canvas.draw()
                     fig.canvas.flush_events()
-        line[4*idx+3][0].set_data(np.full(len(plots['gammaload']),float(freq)),plots['power_gain'])
-        line[4*idx+4][0].set_data(np.full(len(plots['gammaload']),float(freq)) ,plots['power_PAE'])
+        line[6*idx+3][0].set_data(np.full(len(plots['gammaload']),float(freq)),plots['power_gain'])
+        line[6*idx+4][0].set_data(np.full(len(plots['gammaload']),float(freq)) ,plots['power_PAE'])
 pna.set_power(-27)
 pna.close()
 loadtuner.close()

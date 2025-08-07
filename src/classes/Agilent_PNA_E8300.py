@@ -43,6 +43,10 @@ class Agilent_PNA_E8300(VectorNetworkAnalyzerCtg1):
 		self.write(f"SOUR{channel}:POW{port}:LEV:IMM:AMPL {p_dBm}")
 	def get_power(self, channel:int=1, port:int=1):
 		return float(self.query(f"SOUR{channel}:POW{port}:LEV:IMM:AMPL?"))
+	def power_off(self, channel:int=1, port:int=1):
+		self.write(f"SOUR{channel}:POW{port}:MODE OFF")
+	def power_on(self, channel:int=1, port:int=1):
+		self.write(f"SOUR{channel}:POW{port}:MODE ON")
 	
 	def set_num_points(self, points:int, channel:int=1):
 		self.write(f"SENS{channel}:SWEEP:POIN {points}")

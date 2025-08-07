@@ -1,6 +1,6 @@
 {
-    "Date and Time": "2025-08-05_14_44",
-    "Comments": "19mA rf off. ",
+    "Date and Time": "2025-08-06_13_01",
+    "Comments": "Sampler was not connected correctly. Fixed. 10mA current",
     "Configuration": {
         "Frequency": [
             10.9,

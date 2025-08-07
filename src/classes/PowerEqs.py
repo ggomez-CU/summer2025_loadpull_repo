@@ -69,8 +69,6 @@ def get_PA_metrics(dc:dict, rf:dict, coupling:dict):
     rf_input = rf['input_awave']['dBm_mag'][0]+coupling['input coupling']
     rf_output = rf['output_bwave']['dBm_mag'][0]+coupling['output coupling']
     Pdc = dc['gate current']*dc['gate voltage']+ dc['drain current']*dc['drain voltage']
-    print(10**(rf_output/10))
-    print(10**(rf_input/10))
     return {'Gain': rf_output-rf_input,
             'PAE': .001*(10**(rf_output/10)-10**(rf_input/10))/Pdc*100,
             'DC Power': Pdc}
