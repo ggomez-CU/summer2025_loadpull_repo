@@ -20,5 +20,7 @@ from .Keysight_34400 import *
 from . Keithly_2230 import *
 from. PowerEqs import *
 from .MMICDriveUpConfig import *
+from .MMICDriveUpBiasConfig import *
 from .MMICLoadPullConfig import *
 from .MMICLoadPullBiasConfig import *
+from .VisaInstrsClass import *

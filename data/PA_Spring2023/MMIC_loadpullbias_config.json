@@ -9,7 +9,7 @@
     "Rectangular Offset [x,y]": [0,0],
     "Real Impedance List": [],
     "Imaginary Impedance List": [],
-    "Drain Bias Voltages": [1.9, 1.85, 1.8, 1.75, 1.7],
+    "Gate Bias Voltages": [1.9, 1.85, 1.8, 1.75, 1.7],
     "PNA":{
         "Address": "Defined in script GPIB",
         "Input port":"1",

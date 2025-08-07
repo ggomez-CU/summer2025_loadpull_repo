@@ -216,10 +216,9 @@ if __name__ == "__main__":
                                 '2': dmm2.fetch_voltage(),
                                 'Bias': dc_supply.get_voltage(config.dc_supply_config.sampler_channel)
                                 },
-                            'PA Performance':get_PA_metrics(dc_data,rf_data,coupling)
-                                },
+                            'PA Performance':get_PA_metrics(dc_data,rf_data,coupling),
                             'DC Parameters':dc_data
-                            }
+                            }}
                 pm.write("INIT:CONT")
                 data.update(datatemp)
 

@@ -1,5 +1,5 @@
 {
-    "Date and Time": "2025-08-07_11_40",
+    "Date and Time": "2025-08-07_11_38",
     "Comments": "",
     "Configuration": {
         "Frequency": [
@@ -122,85 +122,6 @@
             "Gate Channel": 3,
             "Drain Channel": 2,
             "Sampler Bias Channel": 1
-        }
-    },
-    "Load Point: 0j_0": {
-        "load_gamma": {
-            "real": 0.0,
-            "imag": 0.0
-        },
-        "wave data": {
-            "input_awave": {
-                "trace_name": "input_awave_trace",
-                "x": 67000000000.0,
-                "y_real": [
-                    2.104095e-06
-                ],
-                "y_imag": [
-                    -4.313774e-07
-                ],
-                "dBm_mag": [
-                    -113.3599
-                ]
-            },
-            "output_awave": {
-                "trace_name": "output_awave_trace",
-                "x": 67000000000.0,
-                "y_real": [
-                    1.856735e-06
-                ],
-                "y_imag": [
-                    1.334572e-06
-                ],
-                "dBm_mag": [
-                    -112.8162
-                ]
-            },
-            "input_bwave": {
-                "trace_name": "input_bwave_trace",
-                "x": 67000000000.0,
-                "y_real": [
-                    8.766705e-05
-                ],
-                "y_imag": [
-                    -2.776582e-05
-                ],
-                "dBm_mag": [
-                    -80.72812
-                ]
-            },
-            "output_bwave": {
-                "trace_name": "output_bwave_trace",
-                "x": 67000000000.0,
-                "y_real": [
-                    -3.826214e-05
-                ],
-                "y_imag": [
-                    -0.0001702602
-                ],
-                "dBm_mag": [
-                    -75.16376
-                ]
-            }
-        },
-        "Power Meter": -79.7911939,
-        "Input Power": -27.0,
-        "Samplers": {
-            "1": -3.78879752e-06,
-            "2": -3.22892038e-06,
-            "Bias": 0.0,
-            "Bias Current": 0.0
-        },
-        "PA Performance": {
-            "Gain": 25.217975801155305,
-            "PAE": Infinity,
-            "DC Power": 0.0
-        },
-        "DC Parameters": {
-            "gate current": 0.0,
-            "gate voltage": 0.0,
-            "drain current": 0.0,
-            "drain voltage": 0.0
         }
     }
 }
