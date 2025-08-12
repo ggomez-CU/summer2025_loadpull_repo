@@ -36,10 +36,13 @@ classdef CoupledLinePhaseClass
         complex_load
 
         reshapesize
+
+        LUT
     end
 
     methods
         function obj = CoupledLinePhaseClass(folder)
+            obj.LUT = LUTClass('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/LUT');
             obj = obj.loaddata(folder);
            
         end
@@ -78,7 +81,7 @@ classdef CoupledLinePhaseClass
                 %get cal
                 % temp.Config
                 [folder2, ~, ~] = fileparts(temp.Configuration.Files.OutputCoupling_dB_);
-                obj.cal = CalibrationClass(folder2);
+                obj.cal = CalibrationClass(replace(folder2,'C:/Users/grgo8200/Documents/GitHub','/Users/gracegomez/Documents/Research Code Python'));
                 data_idx = 1;
                 fn = fieldnames(temp);
                 for lp_idx=1:(length(fn))
@@ -88,7 +91,7 @@ classdef CoupledLinePhaseClass
                         obj.output_awave(:,data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.output_awave.y_real+(j*temp.(fn{lp_idx}).waveData.output_awave.y_imag);
                         obj.output_bwave(:,data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.output_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.output_bwave.y_imag);
                         
-                        obj.complex_load(:,data_idx,freq_idx) = temp.(fn{lp_idx}).load_gamma.real+(j*temp.(fn{lp_idx}).load_gamma.imag);
+                        obj.complex_load(:,data_idx,freq_idx) = obj.LUT.tuner2s11(temp.(fn{lp_idx}).load_gamma.real+(j*temp.(fn{lp_idx}).load_gamma.imag),obj.freq(freq_idx));
         
                         obj.powermeter(:,data_idx,freq_idx) =  temp.(fn{lp_idx}).PowerMeter;
         

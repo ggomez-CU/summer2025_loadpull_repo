@@ -46,13 +46,12 @@ classdef LoadFreqRawClass
                 data_idx = 1
                 for lp_idx=3:(length(fn))
                     try
-                        obj.s11(data_idx, freq_idx) = temp.(fn{lp_idx}).PNAS11.real+(j*temp.(fn{lp_idx}).PNAS11.imag);
+                        obj.s11(data_idx, freq_idx) = temp.(fn{lp_idx}).s11.real+(j*temp.(fn{lp_idx}).s11.imag);
                         obj.tunerload(data_idx, freq_idx) = temp.(fn{lp_idx}).load_gamma.real+(j*temp.(fn{lp_idx}).load_gamma.imag);
                         data_idx = data_idx+1;
                     catch
-
                         disp("sm up")
-                        disp(lp_idx)
+                        disp(fn{lp_idx})
                     end
                end
         end

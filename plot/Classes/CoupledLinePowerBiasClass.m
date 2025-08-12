@@ -23,11 +23,15 @@ classdef CoupledLinePowerBiasClass
         bias
         sampler1
         sampler2
+        folder
+
+        biasnum
     end
 
     methods
         function obj = CoupledLinePowerBiasClass(folder)
             obj = obj.loaddata(folder);
+            obj.folder = folder;
            
         end
         function obj = loaddata(obj, folder)
@@ -49,6 +53,8 @@ classdef CoupledLinePowerBiasClass
                 catch
                 end
             end
+            
+            obj = obj.resortshape();
         end
 
         function obj = freq2table(obj, freq_idx, filename)
@@ -61,28 +67,30 @@ classdef CoupledLinePowerBiasClass
                 %get cal
                 % temp.Config
                 [folder2, ~, ~] = fileparts(temp.Configuration.Files.OutputCoupling_dB_);
-                obj.cal = CalibrationClass(folder2);
+                obj.cal = CalibrationClass(replace(folder2,'C:/Users/grgo8200/Documents/GitHub','/Users/gracegomez/Documents/Research Code Python'));
                 data_idx = 1;
+
+                obj.biasnum = size(temp.Configuration.Samplers.Bias,1);
                 fn = fieldnames(temp);
                 for lp_idx=1:(length(fn))
                     try
-                        obj.input_awave(:,data_idx) = temp.(fn{lp_idx}).waveData.input_awave.y_real+(j*temp.(fn{lp_idx}).waveData.input_awave.y_imag);
-                        obj.input_bwave(:,data_idx) = temp.(fn{lp_idx}).waveData.input_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.input_bwave.y_imag);
-                        obj.output_awave(:,data_idx) = temp.(fn{lp_idx}).waveData.output_awave.y_real+(j*temp.(fn{lp_idx}).waveData.output_awave.y_imag);
-                        obj.output_bwave(:,data_idx) = temp.(fn{lp_idx}).waveData.output_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.output_bwave.y_imag);
+                        obj.input_awave(data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.input_awave.y_real+(j*temp.(fn{lp_idx}).waveData.input_awave.y_imag);
+                        obj.input_bwave(data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.input_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.input_bwave.y_imag);
+                        obj.output_awave(data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.output_awave.y_real+(j*temp.(fn{lp_idx}).waveData.output_awave.y_imag);
+                        obj.output_bwave(data_idx,freq_idx) = temp.(fn{lp_idx}).waveData.output_bwave.y_real+(j*temp.(fn{lp_idx}).waveData.output_bwave.y_imag);
         
-                        obj.powermeter(:,data_idx) =  temp.(fn{lp_idx}).PowerMeter;
+                        obj.powermeter(data_idx,freq_idx) =  temp.(fn{lp_idx}).PowerMeter;
         
-                        obj.input_awave_dBm(:,data_idx) =  temp.(fn{lp_idx}).waveData.input_awave.dBm_mag;
-                        obj.input_bwave_dBm(:,data_idx) =  temp.(fn{lp_idx}).waveData.input_bwave.dBm_mag;
-                        obj.output_awave_dBm(:,data_idx) =  temp.(fn{lp_idx}).waveData.output_awave.dBm_mag;
-                        obj.output_bwave_dBm(:,data_idx) =  temp.(fn{lp_idx}).waveData.output_bwave.dBm_mag;
+                        obj.input_awave_dBm(data_idx,freq_idx) =  temp.(fn{lp_idx}).waveData.input_awave.dBm_mag;
+                        obj.input_bwave_dBm(data_idx,freq_idx) =  temp.(fn{lp_idx}).waveData.input_bwave.dBm_mag;
+                        obj.output_awave_dBm(data_idx,freq_idx) =  temp.(fn{lp_idx}).waveData.output_awave.dBm_mag;
+                        obj.output_bwave_dBm(data_idx,freq_idx) =  temp.(fn{lp_idx}).waveData.output_bwave.dBm_mag;
                         
-                        obj.sampler1(:,data_idx) =  temp.(fn{lp_idx}).Samplers.x1;
-                        obj.sampler2(:,data_idx) =  temp.(fn{lp_idx}).Samplers.x2;
-                        obj.bias(:,data_idx) =  temp.(fn{lp_idx}).Samplers.Bias;
+                        obj.sampler1(data_idx,freq_idx) =  temp.(fn{lp_idx}).Samplers.x1;
+                        obj.sampler2(data_idx,freq_idx) =  temp.(fn{lp_idx}).Samplers.x2;
+                        obj.bias(data_idx,freq_idx) =  temp.(fn{lp_idx}).Samplers.Bias;
 
-                        obj.inputpower(:,data_idx) = temp.(fn{lp_idx}).InputPower;
+                        obj.inputpower(data_idx,freq_idx) = temp.(fn{lp_idx}).InputPower;
 
                         data_idx = data_idx+1;
                     catch
@@ -92,8 +100,72 @@ classdef CoupledLinePowerBiasClass
                 end
                 [obj.DUT_input_dBm,obj.DUT_output_dBm] = ...
                             obj.cal.power_correction(obj.input_awave_dBm, obj.output_bwave_dBm,obj.freq(freq_idx));
-                        
-                obj = obj.resortshape(size(temp.Configuration.Samplers.Bias,1));
+               
+        end
+
+        function generate_report(obj, filename)
+            files = dir(fullfile(obj.folder,"*.json"));
+            file = strcat(obj.folder, '/', files(1).name);
+            fid = fopen(file); 
+            raw = fread(fid,inf); 
+            str = char(raw'); 
+            fclose(fid); 
+            temp = jsondecode(str);
+            config = temp.Configuration;
+            fn = fieldnames(config);
+            import mlreportgen.ppt.*
+            ppt = Presentation(strcat(filename,'pptx'));
+
+            titleSlide = add(ppt,'Title Slide');
+            replace(titleSlide,'Title','Sampler Coupling Report');
+            replace(titleSlide,'Subtitle',temp.Comments);
+            
+            configSlide = add(ppt,'Title and Content');
+            replace(configSlide,'Title','Test Configuration');
+            content = {'Frequencies: (GHz)', {regexprep(num2str(config.Frequency'),'\s+',', ')},...
+            'Input Powers: (dBm)', {regexprep(num2str(config.(fn{3})'),'\s+',', ')},...
+            'Sampler DC Bias', {regexprep(num2str(config.Samplers.Bias),'\s+',', ')},...
+            'Load Impedances: ',{'Gamma Magnitude: ', {regexprep(num2str(config.GammaMagnitudeList'),'\s+',', ')}, ...
+            'Gamma Phase',{regexprep(num2str(config.GammaMagnitudeList'),'\s+',', ') } } };
+            replace(configSlide,'Content',content);
+
+            obj.samplerspng()
+            largesignalSlide = add(ppt,'Title and Picture');
+            plot1 = Picture('ls_temp.png');
+            replace(largesignalSlide,'Title','Large Signal Performance');
+            replace(largesignalSlide,'Picture',plot1);
+
+            close(ppt);
+            rptview(ppt);
+        end
+        function samplerspng(obj)
+            figure()
+            title("Sampler Performance")
+            subplot(2,2,[1 3]) %over frequency
+            scatter(obj.freq,obj.sampler1');
+            ylabel('Sampler 1')
+            xlabel('Frequency (GHz)')
+            yyaxis right
+            scatter(obj.freq,obj.sampler2');
+            ylabel('Sampler 2')
+            subplot(2,2,2)
+            yyaxis left
+            plot(obj.DUT_output_dBm,log10(obj.sampler1-obj.sampler2(1,:)));
+            ylabel('log Sampler 1')
+            yyaxis right
+            plot(obj.DUT_output_dBm,log10(obj.sampler2-obj.sampler2(1,:)));
+            ylabel('log Sampler 2')
+            xlabel('DUT Output power (dBm)')
+            subplot(2,2,4)
+            yyaxis left
+            plot(obj.DUT_output_dBm,(obj.sampler1));
+            ylabel(' Sampler 1')
+            yyaxis right
+            plot(obj.DUT_output_dBm,(obj.sampler2));
+            ylabel(' Sampler 2')
+            xlabel('DUT Output power (dBm)')
+            saveas(gcf,'ls_temp.png');
+            close all
         end
 
         function plotloglog(obj)
@@ -104,25 +176,25 @@ classdef CoupledLinePowerBiasClass
             plot(obj.input_awave_dBm,(obj.sampler2(1,:)-obj.sampler2))
         end
 
-        function obj = resortshape(obj, sampleidx)
-            sizing = [size(obj.input_awave_dBm,2)/sampleidx, sampleidx];
-            % [~, idx] = sort(obj.bias);
-            obj.input_awave_dBm = reshape(obj.input_awave_dBm, sizing);
-            obj.input_bwave_dBm = reshape(obj.input_bwave_dBm, sizing);
-            obj.output_awave_dBm = reshape(obj.output_awave_dBm, sizing);
-            obj.output_bwave_dBm = reshape(obj.output_bwave_dBm, sizing);
+        function obj = resortshape(obj)
+            sizing = [size(obj.input_awave_dBm,1)/obj.biasnum, obj.biasnum];
+            [~, idx] = sort(obj.bias);
+            obj.input_awave_dBm = reshape(obj.input_awave_dBm(idx,:), sizing);
+            obj.input_bwave_dBm = reshape(obj.input_bwave_dBm(idx,:), sizing);
+            obj.output_awave_dBm = reshape(obj.output_awave_dBm(idx,:), sizing);
+            obj.output_bwave_dBm = reshape(obj.output_bwave_dBm(idx,:), sizing);
 
-            obj.powermeter = reshape(obj.powermeter, sizing);
-            obj.inputpower = reshape(obj.inputpower, sizing);
+            obj.powermeter = reshape(obj.powermeter(idx,:), sizing);
+            obj.inputpower = reshape(obj.inputpower(idx,:), sizing);
 
-            obj.input_awave = reshape(obj.input_awave, sizing);
-            obj.input_bwave = reshape(obj.input_bwave, sizing);
-            obj.output_awave = reshape(obj.output_awave, sizing);
-            obj.output_bwave = reshape(obj.output_bwave, sizing);
+            obj.input_awave = reshape(obj.input_awave(idx,:), sizing);
+            obj.input_bwave = reshape(obj.input_bwave(idx,:), sizing);
+            obj.output_awave = reshape(obj.output_awave(idx,:), sizing);
+            obj.output_bwave = reshape(obj.output_bwave(idx,:), sizing);
 
-            obj.bias = reshape(obj.bias, sizing);
-            obj.sampler2 = reshape(obj.sampler2, sizing);
-            obj.sampler1 = reshape(obj.sampler1, sizing);
+            obj.bias = reshape(obj.bias(idx,:), sizing);
+            obj.sampler2 = reshape(obj.sampler2(idx,:), sizing);
+            obj.sampler1 = reshape(obj.sampler1(idx,:), sizing);
 
             obj.DUT_input_dBm = reshape(obj.DUT_input_dBm, sizing);
             obj.DUT_output_dBm = reshape(obj.DUT_output_dBm, sizing);
