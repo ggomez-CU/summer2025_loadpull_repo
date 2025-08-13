@@ -82,9 +82,9 @@ def main(config, options, visa_instrs):
         print(json.dumps(config_data, indent=4))
         print('\n\n')
         if config.specifyDUTinput:
-            print(f"Estimated Pout of the PreAmp: {[float(x) for x in config.input_power_dBm]}")
+            print(f"Estimated Pout of the PreAmp: {[float(x) for x in config.set_power_dBm]}")
         else:
-            print(f"Estimated Pout of the PreAmp: {[float(x)+30 for x in config.input_power_dBm]}")  
+            print(f"Estimated Pout of the PreAmp: {[float(x)+30 for x in config.set_power_dBm]}")  
         expected_test_time(config)
 
     if options.quiet:
@@ -140,12 +140,12 @@ def main(config, options, visa_instrs):
             coupling = config.get_comp_freq(freq)
 
             if options.plot:
-                line.append(axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
-                line.append(axs['Power'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
+                line.append(axs['Power'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
+                line.append(axs['Power'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
                 line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[-0.05, 0.5], marker='o', ms=4, linewidth=0,label='Gain'))
                 line.append(axs['Frequency'].plot([min(config.frequency), max(config.frequency)],[0, 50], marker='o', ms=4, linewidth=0,label='PAE'))
-                line.append(axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, .50], marker='o', ms=4, linewidth=0,label='Sampler 1'))
-                line.append(axs['Samplers'].plot([min(config.input_power_dBm), max(config.input_power_dBm)],[0, .5], marker='o', ms=4, linewidth=0,label='Sampler 2'))
+                line.append(axs['Samplers'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[0, .50], marker='o', ms=4, linewidth=0,label='Sampler 1'))
+                line.append(axs['Samplers'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[0, .5], marker='o', ms=4, linewidth=0,label='Sampler 2'))
                 
                 axs['Frequency'].legend()
                 axs['Power'].legend()
@@ -191,7 +191,7 @@ def main(config, options, visa_instrs):
                             dc_data = get_PA_dc(visa_instrs.dc_supply, 
                                                             config.dc_supply_config.gate_channel, 
                                                             config.dc_supply_config.drain_channel)             
-                            datatemp = {'Load Point: '+ str(loadpoint) + '_' + str(i): 
+                            datatemp = {'Load Point: '+ str(power) + '_' + str(loadpoint) + '_' + str(i): 
                                         {'load_gamma': 
                                             {'real': loadpoint.real,
                                             'imag': loadpoint.imag},
@@ -263,8 +263,8 @@ if __name__ == "__main__":
         exit()
 
     print(f"This test will run as quiet {options.quiet} overriden {options.override} and plotted {options.plot}")
-    config = MMICDriveUpBiasConfig(filename)
-    #r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\MMIC_driveupbias_config.json"
+    config = MMICDriveUpBiasConfig(options.filename)
+    #r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\MMIC_driveupbias_loadpull_config.json"
     visa_instrs = VisaInstrsClass(config)
 
     try:
