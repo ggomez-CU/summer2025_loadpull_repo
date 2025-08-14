@@ -6,8 +6,8 @@ import time
 
 def main():
 
-    data = {}
-    output_file = os.getcwd() + "\\temp.json"
+    data = {"Testing":1}
+    output_file = os.getcwd() + "/help.json"
 
     with open(output_file, 'w') as f:
         json.dump(data, f, indent = 4)
@@ -18,7 +18,7 @@ def main():
             data.update(thetime)
             with open('temp.json', 'w') as f:
                 json.dump(data,f,indent=4)
-
+                
             os.remove(output_file)
             shutil.copyfile('temp.json', output_file)
         except:
