@@ -103,7 +103,8 @@ def main(config, options, visa_instrs):
             }
         visa_instrs.pna.power_on()
         config_bias = config_data
-        lower_output_dir = upper_output_dir + f'\\draincurrent_{round(dc_init["Initial DC Parameters"]["drain current"]*1000,3)}mA'
+        lower_output_dir = upper_output_dir + f'\\draincurrent_{bias}mA'
+        # lower_output_dir = upper_output_dir + f'\\draincurrent_{round(dc_init["Initial DC Parameters"]["drain current"]*1000,3)}mA'
         os.mkdir(lower_output_dir)
         if options.plot:
             plt.close(fig) 

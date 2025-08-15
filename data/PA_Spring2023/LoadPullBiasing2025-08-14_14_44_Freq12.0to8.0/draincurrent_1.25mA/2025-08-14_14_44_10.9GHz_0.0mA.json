@@ -192,73 +192,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.06993579
+                    -0.08394768
                 ],
                 "y_imag": [
-                    -0.08658195
+                    -0.09873852
                 ],
                 "dBm_mag": [
-                    -19.07018
+                    -17.74781
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.003169201
+                    -0.07165267
                 ],
                 "y_imag": [
-                    0.05766077
+                    -0.04442944
                 ],
                 "dBm_mag": [
-                    -24.76929
+                    -21.48248
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3028889
+                    -0.254351
                 ],
                 "y_imag": [
-                    -0.3212476
+                    0.4492097
                 ],
                 "dBm_mag": [
-                    -7.100952
+                    -5.743293
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.01444873
+                    0.4951636
                 ],
                 "y_imag": [
-                    -0.3908759
+                    -0.3587943
                 ],
                 "dBm_mag": [
-                    -8.153293
+                    -4.272209
                 ]
             }
         },
-        "Power Meter": -22.2242531,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.2783808,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0487921932,
-            "2": 0.0254618658,
-            "Bias": 0.00020504,
+            "1": 0.058328101,
+            "2": 0.0314615077,
+            "Bias": 0.000216484,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -2.0612771988446976,
-            "PAE": -33565.54909609506,
-            "DC Power": 5.2410582917e-05
+            "Gain": 0.055485553312305314,
+            "PAE": 945.1101281329987,
+            "DC Power": 6.789489060000001e-05
         },
         "DC Parameters": {
-            "gate current": 4.19617e-05,
-            "gate voltage": 1.24901,
+            "gate current": 5.43594e-05,
+            "gate voltage": 1.249,
             "drain current": 0.0,
-            "drain voltage": 0.00102234
+            "drain voltage": 0.0010767
         }
     },
     "Load Point: 16.0_(-0.8693332436601614-0.23293714059226892j)_0": {
@@ -271,73 +271,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.0630191
+                    0.0562064
                 ],
                 "y_imag": [
-                    -0.09154859
+                    0.1164886
                 ],
                 "dBm_mag": [
-                    -19.08243
+                    -17.76536
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.01023317
+                    0.04598283
                 ],
                 "y_imag": [
-                    0.05737713
+                    0.07312284
                 ],
                 "dBm_mag": [
-                    -24.68923
+                    -21.27181
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.2457519
+                    0.4274382
                 ],
                 "y_imag": [
-                    -0.3817685
+                    -0.2904419
                 ],
                 "dBm_mag": [
-                    -6.858353
+                    -5.733913
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.03280945
+                    -0.5677542
                 ],
                 "y_imag": [
-                    -0.3913944
+                    0.2150989
                 ],
                 "dBm_mag": [
-                    -8.117296
+                    -4.334301
                 ]
             }
         },
-        "Power Meter": -22.348542,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5073648,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.04678227,
-            "2": 0.0256548381,
-            "Bias": 0.000185966,
+            "1": 0.060041235,
+            "2": 0.0293408256,
+            "Bias": 0.000209808,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -2.0130301988446995,
-            "PAE": -27277.116009111855,
-            "DC Power": 6.3128813959e-05
+            "Gain": 0.010943553312305454,
+            "PAE": 152.59727596083007,
+            "DC Power": 8.218001704499999e-05
         },
         "DC Parameters": {
-            "gate current": 5.05447e-05,
-            "gate voltage": 1.24897,
+            "gate current": 6.58035e-05,
+            "gate voltage": 1.24887,
             "drain current": 0.0,
-            "drain voltage": 0.00091362
+            "drain voltage": 0.00103664
         }
     },
     "Load Point: 16.0_(-0.815677008332985-0.38035643556662957j)_0": {
@@ -350,73 +350,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.09751872
+                    0.09813063
                 ],
                 "y_imag": [
-                    0.05287899
+                    0.08378538
                 ],
                 "dBm_mag": [
-                    -19.0988
+                    -17.78596
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.007377369
+                    0.06191448
                 ],
                 "y_imag": [
-                    -0.05850413
+                    0.06281862
                 ],
                 "dBm_mag": [
-                    -24.58776
+                    -21.09044
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3697698
+                    0.3576822
                 ],
                 "y_imag": [
-                    0.2803186
+                    -0.3721956
                 ],
                 "dBm_mag": [
-                    -6.669394
+                    -5.74358
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1607821
+                    -0.4324754
                 ],
                 "y_imag": [
-                    0.3617892
+                    0.4172235
                 ],
                 "dBm_mag": [
-                    -8.048139
+                    -4.4236
                 ]
             }
         },
-        "Power Meter": -22.3272638,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5371943,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0451398069,
-            "2": 0.0268169068,
-            "Bias": 0.000183105,
+            "1": 0.0609334143,
+            "2": 0.0274973611,
+            "Bias": 0.000213623,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.9275031988446987,
-            "PAE": -32368.276534008426,
-            "DC Power": 5.121161056e-05
+            "Gain": -0.05775544668769683,
+            "PAE": -857.3430859490543,
+            "DC Power": 7.6225640576e-05
         },
         "DC Parameters": {
-            "gate current": 4.1008e-05,
-            "gate voltage": 1.24882,
+            "gate current": 6.10352e-05,
+            "gate voltage": 1.24888,
             "drain current": 0.0,
-            "drain voltage": 0.00105762
+            "drain voltage": 0.000948906
         }
     },
     "Load Point: 16.0_(-0.7372368398600927-0.5162187927159414j)_0": {
@@ -429,73 +429,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.09903313
+                    -0.07705401
                 ],
                 "y_imag": [
-                    -0.04944015
+                    -0.1030691
                 ],
                 "dBm_mag": [
-                    -19.11797
+                    -17.80925
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04785245
+                    -0.0316026
                 ],
                 "y_imag": [
-                    -0.03609211
+                    -0.08409354
                 ],
                 "dBm_mag": [
-                    -24.44604
+                    -20.93102
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4635187
+                    -0.4799969
                 ],
                 "y_imag": [
-                    -0.09164172
+                    0.1883172
                 ],
                 "dBm_mag": [
-                    -6.512128
+                    -5.753463
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3946225
+                    0.5099495
                 ],
                 "y_imag": [
-                    0.06553479
+                    -0.3044326
                 ],
                 "dBm_mag": [
-                    -7.958211
+                    -4.525604
                 ]
             }
         },
-        "Power Meter": -22.226722,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5897477,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0432613623,
-            "2": 0.0280117576,
-            "Bias": 0.000191689,
+            "1": 0.0615771973,
+            "2": 0.026475572,
+            "Bias": 0.000201225,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.8184051988446992,
-            "PAE": -28752.097791219167,
-            "DC Power": 5.4784923270000006e-05
+            "Gain": -0.13646944668769834,
+            "PAE": -2281.867201716906,
+            "DC Power": 6.6704912316e-05
         },
         "DC Parameters": {
-            "gate current": 4.3869e-05,
-            "gate voltage": 1.24883,
+            "gate current": 5.34058e-05,
+            "gate voltage": 1.24902,
             "drain current": 0.0,
-            "drain voltage": 0.000980377
+            "drain voltage": 0.00106239
         }
     },
     "Load Point: 16.0_(-0.6363961030678927-0.6363961030678928j)_0": {
@@ -508,73 +508,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1101869
+                    -0.07869821
                 ],
                 "y_imag": [
-                    -0.006410314
+                    0.1013866
                 ],
                 "dBm_mag": [
-                    -19.14272
+                    -17.83236
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.0217053
+                    -0.08224896
                 ],
                 "y_imag": [
-                    -0.05730984
+                    0.03946291
                 ],
                 "dBm_mag": [
-                    -24.25328
+                    -20.79761
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4554816
+                    0.2229687
                 ],
                 "y_imag": [
-                    0.1533961
+                    0.464887
                 ],
                 "dBm_mag": [
-                    -6.363996
+                    -5.753879
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3468109
+                    -0.4214213
                 ],
                 "y_imag": [
-                    0.2099206
+                    -0.4080554
                 ],
                 "dBm_mag": [
-                    -7.84245
+                    -4.63309
                 ]
             }
         },
-        "Power Meter": -22.3783421,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.7172365,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0412389193,
-            "2": 0.0294729996,
-            "Bias": 0.00018692,
+            "1": 0.0613612082,
+            "2": 0.0259656667,
+            "Bias": 0.000208855,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.6778941988446974,
-            "PAE": -26779.323041428972,
-            "DC Power": 5.47879941e-05
+            "Gain": -0.22084544668769368,
+            "PAE": -3285.5487938243855,
+            "DC Power": 7.3857126258e-05
         },
         "DC Parameters": {
-            "gate current": 4.3869e-05,
-            "gate voltage": 1.2489,
+            "gate current": 5.91278e-05,
+            "gate voltage": 1.24911,
             "drain current": 0.0,
-            "drain voltage": 0.00103951
+            "drain voltage": 0.00104332
         }
     },
     "Load Point: 16.0_(-0.5162187927159413-0.7372368398600928j)_0": {
@@ -587,73 +587,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.01978896
+                    0.08953386
                 ],
                 "y_imag": [
-                    0.1082251
+                    -0.09142935
                 ],
                 "dBm_mag": [
-                    -19.17061
+                    -17.85802
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.05947375
+                    0.09120301
                 ],
                 "y_imag": [
-                    -0.0200263
+                    -0.01413345
                 ],
                 "dBm_mag": [
-                    -24.04704
+                    -20.69675
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1537957
+                    -0.07020032
                 ],
                 "y_imag": [
-                    0.4620441
+                    -0.5102634
                 ],
                 "dBm_mag": [
-                    -6.24999
+                    -5.762679
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1602089
+                    0.3651476
                 ],
                 "y_imag": [
-                    0.3802205
+                    0.4487459
                 ],
                 "dBm_mag": [
-                    -7.689523
+                    -4.753369
                 ]
             }
         },
-        "Power Meter": -22.2603376,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.7448935,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0390182828,
-            "2": 0.0311123603,
-            "Bias": 0.000187874,
+            "1": 0.0606807879,
+            "2": 0.0261458382,
+            "Bias": 0.000200272,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.4970771988446998,
-            "PAE": -25901.167464329315,
-            "DC Power": 5.120915008e-05
+            "Gain": -0.31546444668769524,
+            "PAE": -4543.575636548389,
+            "DC Power": 7.5026773125e-05
         },
         "DC Parameters": {
-            "gate current": 4.1008e-05,
-            "gate voltage": 1.24876,
+            "gate current": 6.00815e-05,
+            "gate voltage": 1.24875,
             "drain current": 0.0,
-            "drain voltage": 0.0010767
+            "drain voltage": 0.000934601
         }
     },
     "Load Point: 16.0_(-0.3803564355666294-0.8156770083329851j)_0": {
@@ -666,73 +666,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1066972
+                    -0.08798864
                 ],
                 "y_imag": [
-                    -0.02502533
+                    0.09243305
                 ],
                 "dBm_mag": [
-                    -19.20437
+                    -17.88189
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.01350348
+                    -0.09321465
                 ],
                 "y_imag": [
-                    -0.06310964
+                    -8.009814e-05
                 ],
                 "dBm_mag": [
-                    -23.80367
+                    -20.61031
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4546226
+                    -0.01850118
                 ],
                 "y_imag": [
-                    0.1899043
+                    0.5153884
                 ],
                 "dBm_mag": [
-                    -6.14849
+                    -5.751715
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3984523
+                    -0.3655145
                 ],
                 "y_imag": [
-                    0.1361184
+                    -0.4378493
                 ],
                 "dBm_mag": [
-                    -7.513098
+                    -4.876988
                 ]
             }
         },
-        "Power Meter": -22.0084124,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.9156247,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.037006837,
-            "2": 0.0334027564,
-            "Bias": 0.000214577,
+            "1": 0.0595970877,
+            "2": 0.0269265706,
+            "Bias": 0.000209808,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.286892198844697,
-            "PAE": -20678.828297909105,
-            "DC Power": 5.5977277122000006e-05
+            "Gain": -0.415213446687698,
+            "PAE": -6278.6245571057225,
+            "DC Power": 7.026935584800001e-05
         },
         "DC Parameters": {
-            "gate current": 4.48227e-05,
+            "gate current": 5.62668e-05,
             "gate voltage": 1.24886,
             "drain current": 0.0,
-            "drain voltage": 0.00101376
+            "drain voltage": 0.00100803
         }
     },
     "Load Point: 16.0_(-0.23293714059226878-0.8693332436601615j)_0": {
@@ -745,73 +745,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.09615908
+                    -0.08084285
                 ],
                 "y_imag": [
-                    -0.05164062
+                    -0.09834447
                 ],
                 "dBm_mag": [
-                    -19.23967
+                    -17.90292
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04179457
+                    0.0268391
                 ],
                 "y_imag": [
-                    0.05183242
+                    -0.08988905
                 ],
                 "dBm_mag": [
-                    -23.53264
+                    -20.55499
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1571765
+                    -0.4859768
                 ],
                 "y_imag": [
-                    -0.471848
+                    -0.1741148
                 ],
                 "dBm_mag": [
-                    -6.066968
+                    -5.743201
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.2191941
+                    0.4723211
                 ],
                 "y_imag": [
-                    -0.3715751
+                    -0.3058793
                 ],
                 "dBm_mag": [
-                    -7.302207
+                    -4.994214
                 ]
             }
         },
-        "Power Meter": -21.71891,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.970932,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0352494672,
-            "2": 0.0360938522,
-            "Bias": 0.000196457,
+            "1": 0.057896449,
+            "2": 0.0280864597,
+            "Bias": 0.000212669,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.0407011988446975,
-            "PAE": -16346.381204595506,
-            "DC Power": 5.83620316e-05
+            "Gain": -0.5114094466876935,
+            "PAE": -8982.47379058694,
+            "DC Power": 5.9553126604e-05
         },
         "DC Parameters": {
-            "gate current": 4.673e-05,
+            "gate current": 4.76837e-05,
             "gate voltage": 1.24892,
             "drain current": 0.0,
-            "drain voltage": 0.000971794
+            "drain voltage": 0.00115585
         }
     },
     "Load Point: 16.0_(-0.07844016847289241-0.896575228282571j)_0": {
@@ -824,73 +824,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.09858481
+                    -0.07465377
                 ],
                 "y_imag": [
-                    0.04573631
+                    0.1027847
                 ],
                 "dBm_mag": [
-                    -19.27722
+                    -17.92153
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.005883841
+                    -0.09259374
                 ],
                 "y_imag": [
-                    0.0685074
+                    -0.01814124
                 ],
                 "dBm_mag": [
-                    -23.25333
+                    -20.50478
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4500834
+                    -0.1360808
                 ],
                 "y_imag": [
-                    -0.2193399
+                    0.4999461
                 ],
                 "dBm_mag": [
-                    -6.008716
+                    -5.711137
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4404846
+                    -0.410851
                 ],
                 "y_imag": [
-                    -0.04374642
+                    -0.3742525
                 ],
                 "dBm_mag": [
-                    -7.07876
+                    -5.102334
                 ]
             }
         },
-        "Power Meter": -21.3781707,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.1240387,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0332760525,
-            "2": 0.0386151161,
-            "Bias": 0.000183105,
+            "1": 0.0559115727,
+            "2": 0.0295382771,
+            "Bias": 0.000184059,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.7797041988446978,
-            "PAE": -13609.80494966975,
-            "DC Power": 5.3597347323e-05
+            "Gain": -0.6009194466876941,
+            "PAE": -9458.374149175512,
+            "DC Power": 6.550742768999999e-05
         },
         "DC Parameters": {
-            "gate current": 4.29153e-05,
-            "gate voltage": 1.24891,
+            "gate current": 5.24521e-05,
+            "gate voltage": 1.2489,
             "drain current": 0.0,
-            "drain voltage": 0.000997543
+            "drain voltage": 0.000953674
         }
     },
     "Load Point: 16.0_(0.07844016847289252-0.896575228282571j)_0": {
@@ -903,73 +903,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1002798
+                    0.08034741
                 ],
                 "y_imag": [
-                    0.0404534
+                    0.09803329
                 ],
                 "dBm_mag": [
-                    -19.32092
+                    -17.94086
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.009381419
+                    -0.05375799
                 ],
                 "y_imag": [
-                    0.07051844
+                    0.07792229
                 ],
                 "dBm_mag": [
-                    -22.95776
+                    -20.47605
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4020841
+                    0.3998437
                 ],
                 "y_imag": [
-                    -0.3017708
+                    0.332884
                 ],
                 "dBm_mag": [
-                    -5.973307
+                    -5.675331
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.449915
+                    -0.4590284
                 ],
                 "y_imag": [
-                    -0.06565882
+                    0.3010981
                 ],
                 "dBm_mag": [
-                    -6.845869
+                    -5.209042
                 ]
             }
         },
-        "Power Meter": -21.0689032,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.3304487,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0315844546,
-            "2": 0.0415076717,
-            "Bias": 0.000198364,
+            "1": 0.0540033399,
+            "2": 0.031596904,
+            "Bias": 0.000192642,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.503113198844698,
-            "PAE": -8586.460747226725,
-            "DC Power": 5.598041471100001e-05
+            "Gain": -0.6882974466876952,
+            "PAE": -9323.080541563468,
+            "DC Power": 7.5043595945e-05
         },
         "DC Parameters": {
-            "gate current": 4.48227e-05,
-            "gate voltage": 1.24893,
+            "gate current": 6.00815e-05,
+            "gate voltage": 1.24903,
             "drain current": 0.0,
-            "drain voltage": 0.000976563
+            "drain voltage": 0.00111675
         }
     },
     "Load Point: 16.0_(0.23293714059226867-0.8693332436601615j)_0": {
@@ -982,73 +982,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.07507356
+                    -0.07306814
                 ],
                 "y_imag": [
-                    -0.07704706
+                    0.103366
                 ],
                 "dBm_mag": [
-                    -19.36581
+                    -17.95243
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.07350329
+                    -0.08383264
                 ],
                 "y_imag": [
-                    0.005706263
+                    -0.04407075
                 ],
                 "dBm_mag": [
-                    -22.64777
+                    -20.47201
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1998139
+                    -0.2912354
                 ],
                 "y_imag": [
-                    -0.461713
+                    0.4337142
                 ],
                 "dBm_mag": [
-                    -5.967002
+                    -5.63955
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1133081
+                    -0.410036
                 ],
                 "y_imag": [
-                    -0.4547544
+                    -0.3563511
                 ],
                 "dBm_mag": [
-                    -6.582879
+                    -5.300078
                 ]
             }
         },
-        "Power Meter": -20.6109784,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.4926173,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0302846513,
-            "2": 0.0447484143,
-            "Bias": 0.000201225,
+            "1": 0.0516210876,
+            "2": 0.0333914416,
+            "Bias": 0.000202179,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.1952331988447007,
-            "PAE": -2675.401647240475,
-            "DC Power": 7.1457532605e-05
+            "Gain": -0.7677634466876953,
+            "PAE": -12952.75609128355,
+            "DC Power": 5.9558371811000006e-05
         },
         "DC Parameters": {
-            "gate current": 5.72205e-05,
-            "gate voltage": 1.24881,
+            "gate current": 4.76837e-05,
+            "gate voltage": 1.24903,
             "drain current": 0.0,
-            "drain voltage": 0.00100994
+            "drain voltage": 0.00118732
         }
     },
     "Load Point: 16.0_(0.3803564355666295-0.815677008332985j)_0": {
@@ -1061,73 +1061,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1070484
+                    0.07832663
                 ],
                 "y_imag": [
-                    -0.001732869
+                    -0.09920772
                 ],
                 "dBm_mag": [
-                    -19.40726
+                    -17.96498
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.05698847
+                    0.07337762
                 ],
                 "y_imag": [
-                    -0.05065645
+                    0.059553
                 ],
                 "dBm_mag": [
-                    -22.35543
+                    -20.49108
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1289913
+                    0.3778046
                 ],
                 "y_imag": [
-                    0.4857336
+                    -0.3634829
                 ],
                 "dBm_mag": [
-                    -5.97608
+                    -5.608946
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4180088
+                    0.3899955
                 ],
                 "y_imag": [
-                    0.2387606
+                    0.3715576
                 ],
                 "dBm_mag": [
-                    -6.350029
+                    -5.373752
                 ]
             }
         },
-        "Power Meter": -20.3522995,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.6638555,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0292022941,
-            "2": 0.0477220868,
-            "Bias": 0.00019455,
+            "1": 0.049415754,
+            "2": 0.0356424935,
+            "Bias": 0.000213623,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.07906680115530307,
-            "PAE": 1413.8899177363237,
-            "DC Power": 5.597593244100001e-05
+            "Gain": -0.8288874466876948,
+            "PAE": -13849.926545013119,
+            "DC Power": 5.9553603441000006e-05
         },
         "DC Parameters": {
-            "gate current": 4.48227e-05,
-            "gate voltage": 1.24883,
+            "gate current": 4.76837e-05,
+            "gate voltage": 1.24893,
             "drain current": 0.0,
-            "drain voltage": 0.00119019
+            "drain voltage": 0.00120068
         }
     },
     "Load Point: 16.0_(0.5162187927159415-0.7372368398600926j)_0": {
@@ -1140,73 +1140,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.07020796
+                    0.1258768
                 ],
                 "y_imag": [
-                    0.08016098
+                    0.009822098
                 ],
                 "dBm_mag": [
-                    -19.44815
+                    -17.97472
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.01509882
+                    -0.02211239
                 ],
                 "y_imag": [
-                    0.07740664
+                    0.09139978
                 ],
                 "dBm_mag": [
-                    -22.06226
+                    -20.53406
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3995824
+                    0.4893715
                 ],
                 "y_imag": [
-                    -0.2991067
+                    0.1926751
                 ],
                 "dBm_mag": [
-                    -6.035723
+                    -5.58135
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4732077
+                    -0.08628126
                 ],
                 "y_imag": [
-                    0.1474921
+                    0.5278079
                 ],
                 "dBm_mag": [
-                    -6.096312
+                    -5.435951
                 ]
             }
         },
-        "Power Meter": -19.9437266,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.7320357,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0285819408,
-            "2": 0.0509364746,
-            "Bias": 0.000198364,
+            "1": 0.0469597028,
+            "2": 0.038017337,
+            "Bias": 0.000219345,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.3736738011552987,
-            "PAE": 6438.432643248095,
-            "DC Power": 5.9553126604e-05
+            "Gain": -0.8813464466876937,
+            "PAE": -13042.123068410336,
+            "DC Power": 6.6703310142e-05
         },
         "DC Parameters": {
-            "gate current": 4.76837e-05,
-            "gate voltage": 1.24892,
+            "gate current": 5.34058e-05,
+            "gate voltage": 1.24899,
             "drain current": 0.0,
-            "drain voltage": 0.000999451
+            "drain voltage": 0.00115204
         }
     },
     "Load Point: 16.0_(0.6363961030678928-0.6363961030678928j)_0": {
@@ -1219,73 +1219,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.009451256
+                    0.0772168
                 ],
                 "y_imag": [
-                    -0.105648
+                    0.09977809
                 ],
                 "dBm_mag": [
-                    -19.48816
+                    -17.98109
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.03385751
+                    -0.08750044
                 ],
                 "y_imag": [
-                    -0.07398207
+                    0.0327769
                 ],
                 "dBm_mag": [
-                    -21.79163
+                    -20.58953
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4933807
+                    0.1086673
                 ],
                 "y_imag": [
-                    0.003865173
+                    0.51622
                 ],
                 "dBm_mag": [
-                    -6.13609
+                    -5.554998
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2363766
+                    -0.4439999
                 ],
                 "y_imag": [
-                    -0.4513932
+                    0.2929929
                 ],
                 "dBm_mag": [
-                    -5.856457
+                    -5.48243
                 ]
             }
         },
-        "Power Meter": -19.5979962,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.8357073,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0287832415,
-            "2": 0.0539936748,
-            "Bias": 0.000185966,
+            "1": 0.0443394544,
+            "2": 0.0400702449,
+            "Bias": 0.000187874,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.6535388011553032,
-            "PAE": 9149.784254613365,
-            "DC Power": 7.504479757499999e-05
+            "Gain": -0.9214554466876983,
+            "PAE": -14599.674489213356,
+            "DC Power": 6.1930853413e-05
         },
         "DC Parameters": {
-            "gate current": 6.00815e-05,
-            "gate voltage": 1.24905,
+            "gate current": 4.95911e-05,
+            "gate voltage": 1.24883,
             "drain current": 0.0,
-            "drain voltage": 0.00116253
+            "drain voltage": 0.000969887
         }
     },
     "Load Point: 16.0_(0.7372368398600926-0.5162187927159415j)_0": {
@@ -1298,73 +1298,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.06350098
+                    0.1097928
                 ],
                 "y_imag": [
-                    -0.08449129
+                    0.06216345
                 ],
                 "dBm_mag": [
-                    -19.51902
+                    -17.98091
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.05992656
+                    -0.07553762
                 ],
                 "y_imag": [
-                    -0.05841166
+                    0.05377336
                 ],
                 "dBm_mag": [
-                    -21.54709
+                    -20.65627
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4523963
+                    0.2332871
                 ],
                 "y_imag": [
-                    -0.1752599
+                    0.475124
                 ],
                 "dBm_mag": [
-                    -6.282333
+                    -5.52585
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.02329465
+                    -0.291252
                 ],
                 "y_imag": [
-                    -0.5220217
+                    0.4432954
                 ],
                 "dBm_mag": [
-                    -5.63759
+                    -5.507707
                 ]
             }
         },
-        "Power Meter": -19.3209954,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.924832,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0297074645,
-            "2": 0.0567893646,
-            "Bias": 0.00019455,
+            "1": 0.0421060909,
+            "2": 0.0424313249,
+            "Bias": 0.000197411,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.9032658011553032,
-            "PAE": 14550.820434410456,
-            "DC Power": 6.670544637400001e-05
+            "Gain": -0.9469124466876941,
+            "PAE": -14678.565401640097,
+            "DC Power": 6.3123759489e-05
         },
         "DC Parameters": {
-            "gate current": 5.34058e-05,
-            "gate voltage": 1.24903,
+            "gate current": 5.05447e-05,
+            "gate voltage": 1.24887,
             "drain current": 0.0,
-            "drain voltage": 0.00113773
+            "drain voltage": 0.000990868
         }
     },
     "Load Point: 16.0_(0.815677008332985-0.3803564355666295j)_0": {
@@ -1377,73 +1377,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.003866916
+                    -0.1256452
                 ],
                 "y_imag": [
-                    -0.1053389
+                    -0.0113199
                 ],
                 "dBm_mag": [
-                    -19.54237
+                    -17.98197
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.006788334
+                    0.05657272
                 ],
                 "y_imag": [
-                    -0.08538128
+                    -0.07233562
                 ],
                 "dBm_mag": [
-                    -21.34538
+                    -20.74022
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4141079
+                    -0.3559833
                 ],
                 "y_imag": [
-                    0.2281105
+                    -0.3935309
                 ],
                 "dBm_mag": [
-                    -6.50684
+                    -5.503818
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3321538
+                    0.07713953
                 ],
                 "y_imag": [
-                    -0.4172028
+                    -0.5239575
                 ],
                 "dBm_mag": [
-                    -5.460944
+                    -5.520951
                 ]
             }
         },
-        "Power Meter": -19.0397788,
-        "Input Power": -9.92699552213,
+        "Power Meter": -23.0256325,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0311759574,
-            "2": 0.0590156752,
-            "Bias": 0.000195503,
+            "1": 0.0394765538,
+            "2": 0.0442294099,
+            "Bias": 0.000201225,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.1032618011552984,
-            "PAE": 15843.19559569247,
-            "DC Power": 7.6228692336e-05
+            "Gain": -0.9590964466876954,
+            "PAE": -14304.290013918899,
+            "DC Power": 6.5504280564e-05
         },
         "DC Parameters": {
-            "gate current": 6.10352e-05,
-            "gate voltage": 1.24893,
+            "gate current": 5.24521e-05,
+            "gate voltage": 1.24884,
             "drain current": 0.0,
-            "drain voltage": 0.0011692
+            "drain voltage": 0.000966072
         }
     },
     "Load Point: 16.0_(0.8693332436601615-0.23293714059226867j)_0": {
@@ -1456,73 +1456,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08899193
+                    0.1079488
                 ],
                 "y_imag": [
-                    0.0562973
+                    0.06537248
                 ],
                 "dBm_mag": [
-                    -19.5511
+                    -17.9788
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08265219
+                    -0.08636755
                 ],
                 "y_imag": [
-                    0.02747964
+                    0.02799856
                 ],
                 "dBm_mag": [
-                    -21.19958
+                    -20.839
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.04757737
+                    0.0708503
                 ],
                 "y_imag": [
-                    -0.4532263
+                    0.5270559
                 ],
                 "dBm_mag": [
-                    -6.826101
+                    -5.485087
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.5393091
+                    -0.2954866
                 ],
                 "y_imag": [
-                    -0.06084142
+                    0.4397303
                 ],
                 "dBm_mag": [
-                    -5.308321
+                    -5.517962
                 ]
             }
         },
-        "Power Meter": -18.7578571,
-        "Input Power": -9.92699552213,
+        "Power Meter": -23.0056101,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0332894967,
-            "2": 0.0606157044,
+            "1": 0.0369205883,
+            "2": 0.0460647426,
             "Bias": 0.000201225,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.2646148011553038,
-            "PAE": 17648.814444431508,
-            "DC Power": 7.9815299268e-05
+            "Gain": -0.9592774466876968,
+            "PAE": -13813.477944407941,
+            "DC Power": 6.789271622400001e-05
         },
         "DC Parameters": {
-            "gate current": 6.38962e-05,
-            "gate voltage": 1.24914,
+            "gate current": 5.43594e-05,
+            "gate voltage": 1.24896,
             "drain current": 0.0,
-            "drain voltage": 0.00104713
+            "drain voltage": 0.00109577
         }
     },
     "Load Point: 16.0_(0.896575228282571-0.07844016847289235j)_0": {
@@ -1535,73 +1535,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08089886
+                    0.07059076
                 ],
                 "y_imag": [
-                    -0.0675139
+                    -0.104691
                 ],
                 "dBm_mag": [
-                    -19.54569
+                    -17.97423
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.03657124
+                    0.01148025
                 ],
                 "y_imag": [
-                    -0.08007909
+                    0.08893331
                 ],
                 "dBm_mag": [
-                    -21.10692
+                    -20.94694
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.4346946
+                    0.531885
                 ],
                 "y_imag": [
-                    0.003615079
+                    0.0304957
                 ],
                 "dBm_mag": [
-                    -7.236014
+                    -5.469391
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08429404
+                    0.4288012
                 ],
                 "y_imag": [
-                    -0.5416288
+                    0.3131114
                 ],
                 "dBm_mag": [
-                    -5.222029
+                    -5.498908
                 ]
             }
         },
-        "Power Meter": -18.6032057,
-        "Input Power": -9.92699552213,
+        "Power Meter": -23.0401986,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.035839698,
-            "2": 0.0614358913,
-            "Bias": 0.000213623,
+            "1": 0.0348832043,
+            "2": 0.0480572941,
+            "Bias": 0.000188828,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.3454968011553028,
-            "PAE": 17428.339829805827,
-            "DC Power": 8.6947562344e-05
+            "Gain": -0.9447934466876973,
+            "PAE": -14669.479313789432,
+            "DC Power": 6.3133362982e-05
         },
         "DC Parameters": {
-            "gate current": 6.96182e-05,
-            "gate voltage": 1.24892,
+            "gate current": 5.05447e-05,
+            "gate voltage": 1.24906,
             "drain current": 0.0,
-            "drain voltage": 0.000943184
+            "drain voltage": 0.00105
         }
     },
     "Load Point: 16.0_(0.896575228282571+0.07844016847289235j)_0": {
@@ -1614,73 +1614,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1054511
+                    -0.07105047
                 ],
                 "y_imag": [
-                    -0.005048576
+                    -0.1045375
                 ],
                 "dBm_mag": [
-                    -19.52903
+                    -17.96525
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.06771768
+                    0.08166452
                 ],
                 "y_imag": [
-                    -0.05668608
+                    0.03396351
                 ],
                 "dBm_mag": [
-                    -21.07961
+                    -21.06648
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3764832
+                    0.294181
                 ],
                 "y_imag": [
-                    -0.1650126
+                    -0.445273
                 ],
                 "dBm_mag": [
-                    -7.721936
+                    -5.45444
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3783529
+                    0.4494716
                 ],
                 "y_imag": [
-                    -0.3998729
+                    -0.2871882
                 ],
                 "dBm_mag": [
-                    -5.184869
+                    -5.45915
                 ]
             }
         },
-        "Power Meter": -18.5480229,
-        "Input Power": -9.92699552213,
+        "Power Meter": -23.0624373,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0390214316,
-            "2": 0.0615314351,
-            "Bias": 0.000191689,
+            "1": 0.0329638993,
+            "2": 0.0497828165,
+            "Bias": 0.000208855,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.3659968011553012,
-            "PAE": 16664.217478315684,
-            "DC Power": 9.290514407000001e-05
+            "Gain": -0.9140154466876957,
+            "PAE": -11289.097165590265,
+            "DC Power": 7.9801881066e-05
         },
         "DC Parameters": {
-            "gate current": 7.43866e-05,
-            "gate voltage": 1.24895,
+            "gate current": 6.38962e-05,
+            "gate voltage": 1.24893,
             "drain current": 0.0,
-            "drain voltage": 0.000920296
+            "drain voltage": 0.00105381
         }
     },
     "Load Point: 16.0_(0.8693332436601615+0.23293714059226867j)_0": {
@@ -1693,73 +1693,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.01652888
+                    0.125634
                 ],
                 "y_imag": [
-                    -0.1046746
+                    0.01525036
                 ],
                 "dBm_mag": [
-                    -19.49621
+                    -17.95433
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.0559465
+                    -0.08280068
                 ],
                 "y_imag": [
-                    -0.06765552
+                    0.02730447
                 ],
                 "dBm_mag": [
-                    -21.13099
+                    -21.19102
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1433337
+                    0.06769744
                 ],
                 "y_imag": [
-                    0.3593156
+                    0.5301857
                 ],
                 "dBm_mag": [
-                    -8.249167
+                    -5.441205
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3314403
+                    -0.07515062
                 ],
                 "y_imag": [
-                    -0.4366777
+                    0.5309781
                 ],
                 "dBm_mag": [
-                    -5.220976
+                    -5.412332
                 ]
             }
         },
-        "Power Meter": -18.5268312,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.9934492,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0424588937,
-            "2": 0.0608534587,
-            "Bias": 0.000197411,
+            "1": 0.0312598267,
+            "2": 0.0513269537,
+            "Bias": 0.000200272,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.2970698011553026,
-            "PAE": 14681.855004695723,
-            "DC Power": 0.00010005003379800001
+            "Gain": -0.8781174466876962,
+            "PAE": -12610.14564608219,
+            "DC Power": 6.9083849376e-05
         },
         "DC Parameters": {
-            "gate current": 8.01086e-05,
-            "gate voltage": 1.24893,
+            "gate current": 5.53131e-05,
+            "gate voltage": 1.24896,
             "drain current": 0.0,
-            "drain voltage": 0.00112915
+            "drain voltage": 0.00115871
         }
     },
     "Load Point: 16.0_(0.815677008332985+0.3803564355666295j)_0": {
@@ -1772,73 +1772,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.0839854
+                    -0.04836842
                 ],
                 "y_imag": [
-                    0.06543492
+                    -0.1171297
                 ],
                 "dBm_mag": [
-                    -19.45568
+                    -17.94285
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.07990921
+                    0.05410858
                 ],
                 "y_imag": [
-                    -0.03281814
+                    0.06659221
                 ],
                 "dBm_mag": [
-                    -21.27115
+                    -21.32989
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2944767
+                    0.4717368
                 ],
                 "y_imag": [
-                    -0.2117873
+                    -0.2522436
                 ],
                 "dBm_mag": [
-                    -8.808418
+                    -5.433874
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.5326664
+                    0.5015957
                 ],
                 "y_imag": [
-                    -0.09852711
+                    -0.1999888
                 ],
                 "dBm_mag": [
-                    -5.324791
+                    -5.352218
                 ]
             }
         },
-        "Power Meter": -18.5235683,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.8877145,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0458354403,
-            "2": 0.0591204046,
-            "Bias": 0.000203133,
+            "1": 0.0299600706,
+            "2": 0.0527989848,
+            "Bias": 0.000202179,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 1.1527248011553013,
-            "PAE": 12496.227310762662,
-            "DC Power": 0.00010362832560300001
+            "Gain": -0.8294834466876964,
+            "PAE": -13141.398349348816,
+            "DC Power": 6.3126286724e-05
         },
         "DC Parameters": {
-            "gate current": 8.29697e-05,
-            "gate voltage": 1.24899,
+            "gate current": 5.05447e-05,
+            "gate voltage": 1.24892,
             "drain current": 0.0,
-            "drain voltage": 0.00103474
+            "drain voltage": 0.0010767
         }
     },
     "Load Point: 16.0_(0.7372368398600926+0.5162187927159415j)_0": {
@@ -1851,73 +1851,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.0323179
+                    -0.07509992
                 ],
                 "y_imag": [
-                    0.1020791
+                    0.1023326
                 ],
                 "dBm_mag": [
-                    -19.40642
+                    -17.92852
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08456419
+                    0.03965037
                 ],
                 "y_imag": [
-                    0.001606469
+                    -0.07455589
                 ],
                 "dBm_mag": [
-                    -21.4547
+                    -21.46866
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1960351
+                    -0.4168683
                 ],
                 "y_imag": [
-                    -0.2821695
+                    -0.3353573
                 ],
                 "dBm_mag": [
-                    -9.279364
+                    -5.432641
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4931872
+                    -0.4372029
                 ],
                 "y_imag": [
-                    0.2007285
+                    -0.3248561
                 ],
                 "dBm_mag": [
-                    -5.474079
+                    -5.277148
                 ]
             }
         },
-        "Power Meter": -18.7024322,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.827068,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0487398004,
-            "2": 0.0567726009,
-            "Bias": 0.000191689,
+            "1": 0.0286088688,
+            "2": 0.0535414261,
+            "Bias": 0.000196457,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.9541768011553025,
-            "PAE": 11395.383340615334,
-            "DC Power": 9.2902912472e-05
+            "Gain": -0.7687434466876972,
+            "PAE": -12538.431668747084,
+            "DC Power": 6.1938292078e-05
         },
         "DC Parameters": {
-            "gate current": 7.43866e-05,
-            "gate voltage": 1.24892,
+            "gate current": 4.95911e-05,
+            "gate voltage": 1.24898,
             "drain current": 0.0,
-            "drain voltage": 0.00110435
+            "drain voltage": 0.00120258
         }
     },
     "Load Point: 16.0_(0.6363961030678928+0.6363961030678928j)_0": {
@@ -1930,73 +1930,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04612297
+                    0.02828427
                 ],
                 "y_imag": [
-                    -0.09734449
+                    -0.1239802
                 ],
                 "dBm_mag": [
-                    -19.35419
+                    -17.91261
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.06885909
+                    -0.01890559
                 ],
                 "y_imag": [
-                    -0.04472524
+                    0.08094024
                 ],
                 "dBm_mag": [
-                    -21.71216
+                    -21.60601
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04212669
+                    0.4901197
                 ],
                 "y_imag": [
-                    0.3254346
+                    0.2148799
                 ],
                 "dBm_mag": [
-                    -9.678556
+                    -5.430411
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2314661
+                    0.5359498
                 ],
                 "y_imag": [
-                    -0.4655815
+                    0.1224221
                 ],
                 "dBm_mag": [
-                    -5.680854
+                    -5.196633
                 ]
             }
         },
-        "Power Meter": -18.787221,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.7509071,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0512146082,
-            "2": 0.0536917684,
-            "Bias": 0.000216484,
+            "1": 0.0281696161,
+            "2": 0.0544685304,
+            "Bias": 0.000206947,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.6951718011553005,
-            "PAE": 8254.432760391313,
-            "DC Power": 9.1705942836e-05
+            "Gain": -0.7041384466876934,
+            "PAE": -11611.586926689708,
+            "DC Power": 6.1932341146e-05
         },
         "DC Parameters": {
-            "gate current": 7.34329e-05,
-            "gate voltage": 1.24884,
+            "gate current": 4.95911e-05,
+            "gate voltage": 1.24886,
             "drain current": 0.0,
-            "drain voltage": 0.000885963
+            "drain voltage": 0.000971794
         }
     },
     "Load Point: 16.0_(0.5162187927159415+0.7372368398600926j)_0": {
@@ -2009,73 +2009,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1068708
+                    0.09068432
                 ],
                 "y_imag": [
-                    0.01781732
+                    0.08956751
                 ],
                 "dBm_mag": [
-                    -19.30375
+                    -17.89254
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.009010534
+                    -0.04715216
                 ],
                 "y_imag": [
-                    -0.07897738
+                    -0.0662604
                 ],
                 "dBm_mag": [
-                    -21.99378
+                    -21.79551
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2497224
+                    -0.4814289
                 ],
                 "y_imag": [
-                    0.1988239
+                    0.2282638
                 ],
                 "dBm_mag": [
-                    -9.918591
+                    -5.46868
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3677628
+                    -0.3895445
                 ],
                 "y_imag": [
-                    -0.3481349
+                    0.3971109
                 ],
                 "dBm_mag": [
-                    -5.910017
+                    -5.094208
                 ]
             }
         },
-        "Power Meter": -19.0357318,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.5495744,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0533099832,
-            "2": 0.0504259872,
-            "Bias": 0.000200272,
+            "1": 0.0280271614,
+            "2": 0.055149174,
+            "Bias": 0.000211716,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.4155688011553025,
-            "PAE": 4830.245712500097,
-            "DC Power": 9.1713286126e-05
+            "Gain": -0.6217834466876972,
+            "PAE": -8317.849077685121,
+            "DC Power": 7.7410373664e-05
         },
         "DC Parameters": {
-            "gate current": 7.34329e-05,
-            "gate voltage": 1.24894,
+            "gate current": 6.19888e-05,
+            "gate voltage": 1.24878,
             "drain current": 0.0,
-            "drain voltage": 0.00102043
+            "drain voltage": 0.00110435
         }
     },
     "Load Point: 16.0_(0.3803564355666295+0.815677008332985j)_0": {
@@ -2088,73 +2088,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04251782
+                    -0.1269185
                 ],
                 "y_imag": [
-                    -0.1002872
+                    -0.01443685
                 ],
                 "dBm_mag": [
-                    -19.25722
+                    -17.87367
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.07561634
+                    0.07213236
                 ],
                 "y_imag": [
-                    -0.01309938
+                    0.03476733
                 ],
                 "dBm_mag": [
-                    -22.29927
+                    -21.93017
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.2014241
+                    0.3067862
                 ],
                 "y_imag": [
-                    0.2433694
+                    -0.435113
                 ],
                 "dBm_mag": [
-                    -10.00868
+                    -5.475373
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2503584
+                    0.05976931
                 ],
                 "y_imag": [
-                    -0.4235856
+                    -0.5592464
                 ],
                 "dBm_mag": [
-                    -6.159979
+                    -4.998611
                 ]
             }
         },
-        "Power Meter": -19.2875719,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.4633666,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0547184976,
-            "2": 0.0471351709,
-            "Bias": 0.000197411,
+            "1": 0.0282057559,
+            "2": 0.055224912,
+            "Bias": 0.000213623,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": 0.11907680115530184,
-            "PAE": 1508.3521926264125,
-            "DC Power": 8.217870097500001e-05
+            "Gain": -0.5450564466876955,
+            "PAE": -8137.043667318846,
+            "DC Power": 7.0272169188e-05
         },
         "DC Parameters": {
-            "gate current": 6.58035e-05,
-            "gate voltage": 1.24885,
+            "gate current": 5.62668e-05,
+            "gate voltage": 1.24891,
             "drain current": 0.0,
-            "drain voltage": 0.00110435
+            "drain voltage": 0.00112247
         }
     },
     "Load Point: 16.0_(0.23293714059226867+0.8693332436601615j)_0": {
@@ -2167,73 +2167,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.107364
+                    0.1048671
                 ],
                 "y_imag": [
-                    -0.02146662
+                    0.07340385
                 ],
                 "dBm_mag": [
-                    -19.21259
+                    -17.85547
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.01505227
+                    -0.03500539
                 ],
                 "y_imag": [
-                    0.07252724
+                    -0.07080133
                 ],
                 "dBm_mag": [
-                    -22.60683
+                    -22.0494
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1345812
+                    -0.5071948
                 ],
                 "y_imag": [
-                    -0.289066
+                    0.1611302
                 ],
                 "dBm_mag": [
-                    -9.928019
+                    -5.478922
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3520684
+                    -0.3224269
                 ],
                 "y_imag": [
-                    0.3230471
+                    0.4684907
                 ],
                 "dBm_mag": [
-                    -6.41472
+                    -4.902028
                 ]
             }
         },
-        "Power Meter": -19.5953781,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.4467831,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0558848359,
-            "2": 0.0439165554,
-            "Bias": 0.000200272,
+            "1": 0.0291925882,
+            "2": 0.055295619,
+            "Bias": 0.000198364,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.18029419884469888,
-            "PAE": -1971.8866258009111,
-            "DC Power": 9.2906631802e-05
+            "Gain": -0.4666734466876967,
+            "PAE": -7571.773800161955,
+            "DC Power": 6.5506903169e-05
         },
         "DC Parameters": {
-            "gate current": 7.43866e-05,
-            "gate voltage": 1.24897,
+            "gate current": 5.24521e-05,
+            "gate voltage": 1.24889,
             "drain current": 0.0,
-            "drain voltage": 0.00108719
+            "drain voltage": 0.00109959
         }
     },
     "Load Point: 16.0_(0.07844016847289252+0.896575228282571j)_0": {
@@ -2246,73 +2246,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.0682743
+                    -0.1282316
                 ],
                 "y_imag": [
-                    -0.08621474
+                    0.004617857
                 ],
                 "dBm_mag": [
-                    -19.17417
+                    -17.83447
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.07104973
+                    0.06198093
                 ],
                 "y_imag": [
-                    -0.007180813
+                    0.04722262
                 ],
                 "dBm_mag": [
-                    -22.92461
+                    -22.16696
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.2515229
+                    0.3758706
                 ],
                 "y_imag": [
-                    0.2064189
+                    -0.3755895
                 ],
                 "dBm_mag": [
-                    -9.752167
+                    -5.492181
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1230105
+                    -0.02536189
                 ],
                 "y_imag": [
-                    -0.4477998
+                    -0.5755476
                 ],
                 "dBm_mag": [
-                    -6.662379
+                    -4.789949
                 ]
             }
         },
-        "Power Meter": -19.8119436,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.3351297,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0567261807,
-            "2": 0.0408606068,
-            "Bias": 0.000200272,
+            "1": 0.0301165797,
+            "2": 0.0545286766,
+            "Bias": 0.000202179,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.4663731988446962,
-            "PAE": -6586.2314871944845,
-            "DC Power": 7.0268230512e-05
+            "Gain": -0.37559444668769615,
+            "PAE": -5316.743514659885,
+            "DC Power": 7.622991304e-05
         },
         "DC Parameters": {
-            "gate current": 5.62668e-05,
-            "gate voltage": 1.24884,
+            "gate current": 6.10352e-05,
+            "gate voltage": 1.24895,
             "drain current": 0.0,
-            "drain voltage": 0.00103092
+            "drain voltage": 0.00114346
         }
     },
     "Load Point: 16.0_(-0.07844016847289241+0.896575228282571j)_0": {
@@ -2325,73 +2325,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.02713059
+                    -0.1222328
                 ],
                 "y_imag": [
-                    0.1070041
+                    0.0399603
                 ],
                 "dBm_mag": [
-                    -19.14141
+                    -17.81526
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.03823597
+                    0.0650676
                 ],
                 "y_imag": [
-                    -0.0574104
+                    0.04124819
                 ],
                 "dBm_mag": [
-                    -23.22581
+                    -22.26564
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3044862
+                    0.3331477
                 ],
                 "y_imag": [
-                    0.1414612
+                    -0.4125212
                 ],
                 "dBm_mag": [
-                    -9.479871
+                    -5.510447
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4175293
+                    -0.1843673
                 ],
                 "y_imag": [
-                    0.1723847
+                    -0.5534009
                 ],
                 "dBm_mag": [
-                    -6.902694
+                    -4.682097
                 ]
             }
         },
-        "Power Meter": -20.151582,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.1793237,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0567974714,
-            "2": 0.0376637993,
-            "Bias": 0.000200272,
+            "1": 0.0321918762,
+            "2": 0.053712163,
+            "Bias": 0.00019455,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -0.7394481988446984,
-            "PAE": -9868.25732596978,
-            "DC Power": 7.265537871300001e-05
+            "Gain": -0.28695244668769604,
+            "PAE": -3879.358725588134,
+            "DC Power": 8.0983906621e-05
         },
         "DC Parameters": {
-            "gate current": 5.81741e-05,
-            "gate voltage": 1.24893,
+            "gate current": 6.48499e-05,
+            "gate voltage": 1.24879,
             "drain current": 0.0,
-            "drain voltage": 0.000985146
+            "drain voltage": 0.000901222
         }
     },
     "Load Point: 16.0_(-0.23293714059226878+0.8693332436601615j)_0": {
@@ -2404,73 +2404,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.01202191
+                    0.003264272
                 ],
                 "y_imag": [
-                    -0.1101002
+                    -0.128875
                 ],
                 "dBm_mag": [
-                    -19.11277
+                    -17.79384
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.03564037
+                    -0.06852755
                 ],
                 "y_imag": [
-                    0.05631759
+                    0.03387466
                 ],
                 "dBm_mag": [
-                    -23.52431
+                    -22.33326
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3076156
+                    0.1900834
                 ],
                 "y_imag": [
-                    -0.1606536
+                    0.4935912
                 ],
                 "dBm_mag": [
-                    -9.192404
+                    -5.532083
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3762339
+                    0.5901939
                 ],
                 "y_imag": [
-                    -0.22719
+                    0.01403139
                 ],
                 "dBm_mag": [
-                    -7.140665
+                    -4.577652
                 ]
             }
         },
-        "Power Meter": -20.3916482,
-        "Input Power": -9.92699552213,
+        "Power Meter": -22.0244858,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.057111654,
-            "2": 0.0352727049,
-            "Bias": 0.000210762,
+            "1": 0.0345515131,
+            "2": 0.0524689392,
+            "Bias": 0.000218391,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.0060591988446976,
-            "PAE": -12311.88351237967,
-            "DC Power": 7.742463108800001e-05
+            "Gain": -0.2039274466876968,
+            "PAE": -3169.536614147618,
+            "DC Power": 7.1463254655e-05
         },
         "DC Parameters": {
-            "gate current": 6.19888e-05,
-            "gate voltage": 1.24901,
+            "gate current": 5.72205e-05,
+            "gate voltage": 1.24891,
             "drain current": 0.0,
-            "drain voltage": 0.000936508
+            "drain voltage": 0.00102043
         }
     },
     "Load Point: 16.0_(-0.3803564355666294+0.8156770083329851j)_0": {
@@ -2483,73 +2483,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.08287157
+                    0.05455711
                 ],
                 "y_imag": [
-                    0.07390729
+                    0.1171108
                 ],
                 "dBm_mag": [
-                    -19.09037
+                    -17.77506
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.02118429
+                    0.05746999
                 ],
                 "y_imag": [
-                    -0.06105645
+                    -0.04996981
                 ],
                 "dBm_mag": [
-                    -23.7917
+                    -22.36588
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.06557739
+                    -0.3181684
                 ],
                 "y_imag": [
-                    0.3545037
+                    -0.4205149
                 ],
                 "dBm_mag": [
-                    -8.86146
+                    -5.558554
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.4223373
+                    -0.5422445
                 ],
                 "y_imag": [
-                    -0.0742982
+                    0.250361
                 ],
                 "dBm_mag": [
-                    -7.354443
+                    -4.476851
                 ]
             }
         },
-        "Power Meter": -20.7617468,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.8418927,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0566557613,
-            "2": 0.0327164937,
-            "Bias": 0.000193596,
+            "1": 0.0375162437,
+            "2": 0.0509325157,
+            "Bias": 0.000199318,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.2422371988446983,
-            "PAE": -17596.532917721855,
-            "DC Power": 6.5508476732e-05
+            "Gain": -0.12190644668769579,
+            "PAE": -1694.8803110387437,
+            "DC Power": 8.0992337108e-05
         },
         "DC Parameters": {
-            "gate current": 5.24521e-05,
+            "gate current": 6.48499e-05,
             "gate voltage": 1.24892,
             "drain current": 0.0,
-            "drain voltage": 0.00105762
+            "drain voltage": 0.00105572
         }
     },
     "Load Point: 16.0_(-0.5162187927159413+0.7372368398600928j)_0": {
@@ -2562,73 +2562,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.04979197
+                    -0.006147793
                 ],
                 "y_imag": [
-                    -0.09951048
+                    -0.1292587
                 ],
                 "dBm_mag": [
-                    -19.07224
+                    -17.76099
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.04547432
+                    -0.07586308
                 ],
                 "y_imag": [
-                    0.04342011
+                    0.007897975
                 ],
                 "dBm_mag": [
-                    -24.03049
+                    -22.35257
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3638208
+                    0.0318331
                 ],
                 "y_imag": [
-                    -0.08938167
+                    0.5245632
                 ],
                 "dBm_mag": [
-                    -8.527733
+                    -5.588079
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1700768
+                    0.6029527
                 ],
                 "y_imag": [
-                    -0.3831589
+                    -0.02195425
                 ],
                 "dBm_mag": [
-                    -7.551372
+                    -4.388582
                 ]
             }
         },
-        "Power Meter": -21.1605813,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.7135139,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0561605654,
-            "2": 0.0306208398,
-            "Bias": 0.000201225,
+            "1": 0.0405259087,
+            "2": 0.0485714672,
+            "Bias": 0.000210762,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.4572961988446984,
-            "PAE": -16138.980552331283,
-            "DC Power": 8.2187913465e-05
+            "Gain": -0.047707446687695665,
+            "PAE": -724.4703917494987,
+            "DC Power": 7.502857557e-05
         },
         "DC Parameters": {
-            "gate current": 6.58035e-05,
-            "gate voltage": 1.24899,
+            "gate current": 6.00815e-05,
+            "gate voltage": 1.24878,
             "drain current": 0.0,
-            "drain voltage": 0.00106049
+            "drain voltage": 0.00116634
         }
     },
     "Load Point: 16.0_(-0.6363961030678927+0.6363961030678928j)_0": {
@@ -2641,73 +2641,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1094096
+                    -0.08022409
                 ],
                 "y_imag": [
-                    0.02107239
+                    0.1017421
                 ],
                 "dBm_mag": [
-                    -19.06071
+                    -17.75018
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.06125692
+                    0.05220418
                 ],
                 "y_imag": [
-                    -0.0006814011
+                    0.05644328
                 ],
                 "dBm_mag": [
-                    -24.25636
+                    -22.2833
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.33576
+                    0.3924605
                 ],
                 "y_imag": [
-                    -0.1946454
+                    -0.348143
                 ],
                 "dBm_mag": [
-                    -8.221128
+                    -5.603061
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2050773
+                    -0.4701089
                 ],
                 "y_imag": [
-                    0.3559589
+                    -0.3859898
                 ],
                 "dBm_mag": [
-                    -7.727217
+                    -4.318094
                 ]
             }
         },
-        "Power Meter": -21.3779089,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.7787459,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.055210735,
-            "2": 0.0287966057,
-            "Bias": 0.000193596,
+            "1": 0.0437886898,
+            "2": 0.0462255069,
+            "Bias": 0.000185966,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.6446711988446978,
-            "PAE": -22054.592663650583,
-            "DC Power": 6.6689424634e-05
+            "Gain": 0.011970553312302457,
+            "PAE": 169.9759049555952,
+            "DC Power": 8.0993634106e-05
         },
         "DC Parameters": {
-            "gate current": 5.34058e-05,
-            "gate voltage": 1.24873,
+            "gate current": 6.48499e-05,
+            "gate voltage": 1.24894,
             "drain current": 0.0,
-            "drain voltage": 0.000901222
+            "drain voltage": 0.00110626
         }
     },
     "Load Point: 16.0_(-0.7372368398600927+0.5162187927159414j)_0": {
@@ -2720,73 +2720,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.1058992
+                    -0.1174337
                 ],
                 "y_imag": [
-                    -0.03495224
+                    0.05502228
                 ],
                 "dBm_mag": [
-                    -19.05309
+                    -17.74222
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.05659577
+                    0.004789481
                 ],
                 "y_imag": [
-                    0.02062678
+                    0.07767811
                 ],
                 "dBm_mag": [
-                    -24.40268
+                    -22.17755
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2467233
+                    0.522144
                 ],
                 "y_imag": [
-                    -0.3156559
+                    -0.03208526
                 ],
                 "dBm_mag": [
-                    -7.944951
+                    -5.627827
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3518613
+                    -0.2427561
                 ],
                 "y_imag": [
-                    0.199469
+                    -0.5617566
                 ],
                 "dBm_mag": [
-                    -7.862319
+                    -4.265471
                 ]
             }
         },
-        "Power Meter": -21.8059375,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.7395183,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0545343855,
-            "2": 0.0275467442,
-            "Bias": 0.000198364,
+            "1": 0.0470713096,
+            "2": 0.0434035952,
+            "Bias": 0.000204086,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.787393198844697,
-            "PAE": -22440.685245539225,
-            "DC Power": 7.0267667844e-05
+            "Gain": 0.056633553312305907,
+            "PAE": 902.7605753910003,
+            "DC Power": 7.265363349e-05
         },
         "DC Parameters": {
-            "gate current": 5.62668e-05,
-            "gate voltage": 1.24883,
+            "gate current": 5.81741e-05,
+            "gate voltage": 1.2489,
             "drain current": 0.0,
-            "drain voltage": 0.000992775
+            "drain voltage": 0.000948906
         }
     },
     "Load Point: 16.0_(-0.815677008332985+0.38035643556662957j)_0": {
@@ -2799,73 +2799,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.07207912
+                    0.1270313
                 ],
                 "y_imag": [
-                    0.08516201
+                    -0.02620423
                 ],
                 "dBm_mag": [
-                    -19.04902
+                    -17.74081
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.04416113
+                    0.03078057
                 ],
                 "y_imag": [
-                    -0.03903426
+                    -0.07283113
                 ],
                 "dBm_mag": [
-                    -24.59185
+                    -22.03994
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.1047459
+                    -0.4834138
                 ],
                 "y_imag": [
-                    0.3993569
+                    -0.1944888
                 ],
                 "dBm_mag": [
-                    -7.683836
+                    -5.662066
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.3986504
+                    0.09912451
                 ],
                 "y_imag": [
-                    0.0257994
+                    0.6061088
                 ],
                 "dBm_mag": [
-                    -7.970004
+                    -4.234357
                 ]
             }
         },
-        "Power Meter": -21.7825039,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5780672,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0531032263,
-            "2": 0.0263822443,
-            "Bias": 0.000192642,
+            "1": 0.0506967724,
+            "2": 0.0405010478,
+            "Bias": 0.000201225,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.8991481988446992,
-            "PAE": -27279.867040229372,
-            "DC Power": 6.0743735234e-05
+            "Gain": 0.08633755331230475,
+            "PAE": 1276.6730684786214,
+            "DC Power": 7.861518250000001e-05
         },
         "DC Parameters": {
-            "gate current": 4.86374e-05,
-            "gate voltage": 1.24891,
+            "gate current": 6.29425e-05,
+            "gate voltage": 1.249,
             "drain current": 0.0,
-            "drain voltage": 0.00106812
+            "drain voltage": 0.00109577
         }
     },
     "Load Point: 16.0_(-0.8693332436601614+0.23293714059226892j)_0": {
@@ -2878,73 +2878,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.02207204
+                    0.04720718
                 ],
                 "y_imag": [
-                    0.1093521
+                    0.1207688
                 ],
                 "dBm_mag": [
-                    -19.05003
+                    -17.74339
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.005912239
+                    0.07245748
                 ],
                 "y_imag": [
-                    -0.05809952
+                    0.03544663
                 ],
                 "dBm_mag": [
-                    -24.67181
+                    -21.86649
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.2125334
+                    0.2143206
                 ],
                 "y_imag": [
-                    0.367707
+                    -0.4732108
                 ],
                 "dBm_mag": [
-                    -7.438143
+                    -5.688586
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.2155419
+                    -0.5834917
                 ],
                 "y_imag": [
-                    0.3321018
+                    0.1928914
                 ],
                 "dBm_mag": [
-                    -8.047927
+                    -4.228878
                 ]
             }
         },
-        "Power Meter": -22.0330615,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5458707,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0517123074,
-            "2": 0.0255904604,
-            "Bias": 0.000200272,
+            "1": 0.0536727471,
+            "2": 0.0372388222,
+            "Bias": 0.000192642,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -1.9760611988446986,
-            "PAE": -28147.255494504694,
-            "DC Power": 6.0741789738e-05
+            "Gain": 0.09439655331230412,
+            "PAE": 1440.1069413363102,
+            "DC Power": 7.622441987200001e-05
         },
         "DC Parameters": {
-            "gate current": 4.86374e-05,
-            "gate voltage": 1.24887,
+            "gate current": 6.10352e-05,
+            "gate voltage": 1.24886,
             "drain current": 0.0,
-            "drain voltage": 0.000945091
+            "drain voltage": 0.000966072
         }
     },
     "Load Point: 16.0_(-0.896575228282571+0.07844016847289238j)_0": {
@@ -2957,73 +2957,73 @@
                 "trace_name": "input_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.08278529
+                    -0.1294406
                 ],
                 "y_imag": [
-                    0.07468955
+                    0.005198667
                 ],
                 "dBm_mag": [
-                    -19.05461
+                    -17.75159
                 ]
             },
             "output_awave": {
                 "trace_name": "output_awave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    -0.02143106
+                    -0.06943972
                 ],
                 "y_imag": [
-                    -0.05401218
+                    0.04446696
                 ],
                 "dBm_mag": [
-                    -24.7152
+                    -21.67543
                 ]
             },
             "input_bwave": {
                 "trace_name": "input_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.3761055
+                    0.2951917
                 ],
                 "y_imag": [
-                    0.2197611
+                    0.4260172
                 ],
                 "dBm_mag": [
-                    -7.218175
+                    -5.708475
                 ]
             },
             "output_bwave": {
                 "trace_name": "output_bwave_trace",
                 "x": 67000000000.0,
                 "y_real": [
-                    0.03576414
+                    0.01527872
                 ],
                 "y_imag": [
-                    0.3922937
+                    -0.6129829
                 ],
                 "dBm_mag": [
-                    -8.091826
+                    -4.248336
                 ]
             }
         },
-        "Power Meter": -22.1944325,
-        "Input Power": -9.92699552213,
+        "Power Meter": -21.5693593,
+        "Input Power": -10.0338625959,
         "Samplers": {
-            "1": 0.0504962249,
-            "2": 0.0255155404,
-            "Bias": 0.000185013,
+            "1": 0.0562257745,
+            "2": 0.0342006839,
+            "Bias": 0.000203133,
             "Bias Current": 0.0
         },
         "PA Performance": {
-            "Gain": -2.0153801988446975,
-            "PAE": -33866.346436057465,
-            "DC Power": 5.121981216e-05
+            "Gain": 0.08313855331230258,
+            "PAE": 1263.9534482504278,
+            "DC Power": 7.6246392544e-05
         },
         "DC Parameters": {
-            "gate current": 4.1008e-05,
-            "gate voltage": 1.24902,
+            "gate current": 6.10352e-05,
+            "gate voltage": 1.24922,
             "drain current": 0.0,
-            "drain voltage": 0.000985146
+            "drain voltage": 0.00111008
         }
     }
 }
