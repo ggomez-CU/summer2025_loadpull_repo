@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-filename = ['/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/MMIC_coupledline_phase2025-07-29_11_19_Freq12.0to8.0']
+filename = ['C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\phaseAlignLoadPullBiasing2025-08-14_13_02_Freq8.9to11.9']
 temp = CoupledLinePhaseClass(filename);
 %%
 % option 2
