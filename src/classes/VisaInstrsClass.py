@@ -99,3 +99,25 @@ class VisaInstrsClass():
         except Exception as e:
             print("Could not close connections")
             self.clean = False
+
+    def simple_clean_shutdown(self):
+        self.clean = True
+        try:
+            self.pna.power_off()
+        except:
+            self.clean = False
+            try:
+                print("Could not turn off pna power. Attempting to minimize power. Device damaged minimized but not mitigated")
+                self.pna.set_power(-27)
+            except Exception as e:
+                print("Fatal Error. Unable to turn off RF. Cannot cleanly terminate program")
+                print(e)
+
+    
+        try:
+            rm = pyvisa.ResourceManager()
+            rm.close()
+            print("All VISA connections closed.")
+        except Exception as e:
+            print("Could not close connections")
+            self.clean = False

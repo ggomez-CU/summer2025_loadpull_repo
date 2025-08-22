@@ -13,9 +13,9 @@ outputsparam = sparameters('../../data/deembedsparam/Outputdeem2.s2p');
 output_thruloss = 10*log10(abs(permute(outputsparam.Parameters(1,2,:),[3 2 1])));
 thruloss = 10*log10(abs(permute(thrusparam.Parameters(1,2,:),[3 2 1])));
 
-DUT2pm_output = -2*output_thruloss(71:1:111);
-DUT2pm_input = -2*output_thruloss(71:1:111);
-DUTthru = -2*thruloss(301:10:701);
+DUT2pm_output = -2*output_thruloss(51:1:111);
+DUT2pm_input = -2*output_thruloss(51:1:111);
+DUTthru = -2*thruloss(101:10:701);
 %%
 for k = 1 : size(folder,1)
     clear data pna2pm_output pna2pm_input pna2dut_output pna2dut_input

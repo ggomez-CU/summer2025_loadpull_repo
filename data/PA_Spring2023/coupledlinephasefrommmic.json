@@ -1,15 +1,15 @@
 
 {
-    "Frequency":  [12,11.9,11.8,11.7,11.6,11.5,11.4,11.3,11.2,11.1,11,10.9,10.8,10.7,10.6,10.5,10.4,10.3,10.2,10.1,10,9.90,9.80,9.70,9.60,9.50,9.40,9.30,9.20,9.10,9,8.90,8.80,8.70,8.60,8.50,8.40,8.30,8.20,8.10,8],
+    "Frequency":  [12,11.8,11.6,11.4,11.3,11.2,11.1,11,10.9,10.8,10.7,10.6,10.4,10.2,10],
     "Sweep Type": "Gamma",
-    "Set Power (dBm)":  [16],
+    "Set Power (dBm)":  [8,10,12,14,16,18],
     "Set Power Plane": "DUT output",
-    "Gamma Magnitude List": [0.9],
-    "Gamma Phase List": [-175,-165,-155,-145,-135,-125,-115,-105,-95,-85,-75,-65,-55,-45,-35,-25,-15,-5,5,15,25,35,45,55,65,75,85,95,105,115,125,135,145,155,165,175],
+    "Gamma Magnitude List": [0.1,0.2,0.3,0.4,0.5,0.6],
+    "Gamma Phase List": [-175, -145, -115, -85, -55, -25, 5, 35, 65, 95, 125, 155],
     "Rectangular Offset [x,y]": [0,0],
     "Real Impedance List": [],
     "Imaginary Impedance List": [],
-    "Gate Bias Voltages": [1.25],
+    "Gate Bias Voltages": [0.75,1,1.25,1.5,1.75,2,2.25,2.5],
     "PNA":{
         "Address": "Defined in script GPIB",
         "Input port":"1",
@@ -46,6 +46,7 @@
         "Gate Channel": 1,
         "Drain Channel": 2,
         "Sampler Bias Channel": 3
-    }
+    },
+    "Comments Before": "The channels for gate and samplers are flipped so that the code didnt need to be rewritten. This is poor form for final published code but good enough for this test. Bias is actually the bias in V of the samplers rather that mA of the gate"
 }
 

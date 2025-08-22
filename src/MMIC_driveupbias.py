@@ -56,7 +56,7 @@ def updateplot(axs, line, data, coupling, idx, plots):
 def main(config, options, visa_instrs):
 
     now = datetime.now().strftime("%Y-%m-%d_%H_%M")
-    upper_output_dir = os.getcwd() + "\\data\\PA_Spring2023\\LoadPullBiasing" \
+    upper_output_dir = os.getcwd() + "\\data\\coupledline_samplers\\LoadPullBiasing" \
             + now + "_Freq" \
             + str(config.frequency[0]) + "to" + str(config.frequency[-1])
     os.mkdir(upper_output_dir)
@@ -101,10 +101,16 @@ def main(config, options, visa_instrs):
                                                     config.dc_supply_config.gate_channel, 
                                                     config.dc_supply_config.drain_channel) 
             }
+
+        if visa_instrs.dc_supply.get_current(config.dc_supply_config.drain_channel) > 0.2:
+            print(config.dc_supply_config.drain_channel)
+            print("Too much DC power. shutting down system")
+            visa_instrs.clean_shutdown()  
+            exit()
         visa_instrs.pna.power_on()
         config_bias = config_data
-        lower_output_dir = upper_output_dir + f'\\draincurrent_{bias}mA'
-        # lower_output_dir = upper_output_dir + f'\\draincurrent_{round(dc_init["Initial DC Parameters"]["drain current"]*1000,3)}mA'
+        # lower_output_dir = upper_output_dir + f'\\draincurrent_{bias}mA'
+        lower_output_dir = upper_output_dir + f'\\draincurrent_{round(dc_init["Initial DC Parameters"]["drain current"]*1000,3)}mA'
         os.mkdir(lower_output_dir)
         if options.plot:
             plt.close(fig) 
@@ -148,8 +154,8 @@ def main(config, options, visa_instrs):
                 line.append(axs['Samplers'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[0, .50], marker='o', ms=4, linewidth=0,label='Sampler 1'))
                 line.append(axs['Samplers'].plot([min(config.set_power_dBm), max(config.set_power_dBm)],[0, .5], marker='o', ms=4, linewidth=0,label='Sampler 2'))
                 
-                axs['Frequency'].legend()
-                axs['Power'].legend()
+                # axs['Frequency'].legend()
+                # axs['Power'].legend()
                 plots.update({'power_gain': np.array([])})
                 plots.update({'power_PAE': np.array([])})
                 plots.update({'set_power': np.array([])})
@@ -267,6 +273,17 @@ if __name__ == "__main__":
     config = MMICDriveUpBiasConfig(options.filename)
     #r"C:\Users\grgo8200\Documents\GitHub\summer2025_loadpull_repo\data\PA_Spring2023\MMIC_driveupbias_loadpull_config.json"
     visa_instrs = VisaInstrsClass(config)
+
+    if visa_instrs.dc_supply.get_voltage(config.dc_supply_config.drain_channel) < 26:
+        print("PA is not on. shutting down system")
+        visa_instrs.clean_shutdown()
+        exit()  
+    
+    if visa_instrs.dc_supply.get_current(config.dc_supply_config.drain_channel) > 0.2:
+        print(config.dc_supply_config.drain_channel)
+        print("Too much DC power. shutting down system")
+        visa_instrs.clean_shutdown()  
+        exit()
 
     try:
         main(config, options, visa_instrs)
