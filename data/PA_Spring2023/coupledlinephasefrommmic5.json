@@ -1,6 +1,6 @@
 
 {
-    "Frequency":  [11.4,11.3,11.2,11.1,11,10.9,10.8,10.7,10.6,10.5],
+    "Frequency":  [10.4,10.3],
     "Sweep Type": "Gamma",
     "Set Power (dBm)":  [6,8,10],
     "Set Power Plane": "DUT output",
