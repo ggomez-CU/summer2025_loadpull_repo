@@ -33,8 +33,6 @@ if __name__ == "__main__":
     pna.set_freq_end((float(config.frequency[0])*1e9))	
     pna.write("SENS:SWE:POIN 1")
     pna.init_loadpull()
-    pm = HP_E4419B("GPIB1::13::INSTR")
-    pm.inst.timeout = 10000
 
     config_file = output_dir + "\\config_file.json"
     config_data = output_file_test_config_data(config_file, config, now)
@@ -55,9 +53,38 @@ if __name__ == "__main__":
         except:
             pass
 
+        
+        for i in range(1):
+            if not loadtuner.connected:
+                print("There is an error")
+                exit()
+            loadtuner.set_gamma_complex(complex(0,0))
+            s11 = pna.get_trace_data_raw(5)[0]
+
+            datatemp = {'Load Point: '+ str(complex(0,0)) + '_' + str(i): 
+                        {'load_gamma': 
+                            {'real': 0,
+                            'imag': 0},
+                        'wave data': pna.get_loadpull_data(),
+                        'Input Power': pna.get_power(),
+                        "s11":
+                            {'real': s11.real,
+                            'imag': s11.imag},
+                        }
+                    } 
+            data.update(datatemp)
+
+            # print(json.dumps(datatemp, indent=4))
+
+            with open('temp.json', 'w') as f:
+                json.dump(data,f,indent=4)
+
+            os.remove(output_file)
+            shutil.copyfile('temp.json', output_file)
+
         for loadpoint in tqdm(config.loadpoints):
 
-            for i in range(2):
+            for i in range(1):
                 if not loadtuner.connected:
                     print("There is an error")
                     exit()
@@ -69,7 +96,6 @@ if __name__ == "__main__":
                                 {'real': loadpoint.real,
                                 'imag': loadpoint.imag},
                             'wave data': pna.get_loadpull_data(),
-                            'Power Meter': pm.get_power(),
                             'Input Power': pna.get_power(),
                             "s11":
                                 {'real': s11.real,

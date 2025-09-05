@@ -167,7 +167,8 @@ def main(config, options, visa_instrs):
                         if not visa_instrs.loadtuner.connected:
                             print("There is an error")
                             exit()
-                        time.sleep(1)
+                        time.sleep(2)
+                        s11 = visa_instrs.pna.get_trace_data_raw(5)[0]
 
                         try:
                             rf_data = visa_instrs.pna.get_loadpull_data()
@@ -187,7 +188,10 @@ def main(config, options, visa_instrs):
                                             'Bias': visa_instrs.dc_supply.get_voltage(config.dc_supply_config.sampler_channel),
                                             'Bias Current': visa_instrs.dc_supply.get_current(config.dc_supply_config.sampler_channel)
                                             },
-                                        'DC Parameters':dc_data
+                                        'DC Parameters':dc_data,
+                                        "s11":
+                                        {'real': s11.real,
+                                        'imag': s11.imag}
                                         }}
                             visa_instrs.pm.write("INIT:CONT")
                             data.update(datatemp)

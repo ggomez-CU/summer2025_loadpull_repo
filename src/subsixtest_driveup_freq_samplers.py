@@ -27,7 +27,7 @@ from pylogfile.base import *
 from tqdm import tqdm
 from datetime import datetime
 import shutil
-import os
+import osa
 
 if __name__ == "__main__":
 

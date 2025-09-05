@@ -58,6 +58,17 @@ class MY982AU():
         else:
             self.connected = True
  
+    def init_tuner(self):
+        self.write(f"PORT:LOAD:INITIALIZE")
+        self.query(f"*OPC?")
+
+        error = self.checkError()
+        if error:
+            self.connected = False
+            print(f"Could not connect to tuner.")
+        else:
+            self.connected = True
+
     def set_freq(self, freq):
         try:
             self.write("PORT:LOAD:FREQUENCY:CLEAR")
