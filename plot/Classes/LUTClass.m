@@ -6,14 +6,18 @@ classdef LUTClass
         freq
         LUT
         thru
+        folder
+        thrufile
     end
     
     methods
         function obj = LUTClass(folder)
             Files = dir(fullfile(folder,"*.mat"));
             startPat = '_';
+            obj.folder = folder;
+            obj.thrufile = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat';
             endPat = '_GHz';
-            obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            obj.thru = load(obj.thrufile).DUTthru;
             for k = 1 : length(Files)
                 try
                     freq(k) = str2double(extractBetween(Files(k).name,startPat,endPat)) ;
@@ -45,6 +49,12 @@ classdef LUTClass
             catch
                 disp('No tuner value')
                 s11 = [];
+            end
+
+            if abs(tunerload) > 0.8
+                tunerload = 0.8*exp(j*angle(tunerload));
+                idxa = find(abs(LUTfreq(:,1)-tunerload)<0.001);
+                s11 = abs(obj.LUT(idxa,2,idx)).*exp(j*(angle(obj.LUT(idxa,2,idx))+angle(obj.thru(idx))*2));
             end
         end
 
