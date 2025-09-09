@@ -21,6 +21,8 @@ classdef CoupledLinePhaseClass
         DUT_output_dBm
 
         cal
+        phs1
+        phs2
             
         powermeter
         inputpower
@@ -119,16 +121,10 @@ classdef CoupledLinePhaseClass
         function obj = normalizesamplers(obj)
             obj.sampler1normalized = permute(mean(obj.sampler1,1),[2 3 1]);
             obj.sampler2normalized = permute(mean(obj.sampler2,1),[2 3 1]);
-            % temp = obj.sampler1normalized-mean(obj.sampler1normalized,1);
-            % obj.sampler1normalized = temp./max(abs(temp),[],1);
            for freq_idx =1:size(obj.freq,2)
                 obj.sampler1normalized(:,freq_idx) = rescale(obj.sampler1normalized(:,freq_idx),-1,1);
                 obj.sampler2normalized(:,freq_idx) = rescale(obj.sampler2normalized(:,freq_idx),-1,1);
-            end
-            % obj.sampler2normalized = rescale(obj.sampler2normalized,[-1,1]);
-            % % temp = obj.sampler2normalized-mean(obj.sampler2normalized,1);
-            % % obj.sampler2normalized = temp./max(abs(temp),[],1);
-            % obj.sampler2normalized = rescale(obj.sampler2normalized,[-1,1]);
+           end
         end
 
         function plotloglog(obj)
@@ -140,29 +136,30 @@ classdef CoupledLinePhaseClass
         end
 
         function obj = resortshape(obj, sampleidx)
-            sizing = [size(obj.input_awave_dBm,2)/sampleidx, sampleidx,size(obj.freq,2)];
+            % sizing = [size(obj.input_awave_dBm,2)/sampleidx, sampleidx,size(obj.freq,2)];
+            sizing = [obj.reshapesize,size(obj.freq,2)];
             % [~, idx] = sort(obj.bias);
-            obj.input_awave_dBm = reshape(obj.input_awave_dBm, sizing);
-            obj.input_bwave_dBm = reshape(obj.input_bwave_dBm, sizing);
-            obj.output_awave_dBm = reshape(obj.output_awave_dBm, sizing);
-            obj.output_bwave_dBm = reshape(obj.output_bwave_dBm, sizing);
+            obj.input_awave_dBm = reshape(obj.input_awave_dBm, [],sizing(1),sizing(2));
+            obj.input_bwave_dBm = reshape(obj.input_bwave_dBm, [],sizing(1),sizing(2));
+            obj.output_awave_dBm = reshape(obj.output_awave_dBm, [],sizing(1),sizing(2));
+            obj.output_bwave_dBm = reshape(obj.output_bwave_dBm, [],sizing(1),sizing(2));
 
-            obj.powermeter = reshape(obj.powermeter, sizing);
-            obj.inputpower = reshape(obj.inputpower, sizing);
+            obj.powermeter = reshape(obj.powermeter, [],sizing(1),sizing(2));
+            obj.inputpower = reshape(obj.inputpower, [],sizing(1),sizing(2));
 
-            obj.input_awave = reshape(obj.input_awave, sizing);
-            obj.input_bwave = reshape(obj.input_bwave, sizing);
-            obj.output_awave = reshape(obj.output_awave, sizing);
-            obj.output_bwave = reshape(obj.output_bwave, sizing);
+            obj.input_awave = reshape(obj.input_awave, [],sizing(1),sizing(2));
+            obj.input_bwave = reshape(obj.input_bwave, [],sizing(1),sizing(2));
+            obj.output_awave = reshape(obj.output_awave, [],sizing(1),sizing(2));
+            obj.output_bwave = reshape(obj.output_bwave, [],sizing(1),sizing(2));
 
-            obj.bias = reshape(obj.bias, sizing);
-            obj.sampler2 = reshape(obj.sampler2, sizing);
-            obj.sampler1 = reshape(obj.sampler1, sizing);
+            obj.bias = reshape(obj.bias, [],sizing(1),sizing(2));
+            obj.sampler2 = reshape(obj.sampler2, [],sizing(1),sizing(2));
+            obj.sampler1 = reshape(obj.sampler1, [],sizing(1),sizing(2));
 
-            obj.complex_load = reshape(obj.complex_load, sizing);
+            obj.complex_load = reshape(obj.complex_load, [],sizing(1),sizing(2));
 
-            obj.DUT_input_dBm = reshape(obj.DUT_input_dBm, sizing);
-            obj.DUT_output_dBm = reshape(obj.DUT_output_dBm, sizing);
+            obj.DUT_input_dBm = reshape(obj.DUT_input_dBm, [],sizing(1),sizing(2));
+            obj.DUT_output_dBm = reshape(obj.DUT_output_dBm, [],sizing(1),sizing(2));
         end
         
         function [inputpm2pna, outputpm2pna] = couplingpm2pna_3d(obj)
@@ -196,7 +193,6 @@ classdef CoupledLinePhaseClass
                     "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", ...
                     "#393b79" ...
                 ];
-            loadangle = permute(mean(angle(obj.complex_load),1),[2 3 1]);
 
             for freq_idx =1:size(obj.freq,2)
                 hold on
@@ -222,23 +218,147 @@ classdef CoupledLinePhaseClass
 
             for freq_idx =1:size(obj.freq,2)
                 disp(obj.freq(freq_idx))
-                scatter(loadangle(:,freq_idx),obj.sampler1normalized(:,freq_idx),'s','filled','Color',colors(freq_idx))
+                % scatter(loadangle(:,freq_idx),obj.sampler1normalized(:,freq_idx),'s','filled','Color',colors(freq_idx))
                 hold on
-                scatter(loadangle(:,freq_idx),obj.sampler2normalized(:,freq_idx),'o','filled','Color',colors(freq_idx))
+                % scatter(loadangle(:,freq_idx),obj.sampler2normalized(:,freq_idx),'o','filled','Color',colors(freq_idx))
                 obj.datafit1(:,freq_idx) = obj.fitdata(loadangle(:,freq_idx),obj.sampler1normalized(:,freq_idx));
                 obj.datafit2(:,freq_idx) = obj.fitdata(loadangle(:,freq_idx),obj.sampler2normalized(:,freq_idx));
                 hold off
             end
         end
+
+        function obj = plot_data_fit2(obj,z0)
+            colors = [ ...
+                    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", ...
+                    "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", ...
+                    "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", ...
+                    "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", ...
+                    "#393b79", ...
+                    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", ...
+                    "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", ...
+                    "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", ...
+                    "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", ...
+                    "#393b79" ...
+                ];
+            loadangle = permute(mean((obj.complex_load),1),[2 3 1]);
+            obj.phs1 = [];
+            obj.phs2 = [];
+
+            for freq_idx =1:size(obj.freq,2)
+                obj = obj.fitdirectphs(loadangle(:,freq_idx),permute(mean(obj.sampler1(:,:,freq_idx),1),[2 3 1]),permute(mean(obj.sampler2(:,:,freq_idx),1),[2 3 1]),z0);
+            end
+        end
     
         function [data] = fitdata(obj,x,y)
             %This is enforcing no dc offset and an amplitude of 1
-            mdl = fittype('a*sin(x+c)','indep','x');
-            fitteddata = fit(x(:),y(:),mdl,'lower',[0.9 0],'upper',[1.5,2*pi],'start',[1,pi]);
+            X = [x(:);x(:)+2*pi;x(:)+4*pi;x(:)+6*pi;x(:)+8*pi];
+            Y = [y(:);y(:);y(:);y(:);y(:)];
+            mdl =fittype('a*cos(x+c)','indep','x');
+            options = fitoptions('Method','NonlinearLeastSquares',...
+               'StartPoint',[1, pi],'lower',[0.9 0],'upper',[1.5,2*pi]);
+            fitteddata = fit(X(:),Y(:),mdl,options);
             data = [fitteddata.a, fitteddata.c]';
             plot(fitteddata)
+            scatter(X,Y)
         end
-           
+
+        function freqsurf(obj)
+            loadangle = permute(mean((obj.complex_load),1),[2 3 1]);
+            for freq_idx =1:size(obj.freq,2)
+                x1 = loadangle(:,freq_idx);
+                v1 = permute(mean(obj.sampler1(:,:,freq_idx),1),[2 3 1]);
+                v2 = permute(mean(obj.sampler2(:,:,freq_idx),1),[2 3 1]);
+                fun1 = @(x,y,z) sqrt(mean(abs(x1*exp(-j*x)+exp(j*x)).^2-(y*v1+z))^2);
+                fun2 = @(x,y,z) sqrt(mean(abs(x1*exp(-j*x)+exp(j*x)).^2-(y*v2+z))^2);
+                x=linspace(-pi,pi,101);
+                y=linspace(10,100,101);
+                z=linspace(-4,4,101);
+                figure(1)
+                % subplot(mod(size(obj.freq,2),7),mod(size(obj.freq,2),7)+1,freq_idx)
+                score=fun1(x,y,z);
+                surf(x,y,z,score);
+                figure(2)
+                % subplot(mod(size(obj.freq,2),7),mod(size(obj.freq,2),7)+1,freq_idx)
+                score=fun2(x,y,z);
+                surf(x,y,z,score);
+            end
+        end
+
+        function obj = fitdirectphs(obj,x,v1,v2,z0)
+            %This is enforcing no dc offset and an amplitude of 1
+            % z0=54
+
+            % zl = 50*(x+1)./(1-x);
+            % x = (50*(x+1)./(1-x)-variable(4))./(50*(x+1)./(1-x)+variable(4));
+            fun1 = @(variable) abs(x*exp(-j*variable(1))+exp(j*variable(1))).^2-(variable(2)*v1+variable(3));
+            fun2 = @(variable) abs(x*exp(-j*variable(1))+exp(j*variable(1))).^2-(variable(2)*v2+variable(3));
+            ub = [pi,300,40];
+            lb = [0,10,-40];
+            x1 = [pi/2,70,min(v1)*100];
+            [vars1, res1] = lsqnonlin(fun1,x1,lb,ub);
+            [vars2, res2] = lsqnonlin(fun2,x1,lb,ub);
+            plot(angle(x),abs(x*exp(-j*vars1(1))+exp(j*vars1(1))).^2);
+            hold on
+            plot(angle(x),vars1(2)*v1+vars1(3));
+            plot(angle(x),abs(x*exp(-j*vars2(1))+exp(j*vars2(1))).^2);
+            plot(angle(x),vars2(2)*v2+vars2(3));
+            1+1;
+            
+            close all
+            obj.phs1 = [obj.phs1; vars1, res1];
+            obj.phs2 = [obj.phs2; vars2, res2];
+        end
+
+        function obj = plot_data_fit3(obj,z0)
+            colors = [ ...
+                    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", ...
+                    "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", ...
+                    "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", ...
+                    "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", ...
+                    "#393b79", ...
+                    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", ...
+                    "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", ...
+                    "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", ...
+                    "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", ...
+                    "#393b79" ...
+                ];
+            loadangle = permute(mean((obj.complex_load),1),[2 3 1]);
+            obj.phs1 = [];
+            obj.phs2 = [];
+
+            for freq_idx =1:size(obj.freq,2)
+                obj = obj.fc(loadangle(:,freq_idx),permute(mean(obj.sampler1(:,:,freq_idx),1),[2 3 1]),permute(mean(obj.sampler2(:,:,freq_idx),1),[2 3 1]),z0);
+            end
+        end
+
+        function obj = fc(obj,x,v1,v2,z0)
+            %This is enforcing no dc offset and an amplitude of 1
+            zl = 50*(x+1)./(1-x);
+            x1 = (zl-z0)./(zl+z0);
+            fun1 = @(variable) abs(x1*exp(-j*variable(1))+exp(j*variable(1))).^2-(variable(2)*v1+variable(3));
+            fun2 = @(variable) abs(x1*exp(-j*variable(1))+exp(j*variable(1))).^2-(variable(2)*v2+variable(3));
+            ub = [pi,300,40];
+            lb = [-pi,10,-40];
+            x0 = [pi/2,80,min(v1)*100];
+            A = [];
+            b = [];
+            Aeq = [];
+            beq = [];
+            [vars1, res1] = fmincon(fun1,x0,A,b,Aeq,beq,lb,ub);
+            [vars2, res2] = fmincon(fun2,x0,A,b,Aeq,beq,lb,ub);
+            plot(angle(x),abs(x*exp(-j*vars1(1))+exp(j*vars1(1))).^2);
+            hold on
+            plot(angle(x),vars1(2)*v1+vars1(3));
+            plot(angle(x),abs(x*exp(-j*vars2(1))+exp(j*vars2(1))).^2);
+            plot(angle(x),vars2(2)*v2+vars2(3));
+            1+1;
+            close all
+
+            obj.phs1 = [obj.phs1; vars1, res1];
+            obj.phs2 = [obj.phs2; vars2, res2];
+        end
+          
+
         function plot_data_normalized(obj)
             colors = [ ...
                     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", ...

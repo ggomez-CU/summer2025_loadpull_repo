@@ -16,7 +16,7 @@ subFolderNames = {subFolders(3:end).name} % Start at 3 to skip . and ..
 figure
 hold on
 i = 1;
-for k = length(subFolderNames)-3 : length(subFolderNames)
+for k = 1: length(subFolderNames)-1
     figure(1)
 	pna2pm_input(:,i) = load(strcat(topLevelFolder,subFolderNames{k},'/pna2pm_input.mat')).pna2pm_input;
     pna2pm_output(:,i) = load(strcat(topLevelFolder,subFolderNames{k},'/pna2pm_output.mat')).pna2pm_output;
@@ -26,12 +26,13 @@ for k = length(subFolderNames)-3 : length(subFolderNames)
 end
 
 %%
-subplot(2,2,1)
+subplot(1,2,1)
 hold on
 plot(pna2pm_input-mean(pna2pm_input')')
-subplot(2,2,2)
+subplot(1,2,2)
 hold on
 plot(pna2pm_output-mean(pna2pm_output')')
+%%
 subplot(2,2,3)
 hold on
 plot(pna2dut_input-mean(pna2dut_input')')

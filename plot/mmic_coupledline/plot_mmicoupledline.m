@@ -3,8 +3,9 @@ close all
 clc
 
 filename = ['/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/MMIC_coupledline_freqpower2025-07-30_09_34_Freq12.0to8.0'];
-filename = ['/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/MMIC_coupledline_freqpower2025-07-29_09_57_Freq10.0to10.0'];
-temp = CoupledLinePowerBiasClass(filename)
+filename = ['/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/MMIC_coupledline_freqpower2025-07-30_14_26_Freq12.0to8.0'];
+filename = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/old/MMIC_coupledline_freqpower2025-07-28_10_01_Freq10.0to10.0';
+temp = LoadPullClass2(filename)
 % % plot(temp.input_awave_dBm,temp.sampler2-temp.sampler2(1,:))
 
 %%
