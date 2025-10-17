@@ -6,6 +6,8 @@ classdef LUTClass
         freq
         LUT
         thru
+
+        waves
     end
     
     methods
@@ -13,7 +15,12 @@ classdef LUTClass
             Files = dir(fullfile(folder,"*.mat"));
             startPat = '_';
             endPat = '_GHz';
-            obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            if string(java.net.InetAddress.getLocalHost().getHostName()) ==     "ECEE-D0M5QR3"
+                obj.thru = load('/Users/grgo8200/repos/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            else
+                obj.thru = load('/Users/grgo8200/Documents/Github/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+             end
+            % obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
             for k = 1 : length(Files)
                 try
                     freq(k) = str2double(extractBetween(Files(k).name,startPat,endPat)) ;
@@ -31,8 +38,9 @@ classdef LUTClass
             end
         end
         
-        function obj = freq2table(obj,k,folder)
-            LUTtemp = load(folder).LUT;
+        function obj = freq2table(obj,k,file)
+            LUTtemp = load(file).LUT;
+            obj.waves(:,:,k) = load(file).waves;
             obj.LUT(:,:,k) = LUTtemp ;
         end
 
@@ -47,7 +55,7 @@ classdef LUTClass
                 s11 = [];
             end
 
-            if abs(tunerload) > 0.8
+            if abs(tunerload) > max(abs(obj.LUT(idxa,1,:)))
                 tunerload = 0.8*exp(j*angle(tunerload));
                 idxa = find(abs(LUTfreq(:,1)-tunerload)<0.001);
                 s11 = abs(obj.LUT(idxa,2,idx)).*exp(j*(angle(obj.LUT(idxa,2,idx))+angle(obj.thru(idx))*2));
