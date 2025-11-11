@@ -1,7 +1,8 @@
-filename = sprintf('coupledline_bL2based_%s',coupledline_data.LUTfolder(end-3:end));
+
+filename = sprintf('coupledline_bL2basedIMS_%s',coupledline_data.LUTfolder(end-3:end));
 
 import mlreportgen.ppt.*
-ppt = Presentation(strcat('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2\reports\',filename,'.pptx'));
+ppt = Presentation(strcat('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/plot2',filename,'.pptx'));
 titleSlide = add(ppt,'Title Slide');
 replace(titleSlide,'Title','Coupledline Compiled Data');
 
@@ -20,8 +21,8 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 coupledline_data.power_list(y), ...
                 [coupledline_data.sampler_bias_list(x), ...
                 coupledline_data.sampler_bias_list(x+1)]);
-        
-            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError > .001
+    
+            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError > .001 & fpb_fit.RMSError < .7
 
                 subplot(3,3,1)
                 hold on
