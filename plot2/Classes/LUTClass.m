@@ -13,7 +13,18 @@ classdef LUTClass
             Files = dir(fullfile(folder,"*.mat"));
             startPat = '_';
             endPat = '_GHz';
+<<<<<<< Updated upstream
             obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+=======
+            if string(java.net.InetAddress.getLocalHost().getHostName()) ==     "ECEE-D0M5QR3"
+                obj.thru = load('/Users/grgo8200/repos/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            elseif string(java.net.InetAddress.getLocalHost().getHostName()) == "cu-genvpn-comp-10.180.48.72.int.colorado.edu"
+                obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            else
+                obj.thru = load('/Users/grgo8200/Documents/Github/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+            end
+            % obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
+>>>>>>> Stashed changes
             for k = 1 : length(Files)
                 try
                     freq(k) = str2double(extractBetween(Files(k).name,startPat,endPat)) ;
