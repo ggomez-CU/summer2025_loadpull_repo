@@ -1,0 +1,19 @@
+% This assumes wavelength in freespace for simplicity
+frequency = linspace(8,12,401)*10^9;
+c = 299792458;
+wavelength = c./frequency;
+physical_line = 0.0075;
+
+mag = .5;
+angle = -180:5:180;
+gammaL = mag.*exp(j*angle/180*pi);
+
+phs = 2*pi./wavelength*physical_line;
+% Set phase 1 to 0 for all frequencies for simplicity
+V1 = (gammaLl+1).^2;
+V2 = (gammaL.*exp(-j*phs)+exp(j*phs)).^2;
+gamma = sqrt(1/2*V1+1/2*V2-2);
+
+hold on
+plot(V1,angle)
+plot(V2,angle)
