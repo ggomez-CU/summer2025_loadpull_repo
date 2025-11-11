@@ -3,14 +3,15 @@ close all
 clc
 
 %%
-% folder = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/systemvalidation/loadgain2025-07-31_17_00_Freq12.0to8.0'
-folder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\systemvalidation\loadgain2025-08-27_16_05_Freq10.0to8.0';
+folder = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/systemvalidation/loadgain2025-08-01_16_18_Freq10.0to8.0'
+% folder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\systemvalidation\loadgain2025-08-27_16_05_Freq10.0to8.0';
 data = LoadFreqRawClass(folder);
-
-%%
-% thrusparam = sparameters('../../data/deembedsparam/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
-% thruloss = permute(thrusparam.Parameters(1,2,:),[3 2 1]);
-% DUTthru = thruloss(301:10:701);
+% loadgain2025-08-01_16_18_Freq10.0to8.0
+% loadgain2025-08-01_09_33_Freq9.1to8.0
+%% 
+thrusparam = sparameters('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
+thruloss = permute(thrusparam.Parameters(1,2,:),[3 2 1]);
+DUTthru = thruloss(301:10:701);
 %%
 for k = 1 : size(data.freq,2)
     filename = ['lookuptable_', num2str(data.freq(k)), '_GHz'];

@@ -12,7 +12,7 @@ files = [{'/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_
 {'/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/LoadPullBiasing2025-08-22_00_31_Freq11.4to10.5/samplerbias_1.75V'};...
 {'/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/coupledline_samplers/LoadPullBiasing2025-08-22_05_30_Freq11.4to10.5/samplerbias_2.0V'}];
 
-LUTfolder = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/LUT1';
+LUTfolder = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/LUT2';
 gainfolder = '/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/GainTable2';
 
 coupledline_data = DataTableClass(files(1),LUTfolder,gainfolder);
@@ -20,7 +20,7 @@ coupledline_data = DataTableClass(files(1),LUTfolder,gainfolder);
 for i = 1:size(files,1)
     coupledline_data = coupledline_data.add_data(files(i));
 end
-
+coupledline_data = coupledline_data.freqpowerbias;
 coupledline_data = coupledline_data.freqpowerbias_bL2dependent;
 
 %%

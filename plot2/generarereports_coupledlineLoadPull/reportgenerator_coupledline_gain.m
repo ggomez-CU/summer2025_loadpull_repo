@@ -107,3 +107,19 @@ end
 
 close(ppt);
 rptview(ppt);
+
+%%
+hold on 
+for i = 1:5
+    biasTable = coupledline_data.freqpower(i);
+    for pow = unique(biasTable.SetPower)' 
+        subplot(1,5,i)
+        hold on
+        rf = rowfilter(biasTable);
+        T = biasTable(biasTable.SetPower == pow,:);
+        % heatmap(biasTable,'frequency','SetPower','ColorVariable','MaxError')
+        plot(T.frequency,T.MaxError,'DisplayName',sprintf('Bias %.2f, Power %f',mean(T.SamplerV_Mean),pow))
+        legend('location', 'best');
+    end
+end
+legend('location', 'best');

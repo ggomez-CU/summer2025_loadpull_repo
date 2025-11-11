@@ -22,7 +22,6 @@ classdef LUTClass
             else
                 obj.thru = load('/Users/grgo8200/Documents/Github/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
             end
-            % obj.thru = load('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/DUTthru.mat').DUTthru;
             for k = 1 : length(Files)
                 try
                     freq(k) = str2double(extractBetween(Files(k).name,startPat,endPat)) ;
@@ -42,7 +41,7 @@ classdef LUTClass
         
         function obj = freq2table(obj,k,file)
             LUTtemp = load(file).LUT;
-            obj.waves(:,:,k) = load(file).waves;
+            % obj.waves(:,:,k) = load(file).waves;
             obj.LUT(:,:,k) = LUTtemp ;
         end
 

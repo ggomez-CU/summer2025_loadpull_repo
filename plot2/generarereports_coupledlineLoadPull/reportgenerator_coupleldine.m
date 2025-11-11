@@ -22,7 +22,8 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 [coupledline_data.sampler_bias_list(x), ...
                 coupledline_data.sampler_bias_list(x+1)]);
     
-            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError > .001 & fpb_fit.RMSError < .7
+            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError > .001 & fpb_fit.RMSError < .035
+                fpb_fit
 
                 subplot(3,3,1)
                 hold on
@@ -45,10 +46,10 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
 
                 
                 subplot(3,3,4)
-                set(gca,'ColorOrderIndex',1)
+                % set(gca,'ColorOrderIndex',1)
                 scatter(abs(gamma),abs(sqrt(fpb_fit.ScaleFactorSampler1_Av*samp1raw ...
                     +fpb_fit.ScaleFactorSampler2_Av*samp2raw +...
-                     fpb_fit.ScaleFactorOffset)));
+                     fpb_fit.ScaleFactorOffset)),'b','filled');
                 ylabel('Calculated Output')
                 xlabel('Magnitude Gamma')
                 
