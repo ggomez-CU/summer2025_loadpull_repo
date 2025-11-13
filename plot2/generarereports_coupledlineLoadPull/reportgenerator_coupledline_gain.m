@@ -1,7 +1,7 @@
 filename = sprintf('coupledline_data_%s.mat',coupledline_data.LUTfolder(end-3:end));
 
 import mlreportgen.ppt.*
-ppt = Presentation(strcat('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2\reports\',filename,'.pptx'));
+ppt = Presentation(strcat('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/plot2/reports/',filename,'.pptx'));
 titleSlide = add(ppt,'Title Slide');
 replace(titleSlide,'Title','Coupledline Compiled Data');
 
@@ -109,16 +109,18 @@ close(ppt);
 rptview(ppt);
 
 %%
-hold on 
-for i = 1:5
+close all
+[coupledline_data.freqpowerbiastable.SamplerBiasMeanbin,bins] = discretize(coupledline_data.freqpowerbiastable.SamplerV_Mean,5);
+
+for i = 3:5
     biasTable = coupledline_data.freqpower(i);
     for pow = unique(biasTable.SetPower)' 
-        subplot(1,5,i)
+        subplot(1,3,i-2)
         hold on
         rf = rowfilter(biasTable);
         T = biasTable(biasTable.SetPower == pow,:);
         % heatmap(biasTable,'frequency','SetPower','ColorVariable','MaxError')
-        plot(T.frequency,T.MaxError,'DisplayName',sprintf('Bias %.2f, Power %f',mean(T.SamplerV_Mean),pow))
+        errorbar(T.frequency,T.RMSError,(T.MaxError-T.MinError),'DisplayName',sprintf('Bias %.2f, Power %f',mean(T.SamplerV_Mean),pow))
         legend('location', 'best');
     end
 end

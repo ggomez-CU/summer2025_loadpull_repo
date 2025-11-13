@@ -1,7 +1,7 @@
-filename = sprintf('PA_bL2based_IMS_%s',coupledline_data.LUTfolder(end-3:end));
+filename = sprintf('PA_bL2based_bestwithlowerror_%s',coupledline_data.LUTfolder(end-3:end));
 
 import mlreportgen.ppt.*
-ppt = Presentation(strcat('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/plot2',filename,'.pptx'));
+ppt = Presentation(strcat('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2\reports\',filename,'.pptx'));
 titleSlide = add(ppt,'Title Slide');
 replace(titleSlide,'Title','Coupledline Compiled Data');
 
@@ -24,7 +24,7 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 disp(fpb_fit.MaxError )
             end
 
-            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.MaxError <.1
+            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.MaxError <.15
 
                 subplot(3,3,1)
                 hold on

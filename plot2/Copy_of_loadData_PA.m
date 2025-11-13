@@ -31,4 +31,5 @@ for i = 1:length(subFolderNames)
 end
 
 coupledline_data = coupledline_data.freqpowerbias_bL2dependent;
+coupledline_data = coupledline_data.freqpowerbias;
 
