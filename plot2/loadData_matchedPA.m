@@ -6,7 +6,7 @@ clc
 addpath('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2\Classes')
 addpath('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2\functions')
 
-topLevelFolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\PA_Spring2023\LoadPullBiasing2025-08-07_15_40_Freq8.0to12.0\'
+topLevelFolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\PA_Spring2023\DriveUp\LoadPullBiasing2025-08-07_15_40_Freq8.0to12.0_DU\'
 % it has to have the stupid \ at the end
 files = dir(topLevelFolder);
 dirFlags = [files.isdir];

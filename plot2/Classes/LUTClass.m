@@ -53,11 +53,11 @@ classdef LUTClass
                 s11 = abs(obj.LUT(idxa,2,idx)).*exp(j*(angle(obj.LUT(idxa,2,idx))+angle(obj.thru(idx))*2));
             catch
                 % disp('No tuner value')
-                s11 = [];
+                s11 = nan;
             end
-            % if tunerload == 0
-            %     s11 = 0;
-            % end
+            if tunerload == 0
+                s11 = 0;
+            end
 
             if abs(tunerload) > max(abs(obj.LUT(idxa,1,:)))
                 tunerload = 0.8*exp(j*angle(tunerload));

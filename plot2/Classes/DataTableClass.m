@@ -220,22 +220,24 @@ classdef DataTableClass
                     for bias = 1:size(bins,2)-1
                         rf = rowfilter(obj.data);
                         T = obj.data((rf.frequency == frequency & rf.SetPower == SetPower & rf.GateV > bins(bias) & rf.GateV < bins(bias+1)) ,:);
-                        Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
-                        Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
-                        if isempty(Sampler1_Range); Sampler1_Range = nan; end
-                        if isempty(Sampler2_Range); Sampler2_Range = nan; end
-                        SamplerV_Mean = mean(T.GateV);
-                        DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
-                        DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
-                        if ~isnan(Sampler2_Range)
-                            [ScaleFactorOffset,...
-                            ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                            RMSError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, MaxError, MinError] = ...
-                            obj.samplerfitting(T.GammaLoad,T.Sampler1_V,T.Sampler2_V); 
-                            obj.freqpowerbiastable = [obj.freqpowerbiastable; table(ScaleFactorOffset,...
-                                    ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                                    RMSError, MaxError, MinError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, ...
-                                    Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                        if height(T) > 10
+                            Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
+                            Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
+                            if isempty(Sampler1_Range); Sampler1_Range = nan; end
+                            if isempty(Sampler2_Range); Sampler2_Range = nan; end
+                            SamplerV_Mean = mean(T.GateV);
+                            DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
+                            DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
+                            if ~isnan(Sampler2_Range)
+                                [ScaleFactorOffset,...
+                                ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                RMSError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, MaxError, MinError] = ...
+                                obj.samplerfitting(T.GammaLoad,T.Sampler1_V,T.Sampler2_V); 
+                                obj.freqpowerbiastable = [obj.freqpowerbiastable; table(ScaleFactorOffset,...
+                                        ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                        RMSError, MaxError, MinError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, ...
+                                        Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                            end
                         end
                     end
                 end
@@ -272,7 +274,8 @@ classdef DataTableClass
         end
 
         function obj = freqpowerbias_bL2dependent(obj)
-            [~,bins] = discretize(obj.data.GateV,length(unique(round(obj.data.GateV,2))));
+            %hardcoded
+            [~,bins] = discretize(obj.data.GateV,25);
             nonNanIdx = ~isnan(obj.data.SetPower);
             nonNanElements = obj.data.SetPower(nonNanIdx);
             obj.power_list = unique(nonNanElements)';
@@ -285,22 +288,24 @@ classdef DataTableClass
                     for bias = 1:size(bins,2)-1
                         rf = rowfilter(obj.data);
                         T = obj.data((rf.frequency == frequency & rf.SetPower == SetPower & rf.GateV > bins(bias) & rf.GateV < bins(bias+1)) ,:);
-                        Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
-                        Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
-                        if isempty(Sampler1_Range); Sampler1_Range = nan; end
-                        if isempty(Sampler2_Range); Sampler2_Range = nan; end
-                        SamplerV_Mean = mean(T.GateV);
-                        DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
-                        DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
-                        if ~isnan(Sampler2_Range)
-                            [bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
-                            ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                            RMSError, MaxError, MinError, GoodnessOfFit] = ...
-                            obj.samplerfittingpower(T.GammaLoad,T.Sampler1_V,T.Sampler2_V,max(T.DUT_output_dBm)); 
-                            obj.freqpowerbiasbL2table = [obj.freqpowerbiasbL2table; table(bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
-                                    ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                                    RMSError, MaxError, MinError, GoodnessOfFit, ...
-                                    Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                        if height(T) > 10
+                            Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
+                            Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
+                            if isempty(Sampler1_Range); Sampler1_Range = nan; end
+                            if isempty(Sampler2_Range); Sampler2_Range = nan; end
+                            SamplerV_Mean = mean(T.GateV);
+                            DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
+                            DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
+                            if ~isnan(Sampler2_Range)
+                                [bL2, ScaleFactorKappa1,ScaleFactorKappa2,...
+                                ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                RMSError, MaxError, MinError, GoodnessOfFit] = ...
+                                obj.samplerfittingpower(T.GammaLoad,T.Sampler1_V,T.Sampler2_V,max(T.DUT_output_dBm)); 
+                                obj.freqpowerbiasbL2table = [obj.freqpowerbiasbL2table; table(bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
+                                        ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                        RMSError, MaxError, MinError, GoodnessOfFit, ...
+                                        Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                            end
                         end
                     end
                 end
@@ -360,6 +365,11 @@ classdef DataTableClass
         function T = freqpower(obj,biasbin)
             rf = rowfilter(obj.freqpowerbiastable);
             T = obj.freqpowerbiastable((rf.SamplerBiasMeanbin == biasbin),:);
+        end
+
+        function T = freqpowerbL(obj,biasbin)
+            rf = rowfilter(obj.freqpowerbiasbL2table);
+            T = obj.freqpowerbiasbL2table((rf.SamplerBiasMeanbin == biasbin),:);
         end
 
         function json_txt = loadjson(obj, filename)

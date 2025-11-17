@@ -220,22 +220,24 @@ classdef DataTableClass
                     for bias = 1:size(bins,2)-1
                         rf = rowfilter(obj.data);
                         T = obj.data((rf.frequency == frequency & rf.SetPower == SetPower & rf.GateV > bins(bias) & rf.GateV < bins(bias+1)) ,:);
-                        Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
-                        Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
-                        if isempty(Sampler1_Range); Sampler1_Range = nan; end
-                        if isempty(Sampler2_Range); Sampler2_Range = nan; end
-                        SamplerV_Mean = mean(T.GateV);
-                        DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
-                        DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
-                        if ~isnan(Sampler2_Range)
-                            [ScaleFactorOffset,...
-                            ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                            RMSError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, MaxError, MinError] = ...
-                            obj.samplerfitting(T.GammaLoad,T.Sampler1_V,T.Sampler2_V); 
-                            obj.freqpowerbiastable = [obj.freqpowerbiastable; table(ScaleFactorOffset,...
-                                    ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                                    RMSError, MaxError, MinError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, ...
-                                    Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                        if height(T) > 10
+                            Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
+                            Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
+                            if isempty(Sampler1_Range); Sampler1_Range = nan; end
+                            if isempty(Sampler2_Range); Sampler2_Range = nan; end
+                            SamplerV_Mean = mean(T.GateV);
+                            DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
+                            DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
+                            if ~isnan(Sampler2_Range)
+                                [ScaleFactorOffset,...
+                                ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                RMSError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, MaxError, MinError] = ...
+                                obj.samplerfitting(T.GammaLoad,T.Sampler1_V,T.Sampler2_V); 
+                                obj.freqpowerbiastable = [obj.freqpowerbiastable; table(ScaleFactorOffset,...
+                                        ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                        RMSError, MaxError, MinError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, ...
+                                        Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                            end
                         end
                     end
                 end
@@ -285,22 +287,33 @@ classdef DataTableClass
                     for bias = 1:size(bins,2)-1
                         rf = rowfilter(obj.data);
                         T = obj.data((rf.frequency == frequency & rf.SetPower == SetPower & rf.GateV > bins(bias) & rf.GateV < bins(bias+1)) ,:);
-                        Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
-                        Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
-                        if isempty(Sampler1_Range); Sampler1_Range = nan; end
-                        if isempty(Sampler2_Range); Sampler2_Range = nan; end
-                        SamplerV_Mean = mean(T.GateV);
-                        DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
-                        DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
-                        if ~isnan(Sampler2_Range)
-                            [bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
-                            ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                            RMSError, MaxError, MinError, GoodnessOfFit] = ...
-                            obj.samplerfittingpower(T.GammaLoad,T.Sampler1_V,T.Sampler2_V,max(T.DUT_output_dBm)); 
-                            obj.freqpowerbiasbL2table = [obj.freqpowerbiasbL2table; table(bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
-                                    ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
-                                    RMSError, MaxError, MinError, GoodnessOfFit, ...
-                                    Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                        if height(T) > 10
+                            Sampler1_Range = max(T.Sampler1_V)-min(T.Sampler1_V);
+                            Sampler2_Range = max(T.Sampler2_V)-min(T.Sampler2_V);
+                            if isempty(Sampler1_Range); Sampler1_Range = nan; end
+                            if isempty(Sampler2_Range); Sampler2_Range = nan; end
+                            SamplerV_Mean = mean(T.GateV);
+                            DUT_input_dBm_Mean = mean(T.DUT_input_dBm);
+                            DUT_output_dBm_Mean = mean(T.DUT_output_dBm);
+                            if ~isnan(Sampler2_Range)
+                                [bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
+                                ScaleFactorOffset,...
+                                ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                RMSError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, MaxError, MinError] = ...
+                                obj.samplerfittingpower(T.GammaLoad,T.Sampler1_V,T.Sampler2_V); 
+                                obj.freqpowerbiasbL2table = [obj.freqpowerbiasbL2table; table(ScaleFactorOffset,...
+                                        ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                        RMSError, MaxError, MinError, GoodnessOfFit, Sampler1_phase, Sampler2_phase, GoodnessOfFitPhase, ...
+                                        Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                                [bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
+                                ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                RMSError, MaxError, MinError, GoodnessOfFit] = ...
+                                obj.samplerfittingpower(T.GammaLoad,T.Sampler1_V,T.Sampler2_V,max(T.DUT_output_dBm)); 
+                                obj.freqpowerbiasbL2table = [obj.freqpowerbiasbL2table; table(bL2,ScaleFactorKappa1,ScaleFactorKappa2,...
+                                        ScaleFactorSampler1_Av,ScaleFactorSampler2_Av,...
+                                        RMSError, MaxError, MinError, GoodnessOfFit, ...
+                                        Sampler1_Range,Sampler2_Range,SamplerV_Mean,DUT_output_dBm_Mean,DUT_input_dBm_Mean,SetPower,frequency)];
+                            end
                         end
                     end
                 end
@@ -382,14 +395,14 @@ classdef DataTableClass
                 end
                 
                 if isfield(json_txt,'DCParameters')
-                    if isfield(json_txt.DCParameters,'gateCurrent'); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
-                    if isfield(json_txt.DCParameters,'gatecurrent') && ~isAny(GateI); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
-                    if isfield(json_txt.DCParameters,'gateVoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
-                    if isfield(json_txt.DCParameters,'gatevoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
-                    if isfield(json_txt.DCParameters,'drainCurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
-                    if isfield(json_txt.DCParameters,'draincurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
-                    if isfield(json_txt.DCParameters,'drainVoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
-                    if isfield(json_txt.DCParameters,'drainvoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
+                    if isfield(json_txt.DCParameters,'gateCurrent'); GateI = json_txt.DCParameters.gateCurrent;
+                    elseif isfield(json_txt.DCParameters,'gatecurrent'); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
+                    if isfield(json_txt.DCParameters,'gateVoltage'); GateV = json_txt.DCParameters.gateVoltage;
+                    elseif isfield(json_txt.DCParameters,'gatevoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
+                    if isfield(json_txt.DCParameters,'drainCurrent'); DrainI = json_txt.DCParameters.drainCurrent;
+                    elseif isfield(json_txt.DCParameters,'draincurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
+                    if isfield(json_txt.DCParameters,'drainVoltage'); DrainV = json_txt.DCParameters.drainVoltage;
+                    elseif isfield(json_txt.DCParameters,'drainvoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
                 else
                     GateI = nan; GateV = nan; DrainI = nan;DrainV = nan; 
                 end

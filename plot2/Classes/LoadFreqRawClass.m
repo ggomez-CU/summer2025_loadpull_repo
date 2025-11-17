@@ -75,8 +75,8 @@ classdef LoadFreqRawClass
         end
 
         function obj = thruset(obj)
-            % thrusparam = sparameters('../../data/deembedsparam/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
-            thrusparam = sparameters('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/LPSetup_Validation_2portthru_20250707_direct 4.s2p')
+            thrusparam = sparameters('../../data/deembedsparam/LPSetup_Validation_2portthru_20250707_direct 4.s2p');
+            % thrusparam = sparameters('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/data/deembedsparam0710/LPSetup_Validation_2portthru_20250707_direct 4.s2p')
             obj.thruphase = (angle(permute(thrusparam.Parameters(1,2,:),[3 2 1])))/pi*180;
             obj.thrufreq = thrusparam.Frequencies./1e9;
         end

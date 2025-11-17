@@ -12,12 +12,12 @@ dirFlags = [files.isdir];
 subFolders = files(dirFlags);
 subFolderNames = {subFolders(3:end).name};
 
-LUTfolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\LUT2';
+LUTfolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\LUT3';
 coupledline_data = DataTableClass({strcat(topLevelFolder,subFolderNames{1})},LUTfolder);
 
 for i = 1:length(subFolderNames)
     tempfolder = subFolderNames{i};
-    if tempfolder(1:4) == "Load"
+    if tempfolder(1:4) == "Load" %cant do phase bc no LUT
         files = dir(strcat(topLevelFolder,subFolderNames{i}));
         dirFlags = [files.isdir];
         subFolders = files(dirFlags);
@@ -31,4 +31,6 @@ for i = 1:length(subFolderNames)
 end
 
 coupledline_data = coupledline_data.freqpowerbias_bL2dependent;
+% coupledline_data = coupledline_data.freqpowerbias_bL2dependent;
+% coupledline_data = coupledline_data.freqpowerbias;
 
