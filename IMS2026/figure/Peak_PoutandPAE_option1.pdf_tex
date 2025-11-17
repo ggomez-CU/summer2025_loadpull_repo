@@ -1,0 +1,81 @@
+%% Creator: Inkscape 1.2.2 (732a01da63, 2022-12-09), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Peak_PoutandPAE_option1.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{438bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.75276921)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Peak_PoutandPAE_option1.pdf}}%
+    \put(0.11815068,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0.23202055,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9.5\end{tabular}}}}%
+    \put(0.35873288,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.47260274,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10.5\end{tabular}}}}%
+    \put(0.60530822,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11\end{tabular}}}}%
+    \put(0.71917808,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11.5\end{tabular}}}}%
+    \put(0.85188356,0.05528068){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}12\end{tabular}}}}%
+    \put(0.49474652,0.00505226){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Frequency (GHz)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Peak_PoutandPAE_option1.pdf}}%
+    \put(0.06278545,0.10294044){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}25\end{tabular}}}}%
+    \put(0.06278545,0.24977263){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}30\end{tabular}}}}%
+    \put(0.06278545,0.39660483){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}35\end{tabular}}}}%
+    \put(0.06278545,0.54343702){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}40\end{tabular}}}}%
+    \put(0.06278545,0.69026921){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}45\end{tabular}}}}%
+    \put(0.04908681,0.40590615){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}PAE (/\%)\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Peak_PoutandPAE_option1.pdf}}%
+    \put(0.87385839,0.10294044){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}28.5\end{tabular}}}}%
+    \put(0.87385839,0.24977263){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}29\end{tabular}}}}%
+    \put(0.87385839,0.39660483){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}29.5\end{tabular}}}}%
+    \put(0.87385839,0.54343702){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}30\end{tabular}}}}%
+    \put(0.87385839,0.69026921){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}30.5\end{tabular}}}}%
+    \put(0.99494774,0.40642731){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Output Power (dBm)\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Peak_PoutandPAE_option1.pdf}}%
+  \end{picture}%
+\endgroup%

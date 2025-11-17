@@ -382,14 +382,14 @@ classdef DataTableClass
                 end
                 
                 if isfield(json_txt,'DCParameters')
-                    if isfield(json_txt.DCParameters,'gateCurrent'); GateI = json_txt.DCParameters.gateCurrent;
-                    elseif isfield(json_txt.DCParameters,'gatecurrent'); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
-                    if isfield(json_txt.DCParameters,'gateVoltage'); GateV = json_txt.DCParameters.gateVoltage;
-                    elseif isfield(json_txt.DCParameters,'gatevoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
-                    if isfield(json_txt.DCParameters,'drainCurrent'); DrainI = json_txt.DCParameters.drainCurrent;
-                    elseif isfield(json_txt.DCParameters,'draincurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
-                    if isfield(json_txt.DCParameters,'drainVoltage'); DrainV = json_txt.DCParameters.drainVoltage;
-                    elseif isfield(json_txt.DCParameters,'drainvoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
+                    if isfield(json_txt.DCParameters,'gateCurrent'); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
+                    if isfield(json_txt.DCParameters,'gatecurrent') && ~isAny(GateI); GateI = json_txt.DCParameters.gateCurrent; else; GateI = nan; end;
+                    if isfield(json_txt.DCParameters,'gateVoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
+                    if isfield(json_txt.DCParameters,'gatevoltage'); GateV = json_txt.DCParameters.gateVoltage; else; GateV = nan; end;
+                    if isfield(json_txt.DCParameters,'drainCurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
+                    if isfield(json_txt.DCParameters,'draincurrent'); DrainI = json_txt.DCParameters.drainCurrent; else; DrainI = nan; end;
+                    if isfield(json_txt.DCParameters,'drainVoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
+                    if isfield(json_txt.DCParameters,'drainvoltage'); DrainV = json_txt.DCParameters.drainVoltage; else; DrainV = nan; end;
                 else
                     GateI = nan; GateV = nan; DrainI = nan;DrainV = nan; 
                 end

@@ -48,16 +48,16 @@ classdef LUTClass
         function s11 = tuner2s11(obj, tunerload, freq)
             idx = find(obj.freq()==freq);
             LUTfreq = obj.LUT(:,:,idx);
-            if tunerload == 0
-                disp("omit 50")
-            end
             try
                 idxa = find(LUTfreq(:,1)==tunerload);
                 s11 = abs(obj.LUT(idxa,2,idx)).*exp(j*(angle(obj.LUT(idxa,2,idx))+angle(obj.thru(idx))*2));
             catch
-                disp('No tuner value')
+                % disp('No tuner value')
                 s11 = [];
             end
+            % if tunerload == 0
+            %     s11 = 0;
+            % end
 
             if abs(tunerload) > max(abs(obj.LUT(idxa,1,:)))
                 tunerload = 0.8*exp(j*angle(tunerload));
