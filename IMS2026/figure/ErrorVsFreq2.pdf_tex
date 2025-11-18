@@ -1,0 +1,96 @@
+%% Creator: Inkscape 1.3 (0e150ed, 2023-07-21), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'ErrorVsFreq2.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{395.46798706bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.99188333)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{ErrorVsFreq2.pdf}}%
+    \put(0.10860632,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8.4\end{tabular}}}}%
+    \put(0.21149076,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8.9\end{tabular}}}}%
+    \put(0.31437519,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9.4\end{tabular}}}}%
+    \put(0.41725963,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9.9\end{tabular}}}}%
+    \put(0.51445458,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10.4\end{tabular}}}}%
+    \put(0.61733901,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10.9\end{tabular}}}}%
+    \put(0.72022345,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11.4\end{tabular}}}}%
+    \put(0.82310788,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11.9\end{tabular}}}}%
+    \put(0.92599232,0.05292469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}12.4\end{tabular}}}}%
+    \put(0.45471561,0.00431835){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Frequency (GHz)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{ErrorVsFreq2.pdf}}%
+    \put(0.06119413,0.09938863){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.03464331,0.1715604){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.05\end{tabular}}}}%
+    \put(0.04602223,0.24373236){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.1\end{tabular}}}}%
+    \put(0.03464331,0.31590432){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.15\end{tabular}}}}%
+    \put(0.04602223,0.38807609){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
+    \put(0.03464331,0.46024805){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.25\end{tabular}}}}%
+    \put(0.04602223,0.53241982){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.3\end{tabular}}}}%
+    \put(0.03464331,0.60459178){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.35\end{tabular}}}}%
+    \put(0.04602223,0.67676374){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
+    \put(0.03464331,0.74893549){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.45\end{tabular}}}}%
+    \put(0.0166265,0.35778538){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Error ($|\Gamma_L|$)\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{ErrorVsFreq2.pdf}}%
+    \put(0.71440561,0.89089663){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}14.00 dBm P_{\rm{out}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{ErrorVsFreq2.pdf}}%
+    \put(0.71440561,0.83704367){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}16.00 dBm P_{\rm{out}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{ErrorVsFreq2.pdf}}%
+    \put(0.71440561,0.78319072){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}18.00 dBm P_{\rm{out}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{ErrorVsFreq2.pdf}}%
+    \put(0.71440561,0.72933776){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}20.00 dBm P_{\rm{out}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{ErrorVsFreq2.pdf}}%
+    \put(0.71440561,0.67548483){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}22.00 dBm P_{\rm{out}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{ErrorVsFreq2.pdf}}%
+    \put(0.5552818,0.6241866){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RMS Error Theoretical\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{ErrorVsFreq2.pdf}}%
+    \put(0.28668189,0.95327215){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RMS Error \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{ErrorVsFreq2.pdf}}%
+    \put(0.52777235,0.95352503){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Max Error \end{tabular}}}}%
+  \end{picture}%
+\endgroup%

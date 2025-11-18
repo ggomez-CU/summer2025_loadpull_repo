@@ -30,7 +30,7 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 plot(xplot,yplot)
             end
 
-            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError >.001 & fpb_fit.RMSError <.1
+            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError >.001 & fpb_fit.RMSError <.05
 
                 subplot(3,3,1)
                 hold on
@@ -101,25 +101,3 @@ close(ppt);
 rptview(ppt);
 
 
-%%
-[coupledline_data.freqpowerbiasbL2table.SamplerBiasMeanbin,bins] = discretize(coupledline_data.freqpowerbiasbL2table.SamplerV_Mean,12);
-
-% The naming is not good. SamplerMeanV in this case is GateV for the
-% coupled line it is actually the sampler bias mean.
-for i = 3
-    biasTable = coupledline_data.freqpowerbL(i);
-    for pow = unique(biasTable.SetPower)' 
-        % subplot(1,length(bins),i)
-        hold on
-        rf = rowfilter(biasTable);
-        T = biasTable(biasTable.SetPower == pow,:);
-        [~,sortidx] = sort(T.frequency);
-        T = T(sortidx,:);
-        % heatmap(biasTable,'frequency','SetPower','ColorVariable','MaxError')
-        errorbar(T.frequency,T.RMSError,abs(T.RMSError-T.MinError),abs(T.RMSError-T.MaxError),"-o",'DisplayName',sprintf('RMS Error at %f dBm %P_{\rm{out}}',mean(T.SamplerV_Mean),pow),'LineWidth',3)
-        legend('location', 'best');
-        xlabel("Frequency (GHz)")
-        ylabel("Error (|$\Gamma$|)")
-    end
-end
-legend('location', 'best');

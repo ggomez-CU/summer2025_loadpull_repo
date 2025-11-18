@@ -1,7 +1,7 @@
 filename = sprintf('PA_bL2based_IMSbL_%s',coupledline_data.LUTfolder(end-3:end));
 
 import mlreportgen.ppt.*
-ppt = Presentation(strcat('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2',filename,'.pptx'));
+ppt = Presentation(strcat('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/plot2/',filename,'.pptx'));
 titleSlide = add(ppt,'Title Slide');
 replace(titleSlide,'Title','Coupledline Compiled Data');
 xd = 1;
@@ -30,9 +30,10 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 plot(xplot,yplot)
             end
 
-            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError >.001 & fpb_fit.RMSError <.1
+            if ~isempty(fpb_fit) & length(gamma) > 10 & fpb_fit.RMSError >.001 & fpb_fit.RMSError <.03698
 
-                subplot(3,3,1)
+                % subplot(3,3,1)
+                figure
                 hold on
                 ylabel('Sampler (mV)')
                 xlabel('data sampler')
@@ -50,25 +51,28 @@ for x = 1:size(coupledline_data.sampler_bias_list,2)-1
                 text(arrow1(1)-arrow1(3)*.5,arrow1(2)-arrow1(4)*.5,'Sampler 1')
                 quiver(arrow2(1),arrow2(2),arrow2(3),arrow2(4),"black",'LineWidth',2)
                 text(arrow2(1)-arrow2(3)*.5,arrow2(2)-arrow2(4)*.5,'Sampler 2')
-
+                grid on
                 
-                subplot(3,3,4)
+                % subplot(3,3,4)
+                figure
                 set(gca,'ColorOrderIndex',1)
                 scatter(abs(gamma),abs(sqrt( 1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler1_Av)*(samp1raw-fpb_fit.ScaleFactorKappa1)+...
-                1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler2_Av)*(samp2raw-fpb_fit.ScaleFactorKappa2) - 1)));
+                1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler2_Av)*(samp2raw-fpb_fit.ScaleFactorKappa2) - 1)),'filled','k');
                 ylabel('Calculated Output')
                 xlabel('Magnitude Gamma')
+                grid on
                 
-                subplot(3,3,[2 3 5 6 8 9])  
+                % subplot(3,3,[2 3 5 6 8 9])  
+                figure
                 set(gca,'ColorOrderIndex',1)
-                smithplot(sqrt( 1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler1_Av)*(samp1raw-fpb_fit.ScaleFactorKappa1)+...
+                polarplot(sqrt( 1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler1_Av)*(samp1raw-fpb_fit.ScaleFactorKappa1)+...
                 1/(2*fpb_fit.bL2*fpb_fit.ScaleFactorSampler2_Av)*(samp2raw-fpb_fit.ScaleFactorKappa2) - 1).*exp(1i*angle(gamma)));
                 hold on
                 set(gca, 'ColorOrderIndex', 1)
                 for plotidx = 1:size(gamma,2)
-                    smithplot(gamma(:,plotidx),'.','LineStyle', 'none' )
+                    polarplot(gamma(:,plotidx),'.','LineStyle', 'none' )
                 end
-            
+                rlim([0 1])
                 pngname = strcat('../png/slide_n',num2str(x),num2str(y),num2str(z),'.png');
                 saveas(gcf,pngname);
                 close all
@@ -101,27 +105,3 @@ close(ppt);
 rptview(ppt);
 
 
-%%
-[coupledline_data.freqpowerbiasbL2table.SamplerBiasMeanbin,bins] = discretize(coupledline_data.freqpowerbiasbL2table.SamplerV_Mean,12);
-
-% The naming is not good. SamplerMeanV in this case is GateV for the
-% coupled line it is actually the sampler bias mean.
-for i = 3
-    biasTable = coupledline_data.freqpowerbL(i);
-    for pow = unique(biasTable.SetPower)' 
-        % subplot(1,length(bins),i)
-        hold on
-        rf = rowfilter(biasTable);
-        T = biasTable(biasTable.SetPower == pow,:);
-        [~,sortidx] = sort(T.frequency);
-        T = T(sortidx,:);
-        % heatmap(biasTable,'frequency','SetPower','ColorVariable','MaxError')
-        errorbar(T.frequency,T.RMSError,abs(T.RMSError-T.MinError),abs(T.RMSError-T.MaxError),"-o",'DisplayName',sprintf('RMS Error at %.2f dBm %P_{\rm{out}}',pow),'LineWidth',3)
-        legend('location', 'best');
-        xlabel("Frequency (GHz)")
-        ylabel("Error (|$\Gamma$|)")
-    end
-end
-legend('location', 'best');
-xlim([8.4 12.4])
-xticks(8.4:.5:12.4)
