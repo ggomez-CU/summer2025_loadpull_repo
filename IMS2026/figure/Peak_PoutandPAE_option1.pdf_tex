@@ -68,7 +68,7 @@
     \put(0.06278545,0.39660483){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}35\end{tabular}}}}%
     \put(0.06278545,0.54343702){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}40\end{tabular}}}}%
     \put(0.06278545,0.69026921){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}45\end{tabular}}}}%
-    \put(0.04908681,0.40590615){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}PAE (/\%)\end{tabular}}}}}%
+    \put(0.04908681,0.40590615){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}PAE (\\%)\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{Peak_PoutandPAE_option1.pdf}}%
     \put(0.87385839,0.10294044){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}28.5\end{tabular}}}}%
     \put(0.87385839,0.24977263){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}29\end{tabular}}}}%

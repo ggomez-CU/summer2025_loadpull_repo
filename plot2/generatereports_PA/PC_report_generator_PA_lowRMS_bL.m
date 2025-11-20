@@ -1,7 +1,7 @@
 filename = sprintf('PA_bL2based_IMSbL_%s',coupledline_data.LUTfolder(end-3:end));
 
 import mlreportgen.ppt.*
-ppt = Presentation(strcat('/Users/gracegomez/Documents/Research Code Python/summer2025_loadpull_repo/plot2/',filename,'.pptx'));
+ppt = Presentation(strcat('C:\Users\grgo8200\repos\summer2025_loadpull_repo\plot2/',filename,'.pptx'));
 titleSlide = add(ppt,'Title Slide');
 replace(titleSlide,'Title','Coupledline Compiled Data');
 xd = 1;
