@@ -61,7 +61,7 @@
     \put(0.62093863,0.05956679){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
     \put(0.75,0.05956679){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.5\end{tabular}}}}%
     \put(0.87906137,0.05956679){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
-    \put(0.51726714,0.00722022){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$|\Gamma|$\end{tabular}}}}%
+    \put(0.51726714,0.00722022){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$|\Gamma_L|$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{Teststructure_10-9_10dBm_2V.pdf}}%
     \put(0.09386282,0.09747292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.06498195,0.19554765){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.1\end{tabular}}}}%
@@ -70,7 +70,7 @@
     \put(0.06498195,0.48977148){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
     \put(0.06498195,0.58784585){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.5\end{tabular}}}}%
     \put(0.06498195,0.68592058){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
-    \put(0.0433213,0.40337904){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Detector Output\end{tabular}}}}}%
+    \put(0.0433213,0.40337904){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Output\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{Teststructure_10-9_10dBm_2V.pdf}}%
   \end{picture}%
 \endgroup%
