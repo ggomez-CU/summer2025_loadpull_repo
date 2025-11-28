@@ -12,7 +12,7 @@ files = [{'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\coupledline_sam
 {'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\coupledline_samplers\LoadPullBiasing2025-08-22_00_31_Freq11.4to10.5\samplerbias_1.75V'};...
 {'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\coupledline_samplers\LoadPullBiasing2025-08-22_05_30_Freq11.4to10.5\samplerbias_2.0V'}];
 
-LUTfolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\LUT1';
+LUTfolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\LUT2';
 gainfolder = 'C:\Users\grgo8200\repos\summer2025_loadpull_repo\data\GainTable2';
 
 coupledline_data = DataTableClass(files(1),LUTfolder,gainfolder);

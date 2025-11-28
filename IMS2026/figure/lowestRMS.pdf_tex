@@ -65,12 +65,22 @@
     \put(0.03982748,0.75460569){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}50\end{tabular}}}}%
     \put(0.01235248,0.60349334){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_i$ (mV)\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{lowestRMS.pdf}}%
+    \put(0.33014959,0.25053715){\color[rgb]{0.15686275,0.09411765,0.27058824}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$|\Gamma_L|$\end{tabular}}}}%
+    \put(0.29908322,0.30249752){\color[rgb]{0.15686275,0.09411765,0.27058824}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.1\end{tabular}}}}%
+    \put(0.29887685,0.38975362){\color[rgb]{0.15686275,0.09411765,0.27058824}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{lowestRMS.pdf}}%
+    \put(0.31363722,0.15231936){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Output\end{tabular}}}}%
+    \put(0.18391217,0.00560289){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(b)\end{tabular}}}}%
+    \put(0.18443167,0.43345024){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(a)\end{tabular}}}}%
+    \put(0.75541513,0.00842084){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(c)\end{tabular}}}}%
+    \put(0.31370772,0.10813395){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_L$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{lowestRMS.pdf}}%
     \put(0.56731236,0.11415816){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.69157602,0.11415816){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
     \put(0.82696748,0.11415816){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
     \put(0.96235922,0.11415816){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
     \put(0.75511308,0.06579598){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$|\Gamma|$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{lowestRMS.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{lowestRMS.pdf}}%
     \put(0.53656642,0.15952354){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.51431026,0.24436531){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.1\end{tabular}}}}%
     \put(0.51431026,0.32920709){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
@@ -80,15 +90,9 @@
     \put(0.51431026,0.66857388){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
     \put(0.51431026,0.75341565){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.7\end{tabular}}}}%
     \put(0.4830742,0.34260165){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor Output\end{tabular}}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{lowestRMS.pdf}}%
-    \put(0.31363722,0.15231936){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Output\end{tabular}}}}%
-    \put(0.18391217,0.00560288){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(b)\end{tabular}}}}%
-    \put(0.18443168,0.43345023){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(a)\end{tabular}}}}%
-    \put(0.75541513,0.00842083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(c)\end{tabular}}}}%
-    \put(0.31370772,0.10813395){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_L$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{lowestRMS.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{lowestRMS.pdf}}%
     \put(0.37014222,0.74249707){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_1$\end{tabular}}}}%
     \put(0.37019564,0.70630937){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_2$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{lowestRMS.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{lowestRMS.pdf}}%
   \end{picture}%
 \endgroup%

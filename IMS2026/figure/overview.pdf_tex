@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{4098.13499631bp}%
+    \setlength{\unitlength}{6152.47870017bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.9167128)%
+  \begin{picture}(1,0.9184505)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{overview.pdf}}%
+    \put(0.51414883,0.03616743){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$v_1$\end{tabular}}}}%
+    \put(0.17153539,0.30851136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}PA\end{tabular}}}}%
+    \put(0.63518919,0.43935888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor\end{tabular}}}}%
+    \put(0.65906019,0.03858581){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_1$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{overview.pdf}}%
+    \put(0.98553602,0.15958287){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_L$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{overview.pdf}}%
+    \put(0.57999208,0.36651157){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$90^\circ$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{overview.pdf}}%
   \end{picture}%
 \endgroup%
