@@ -8,12 +8,10 @@ hold on
 
 frequency = linspace(8.9,11.9,31)*10^9;
 c = 299792458;
-Eeff = 9.7;
 
-wavelength_0 = c./frequency;
-wavelength_eff = c./(frequency*sqrt(Eeff));
+wavelength = c./frequency;
 f0=10.4*10^9;
-line = .25* c./(f0*sqrt(Eeff)); %at 10.4 GHz = 90 degree of SiC
+line = .25* c./(f0); %at 10.4 GHz = 90 degree of SiC
 
 idx = 1;
 maglist = .1:.1:.4;
@@ -21,7 +19,7 @@ for magG = maglist
     angleG = -180:5:180;
     gammaL = magG.*exp(1i*angleG/180*pi);
     
-    phs = 2*pi./wavelength'*physical_line;
+    phs = 2*pi./wavelength'*line;
     
     % Set phase 1 to 0 for all frequencies for simplicity
     V1 = abs(gammaL+1).^2;
